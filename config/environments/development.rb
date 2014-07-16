@@ -28,5 +28,5 @@ Tweetspeak::Application.configure do
   config.assets.debug = true
 
   #For Paperclip to know where to find ffmpeg
-  Paperclip.options[:command_path] = "/c/ffmpeg"
+  Paperclip.options[:command_path] = "/usr/local/bin/ffmpeg"
 end
