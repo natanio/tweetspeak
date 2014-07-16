@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<%= show_video @lesson.video.url   %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @lesson.title %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @lesson.tags %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @lesson.text %>
+</p>
+
+<p>
+  <strong>Audio:</strong>
+  <%= @lesson.audio %>
+</p>
+
+<%= link_to 'Edit', edit_lesson_path(@lesson) %> |
+<%= link_to 'Back', lessons_path %>
