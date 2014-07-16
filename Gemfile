@@ -10,7 +10,9 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass', '3.0.3.0'
-gem "paperclip", "~> 4.1"
+gem "paperclip", "~> 3.0"
+gem "paperclip-dropbox", ">= 1.1.7"
+gem "paperclip-ffmpeg"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
