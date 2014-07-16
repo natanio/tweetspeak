@@ -28,5 +28,5 @@ Tweetspeak::Application.configure do
   config.assets.debug = true
 
   #For Paperclip to know where to find ffmpeg
-  Paperclip.options[:command_path] = "/c/Program Files/ImageMagick-6.8.9-Q16/ffmpeg"
+  Paperclip.options[:command_path] = "/c/ffmpeg"
 end
