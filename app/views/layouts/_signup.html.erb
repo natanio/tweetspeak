@@ -5,7 +5,7 @@
     <%= f.label :name %>
     <%= f.text_field :name, :autofocus => true, class: "form-control" %>
   </div>
-  
+
   <div class="form-group">
   <%= f.label :email %><br />
   <%= f.email_field :email, class: "form-control" %></div>
@@ -20,6 +20,7 @@
 
   <div class="form-group">
   <%= f.submit "Sign up", class: "btn btn-primary" %></div>
-
-  <%= render "devise/shared/links" %>
-<% end %>
+   <% if !user_signed_in? %>
+   	<%= link_to "Already a member? Sign in.", new_session_path(:user) %>
+   <% end %>
+  <% end %>

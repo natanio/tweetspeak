@@ -1,7 +1,15 @@
-<div class="jumbotron">
-  <h1>Learn Real English Daily</h1>
-  <p>Join below for your free lesson</p>
+<% if user_signed_in? %>
+<%= render 'layouts/header' %>
+<% else %>
+	#Nothing here for now.
+<% end %>
 
-  <%= render 'layouts/signup' %>
+<div class="jumbotron">
+	<div class="container">
+		<h1>Learn Real English Daily</h1>
+		<p>Join below for your free lesson</p>
+
+  		<%= render 'layouts/signup' %>
+  	</div>
 
 </div>
