@@ -35,6 +35,12 @@ Tweetspeak::Application.routes.draw do
   #     end
   #   end
 
+  resources :videos do
+    member do
+      get :show_video
+    end
+  end
+
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales

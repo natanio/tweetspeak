@@ -61,6 +61,10 @@ class LessonsController < ApplicationController
     end
   end
 
+  def show_video
+    render :video, :video => lesson.video
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_lesson
