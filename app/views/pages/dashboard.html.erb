@@ -1,10 +1,3 @@
-<% if user_signed_in? %>
-<%= render 'layouts/header' %>
-<% else %>
-<!-- Nothing to do here for now. -->
-<% end %>
-
-<div class="jumbotron">
 <% flash.each do |name, msg| %>
     <% if msg.is_a?(String) %>
       <div class="alert alert-<%= name == :notice ? "success" : "danger" %> alert-dismissable">
@@ -13,12 +6,6 @@
       </div>
     <% end %>
   <% end %>
-	
-	<div class="container">
-		<h1>Learn Real English Daily</h1>
-		<p>Join below for your free lesson</p>
-
-  		<%= render 'layouts/signup' %>
-  	</div>
-
-</div>
+  
+<h1>Lessons</h1>
+<p>We might not need this page</p>

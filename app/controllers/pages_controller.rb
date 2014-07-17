@@ -5,6 +5,6 @@ class PagesController < ApplicationController
   def contact
   end
 
-  def lessons
+  def dashboard
   end
 end
