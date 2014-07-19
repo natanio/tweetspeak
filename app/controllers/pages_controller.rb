@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+	before_filter :authenticate_user!, only: [:dashboard]
+	
   def about
   end
 
@@ -7,4 +9,5 @@ class PagesController < ApplicationController
 
   def dashboard
   end
+    
 end
