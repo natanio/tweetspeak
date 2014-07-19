@@ -15,6 +15,10 @@ body {
   text-align: center;
 }
 
+.jumbotron {
+background-image: url('https://dl.dropboxusercontent.com/s/o43r1yq7ctgh45g/header.jpg');
+}
+
 /* Home page sign up */
 
 .jumbotron .signup label {
@@ -23,9 +27,9 @@ font-size: 12px;
 
 .signup {
 font-size: 16px;
-border: 1px solid #ADADAD;
+border: 1px solid #77A4DD;
 border-radius: 10px;
-background: rgba(0,0,0,0.1);
+background: rgba(232, 244, 255, 0.8);
 padding: 1em;
 }
 
