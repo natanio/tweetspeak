@@ -6,12 +6,13 @@ class LessonsController < ApplicationController
   # GET /lessons
   # GET /lessons.json
   def index
-    @lessons = Lesson.all
+    @lessons = Lesson.order("published_at DESC")
   end
 
   # GET /lessons/1
   # GET /lessons/1.json
   def show
+    @lessons = Lesson.find(params[:id])
   end
 
   # GET /lessons/new

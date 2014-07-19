@@ -41,6 +41,11 @@ Tweetspeak::Application.routes.draw do
     end
   end
 
+  MarkdownExample::Application.routes.draw do
+  resources :lessons, only: [:index, :show]
+  root to: "lessons#index"
+end
+
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales
