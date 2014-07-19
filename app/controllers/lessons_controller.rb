@@ -1,5 +1,7 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_filter :check_user, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /lessons
   # GET /lessons.json
@@ -74,5 +76,11 @@ class LessonsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def lesson_params
       params.require(:lesson).permit(:title, :tags, :text, :audio, :video)
+    end
+
+    def check_user
+      if !current_user.admin?
+        redirect_to root_url alert: "Sorry, that page is not for students"
+      end
     end
 end
