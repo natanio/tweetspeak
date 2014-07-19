@@ -1,12 +1,12 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_filter :check_user, only: [:new, :create, :edit, :update, :destroy]
+  before_filter :check_user, only: [:index, :new, :create, :edit, :update, :destroy]
 
   # GET /lessons
   # GET /lessons.json
   def index
-    @lessons = Lesson.order("published_at DESC")
+    @lessons = Lesson.order("created_at DESC")
   end
 
   # GET /lessons/1
@@ -81,7 +81,7 @@ class LessonsController < ApplicationController
 
     def check_user
       if !current_user.admin?
-        redirect_to root_url alert: "Sorry, that page is not for students"
+        redirect_to pages_dashboard_path, alert: "Sorry, that page is not for students"
       end
     end
 end

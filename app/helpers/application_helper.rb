@@ -35,7 +35,6 @@ def markdown(text)
     markdown = Redcarpet::Markdown.new(renderer, extensions)
 
     markdown.render(text).html_safe
-  end
 end
 
 end
