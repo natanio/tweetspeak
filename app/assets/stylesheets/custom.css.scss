@@ -15,8 +15,30 @@ body {
   text-align: center;
 }
 
+.jumbotron .logo {
+width: 200px;
+}
+
 .jumbotron {
-background-image: url('https://dl.dropboxusercontent.com/s/o43r1yq7ctgh45g/header.jpg');
+background: #7fd1ef; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #7fd1ef 0%, #01aef0 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#7fd1ef), color-stop(100%,#01aef0)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(-45deg,  #7fd1ef 0%,#01aef0 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(-45deg,  #7fd1ef 0%,#01aef0 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(-45deg,  #7fd1ef 0%,#01aef0 100%); /* IE10+ */
+background: linear-gradient(135deg,  #7fd1ef 0%,#01aef0 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7fd1ef', endColorstr='#01aef0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.jumbotron h1 { color: #f8f8f8; }
+
+.jumbotron p {
+line-height: 1.4;
+color: #005F94;
+}
+
+.logo img {
+width: 135px;
 }
 
 /* Home page sign up */
@@ -27,13 +49,15 @@ font-size: 12px;
 
 .signup {
 font-size: 16px;
-border: 1px solid #77A4DD;
+border: 1px solid #0084B6;
 border-radius: 10px;
-background: rgba(232, 244, 255, 0.8);
+background: rgba(255, 255, 255, 0.8);
 padding: 1em;
 }
 
 .signup .btn {
 width: 100%;
 margin-top: 20px;
+background: #11C911;
+border-color: #089B08;
 }
