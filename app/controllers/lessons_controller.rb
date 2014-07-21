@@ -81,7 +81,7 @@ class LessonsController < ApplicationController
 
     def check_user
       if !current_user.admin?
-        redirect_to pages_dashboard_path, alert: "Sorry, that page is not for students"
+        redirect_to pages_dashboard_path, alert: "Sorry, that page is not for students."
       end
     end
 end
