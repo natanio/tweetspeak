@@ -30,11 +30,12 @@ background: linear-gradient(135deg,  #7fd1ef 0%,#01aef0 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7fd1ef', endColorstr='#01aef0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-.jumbotron h1 { color: #f8f8f8; }
+.jumbotron h1 { color: #f8f8f8; margin-top: 104px}
 
 .jumbotron p {
 line-height: 1.4;
 color: #005F94;
+margin-top: 25px;
 }
 
 .logo img {
@@ -53,6 +54,13 @@ border: 1px solid #0084B6;
 border-radius: 10px;
 background: rgba(255, 255, 255, 0.8);
 padding: 1em;
+}
+
+.signup h2 {
+color: #005768;
+font-size: 25px;
+margin-bottom: 25px;
+text-shadow: 0px 1px 0 #FFF;
 }
 
 .signup .btn {
