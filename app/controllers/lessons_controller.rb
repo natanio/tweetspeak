@@ -80,8 +80,12 @@ class LessonsController < ApplicationController
     end
 
     def check_user
-      if !current_user.admin?
+      if user_signed_in?
+      	unless current_user.admin? 
         redirect_to pages_dashboard_path, alert: "Sorry, that page is not for students."
+        end
+      else
+      	redirect_to root_path, alert: "Sorry, you need to sign up or sign in to visit that page."
       end
     end
 end
