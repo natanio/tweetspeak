@@ -1,6 +1,7 @@
 $navbar-border-radius: none;
 $brand-primary: #3498db;
 $page-header-border-color: #D3D3D3;
+$navbar-margin-bottom: none;
 
 @import 'bootstrap';
 
@@ -10,7 +11,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.row {
+.paper > .row {
 	border-bottom: 1px solid #D3D3D3;
 }
 
