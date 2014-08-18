@@ -1,4 +1,5 @@
-<% flash.each do |name, msg| %>
+<div class="paper">
+	<% flash.each do |name, msg| %>
     <% if msg.is_a?(String) %>
       <div class="alert alert-<%= name == :notice ? "success" : "danger" %> alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -6,8 +7,6 @@
       </div>
     <% end %>
   <% end %>
-  
-<div class="paper">
 			<div class="page-header">
 				<h1 style="font-family: 'Roboto Slab', serif;">Dashboard <br><small>Hey, <%= current_user.name %>! Ready to get started?</small></h1>
 				<div class="center" style="margin-bottom: 25px;">
