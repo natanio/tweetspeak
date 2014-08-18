@@ -45,10 +45,14 @@ body {
 
 .footer, .page-wrap:after {
   /* .push must be the same height as footer */
-	height: 142px; 
+	height: none; 
 }
 .footer {
-  background: orange;
+  background: none;
+}
+
+.footer a {
+  color: #F8F8F8;
 }
 
 /* End Sticky footer */
