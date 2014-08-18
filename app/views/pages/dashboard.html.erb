@@ -7,5 +7,35 @@
     <% end %>
   <% end %>
   
-<h1>Lessons</h1>
-<p>We might not need this page</p>
+<div class="page-header">
+	<h1>Dashboard <small>Hey, <%= current_user.name %>! How are you doing?</small></h1>
+	<div class="center"><%= link_to "Learn!", "#", class:"btn btn-primary btn-lg" %></div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-default top-space">
+  			<div class="panel-body">
+				<div class="center"><p>Get your streak on!</p></div>
+				<div class="progress">
+  				<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+    			<span class="sr-only">40% Complete (success)</span>
+  				</div>
+  			</div>
+  			<p class="progress-label">Best streak: 3 Days!</p>
+  		</div>
+  	</div>
+</div>
+	<div class="col-md-6">
+		<div class="center">
+			<h4>You currently have:</h4>
+			<div class="points">
+				<p>500 points!</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="center">
+	<h3>Start today's lesson?</h3>
+	<%= link_to "Let's go!", "#", class:"btn btn-primary btn-lg" %>
+</div>

@@ -1,3 +1,27 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top-space {
+	margin-top: 45px;
+}
+
+.points {
+	background: #01aef0;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	margin: 0 auto;
+}
+
+.points p {
+	color: white;
+	font-weight: 900;
+	font-size: 30px;
+	padding-top: 46px;
+	line-height: 26px;
+}
+
+p.progress-label {
+	float: right;
+}

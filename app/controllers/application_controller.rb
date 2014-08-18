@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    "/pages/dashboard" # <- Path you want to redirect the user to.
+    "/dashboard" # <- Path you want to redirect the user to.
   end
 
 end
