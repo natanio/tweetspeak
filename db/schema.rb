@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140721213407) do
+ActiveRecord::Schema.define(version: 20140818211411) do
 
   create_table "lessons", force: true do |t|
     t.string   "title"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140721213407) do
     t.string   "answer"
     t.string   "tweet"
     t.string   "pronunciation"
+    t.integer  "lesson_order"
   end
 
   create_table "users", force: true do |t|

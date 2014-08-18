@@ -28,6 +28,7 @@ class LessonsController < ApplicationController
   # POST /lessons.json
   def create
     @lesson = Lesson.new(lesson_params)
+    @lesson.update_attribute :lesson_order_position, :last
 
     respond_to do |format|
       if @lesson.save

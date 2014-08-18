@@ -16,6 +16,7 @@ gem "figaro"
 gem "devise"
 gem 'redcarpet', '~> 3.0.0'
 gem 'bootstrap-sass'
+gem 'ranked-model'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
