@@ -7,18 +7,22 @@
 }
 
 .points {
-	background: #01aef0;
+	background: #E67E22;
 	width: 150px;
 	height: 150px;
 	border-radius: 50%;
 	margin: 0 auto;
+	border: 6px solid #D35400;
+	-webkit-box-shadow: 0 1px 1px rgba(138, 72, 0, 0.3), -1px 1px 1px rgba(138, 72, 0, 0.2);
+	-moz-box-shadow: 0 1px 1px rgba(138, 72, 0, 0.3), -1px 1px 1px rgba(138, 72, 0, 0.2);
+	box-shadow: 0 1px 1px rgba(138, 72, 0, 0.3), -1px 1px 1px rgba(138, 72, 0, 0.2);
 }
 
 .points p {
 	color: white;
 	font-weight: 900;
 	font-size: 30px;
-	padding-top: 46px;
+	padding-top: 43px;
 	line-height: 26px;
 }
 

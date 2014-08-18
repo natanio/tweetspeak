@@ -1,11 +1,21 @@
 $navbar-border-radius: none;
+$brand-primary: #3498db;
+$page-header-border-color: #D3D3D3;
 
 @import 'bootstrap';
 
 body {
-  background-color: #f8f8f8;
+  background-color: #95a5a6;
   color: #333333;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.row {
+	border-bottom: 1px solid #D3D3D3;
+}
+
+.big-bottom {
+	padding: 0em 0 2em 0;
 }
 
 .center {
@@ -72,4 +82,27 @@ border-color: #089B08;
 max-width: 50%;
 min-width: 340px;
 margin: 20px auto;
+}
+
+/* Paper effect */
+.paper {
+  position: relative;
+  width: 100%;
+  padding: 1em 3.5em 5em;
+  margin: 2em auto;
+  color: #2c3e50;
+  background: #ecf0f1;
+}
+
+.paper:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-width: 0 40px 40px 0;
+  border-style: solid;
+  border-color: #95a5a6 #95a5a6 #CAD9DA #CAD9DA;
+  background: #ecf0f1;
+  /* Firefox 3.0 damage limitation */
+  display: block; width: 0;
 }
