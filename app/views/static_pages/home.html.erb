@@ -4,38 +4,36 @@
 <!-- Nothing to do here for now. -->
 <% end %>
 
-<div class="jumbotron">
-<div class="logo"><a href="/"><img src="https://dl.dropboxusercontent.com/s/kzfowr2ixt7ae1d/tweet_logo_small.png"></a></div>
-<% flash.each do |name, msg| %>
+<div class="page-wrap">
+  <div class="logo"><!-- start logo. -->
+    <a href="/"><img src="https://dl.dropboxusercontent.com/s/kzfowr2ixt7ae1d/tweet_logo_small.png"></a>
+  </div><!-- End logo. -->
+
+  <% flash.each do |name, msg| %>
     <% if msg.is_a?(String) %>
       <div class="alert alert-<%= name == :notice ? "success" : "danger" %> alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
       </div>
     <% end %>
   <% end %>
 	
-	<div class="container">
-    	<div class="row">
-      		<div class="col-md-8">
-		    	<h1>Learn Real English, Daily</h1>
+  <div class="container"><!-- Open container. -->
+    <div class="row"><!-- Open row. -->
+      <div class="col-md-8"><!-- Open column. -->
+		    <h1>Learn Real English, Daily</h1>
 		    
-		    	<p><span class="smaller">Finally, get the listening and speaking skills you need to</span> 
-		    	<span>understand</span> and <span>communicate with<span> native speakers <em>perfectly</em>.
-		    	<span class="smaller">Our short, fun Enlish lessons teach you natural English phrases every day.</span></p>
-		    
-		   		
-      		</div>
+		    <p><span class="smaller">Finally, get the listening and speaking skills you need to</span> 
+		    <span>understand</span> and <span>communicate with<span> native speakers <em>perfectly</em>.
+		    <span class="smaller">Our short, fun Enlish lessons teach you natural English phrases every day.</span></p>
+		  </div><!-- Close column. -->
       
-      		<div class="col-md-4">
-        		<div class="signup">
-  		   			<%= render 'layouts/signup' %>
-  	    		</div>
-      		</div>
-    	</div>
-	</div>
+      <div class="col-md-4"><!-- Open column. -->
+        <div class="signup"><!-- Start signup form. -->
+  		   	<%= render 'layouts/signup' %>
+  	    </div><!-- End signup. -->
+      </div><!-- Close column. -->
+    </div><!-- Close row. -->
+  </div><!-- Close container. -->
 </div>
-
-<div class="container">
-  <%= render 'layouts/footer' %>
-</div>
+<%= render 'layouts/footer' %>
