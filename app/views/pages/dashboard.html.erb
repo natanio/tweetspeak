@@ -8,10 +8,13 @@
   <% end %>
   
 <div class="paper">
-	<div class="page-header">
-		<h1>Dashboard <br><small>Hey, <%= current_user.name %>! How are you doing?</small></h1>
-		<div class="center"><%= link_to "Learn!", "#", class:"btn btn-primary btn-lg" %></div>
-	</div>
+			<div class="page-header">
+				<h1>Dashboard <br><small>Hey, <%= current_user.name %>! Ready to get started?</small></h1>
+				<div class="center" style="margin-bottom: 25px;">
+					<%= link_to "Go to Lesson!", "#", class:"btn btn-primary btn-lg" %>
+				</div>
+			</div>
+
 	<div class="row big-bottom">
 		<div class="col-md-6">
 			<div class="panel panel-default top-space">
