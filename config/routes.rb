@@ -3,6 +3,7 @@ Tweetspeak::Application.routes.draw do
   get "static_pages/home"
   resources :lessons
 
+  get "/lessons/:id/step/:step_number" => "lessons#step"
   get "pages/about"
   get "pages/contact"
   get "dashboard" => "pages#dashboard", as: :pages_dashboard

@@ -1,5 +1,5 @@
 class LessonsController < ApplicationController
-  before_action :set_lesson, only: [:show, :edit, :update, :destroy]
+  before_action :set_lesson, only: [:show, :edit, :update, :destroy, :step]
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_filter :check_user, only: [:index, :new, :create, :edit, :update, :destroy]
 
@@ -69,6 +69,18 @@ class LessonsController < ApplicationController
     render :video, :video => lesson.video
   end
 
+  def step
+    if params[:step_number]=="1"
+      render "step1.html.erb"
+    elsif params[:step_number]=="2"
+      #check for words
+      @correct_words = @lesson.answer.split.uniq & params[:words].split.uniq
+      @wrong_words =   params[:words].split.uniq - @lesson.answer.split.uniq
+      render "step2.html.erb"
+    else
+      render "step1.html.erb"
+    end
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_lesson
@@ -77,7 +89,7 @@ class LessonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lesson_params
-      params.require(:lesson).permit(:title, :tags, :text, :audio, :video)
+      params.require(:lesson).permit(:title, :tags, :text, :audio, :video, :lesson_number, :step_number)
     end
 
     def check_user

@@ -1,0 +1,26 @@
+<h1>Step 2</h1>
+
+<ul class="correct_words">
+	<li><b>Correct Words</b></li>
+	<% @correct_words.each do |word| %>
+		<li><%= word %></li>
+	<% end %>
+</ul>
+
+<ul class="wrong_words">
+	<li><b>Wrong words</b></li>
+	<% @wrong_words.each do |word| %>
+		<li><%= word %></li>
+	<% end %>
+</ul>
+<% if true || @correct_words.length==@lesson.answer.split.uniq.length %>
+	<b>You are correct!</b>
+	<a href="/lessons/<%=@lesson.id%>/step/3">Step 3</a>
+	<% else %>
+	<b> You made some mistakes, please try again </b>
+	<a href="/lessons/<%=@lesson.id%>/step/1">Step 1</a>
+<% end %>
+<style>
+	ul.wrong_words{ color: rgb(184, 65, 65);}
+	ul.correct_words{ color: green;}
+</style>
