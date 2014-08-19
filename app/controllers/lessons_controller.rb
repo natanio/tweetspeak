@@ -74,12 +74,18 @@ class LessonsController < ApplicationController
       render "step1.html.erb"
     elsif params[:step_number]=="2"
       #check for words
-      @lesson.answer = @lesson.answer.gsub(/[\,\.\?\!\:\;]/,"")
       @words = params[:words].gsub(/[\,\.\?\!\:\;]/,"")
+      if @words.empty?
+        redirect_to :back, :flash => { :danger => "Please enter an answer, even if it's only one word." }
+      else
+        @lesson.answer = @lesson.answer.gsub(/[\,\.\?\!\:\;]/,"")
+      
 
-      @correct_words = @lesson.answer.downcase.split.uniq & @words.downcase.split.uniq
-      @wrong_words =   @words.downcase.split.uniq - @lesson.answer.downcase.split.uniq
-      render "step2.html.erb"
+        @correct_words = @lesson.answer.downcase.split.uniq & @words.downcase.split.uniq
+        @wrong_words =   @words.downcase.split.uniq - @lesson.answer.downcase.split.uniq
+        render "step2.html.erb"
+      end
+      
     elsif params[:step_number]=="3"
       render "step3.html.erb"
     elsif params[:step_number]=="4"
