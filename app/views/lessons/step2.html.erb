@@ -2,8 +2,12 @@
 
 <ul class="correct_words">
 	<li><b>Correct Words</b></li>
-	<% @correct_words.each do |word| %>
-		<li><%= word %></li>
+	<% if @correct_words.empty? %>
+		<p>You didn't get any of them.</p>
+	<% else %>
+		<% @correct_words.each do |word| %>
+			<li><%= word %></li>
+		<% end %>
 	<% end %>
 </ul>
 
@@ -13,7 +17,7 @@
 		<li><%= word %></li>
 	<% end %>
 </ul>
-<% if true || @correct_words.length==@lesson.answer.split.uniq.length %>
+<% if @wrong_words.empty? %>
 	<b>You are correct!</b>
 	<a href="/lessons/<%=@lesson.id%>/step/3">Step 3</a>
 	<% else %>
@@ -24,3 +28,6 @@
 	ul.wrong_words{ color: rgb(184, 65, 65);}
 	ul.correct_words{ color: green;}
 </style>
+
+<h4>Correct Answer</h4>
+<p> <%= @lesson.answer %> </p>
