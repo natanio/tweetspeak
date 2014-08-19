@@ -68,7 +68,7 @@
 					</form>
 					<br>
 					<div class="center">
-						<a href="#" class="btn btn-default hint" data-toggle="tooltip" data-placement="bottom" title="There are <%= @lesson.answer.scan(/\w+/).size %> words.">Get a Hint</a>
+						<a onclick="alert('There are <%= @lesson.answer.scan(/\w+/).size %> words.')" class="btn btn-default hint" data-toggle="tooltip" data-placement="bottom" title="There are <%= @lesson.answer.scan(/\w+/).size %> words.">Get a Hint</a>
     					<script> $('.hint').tooltip() </script>
     				</div>
   				</div>
