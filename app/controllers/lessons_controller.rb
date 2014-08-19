@@ -79,7 +79,6 @@ class LessonsController < ApplicationController
         redirect_to :back, :flash => { :danger => "Please enter an answer, even if it's only one word." }
       else
         @lesson.answer = @lesson.answer.gsub(/[\,\.\?\!\:\;]/,"")
-      
 
         @correct_words = @lesson.answer.downcase.split.uniq & @words.downcase.split.uniq
         @wrong_words =   @words.downcase.split.uniq - @lesson.answer.downcase.split.uniq
