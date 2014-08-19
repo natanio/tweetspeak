@@ -26,6 +26,8 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.2)
+    autoprefixer-rails (2.2.0.20140804)
+      execjs
     bcrypt (3.1.7)
     bcrypt (3.1.7-x86-mingw32)
     better_errors (1.1.0)
@@ -152,9 +154,10 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  autoprefixer-rails
   better_errors
   binding_of_caller
-  bootstrap-sass
+  bootstrap-sass (~> 3.2.0)
   coffee-rails (~> 4.0.0)
   devise
   figaro
@@ -166,7 +169,7 @@ DEPENDENCIES
   rails (= 4.0.2)
   ranked-model
   redcarpet (~> 3.0.0)
-  sass-rails (~> 4.0.0)
+  sass-rails (>= 3.2)
   sdoc
   sqlite3
   turbolinks

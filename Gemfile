@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.2'
 gem 'sqlite3'
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '>= 3.2'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
@@ -15,10 +15,12 @@ gem "paperclip-ffmpeg"
 gem "figaro"
 gem "devise"
 gem 'redcarpet', '~> 3.0.0'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
 gem 'ranked-model'
 gem 'better_errors'
 gem 'binding_of_caller'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
