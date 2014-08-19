@@ -76,9 +76,14 @@ class LessonsController < ApplicationController
       #check for words
       @lesson.answer = @lesson.answer.gsub(/[\,\.\?\!\:\;]/,"")
       @words = params[:words].gsub(/[\,\.\?\!\:\;]/,"")
+
       @correct_words = @lesson.answer.downcase.split.uniq & @words.downcase.split.uniq
       @wrong_words =   @words.downcase.split.uniq - @lesson.answer.downcase.split.uniq
       render "step2.html.erb"
+    elsif params[:step_number]=="3"
+      render "step3.html.erb"
+    elsif params[:step_number]=="4"
+      render "step4.html.erb"
     else
       render "step1.html.erb"
     end
