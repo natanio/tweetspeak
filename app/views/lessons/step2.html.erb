@@ -1,35 +1,3 @@
-<ul class="correct_words">
-	<li><b>Correct Words</b></li>
-	<% if @correct_words.empty? %>
-		<p>You didn't get any of them.</p>
-	<% else %>
-		<% @correct_words.each do |word| %>
-			<li><%= word %></li>
-		<% end %>
-	<% end %>
-</ul>
-
-<ul class="wrong_words">
-	<li><b>Wrong words</b></li>
-	<% @wrong_words.each do |word| %>
-		<li><%= word %></li>
-	<% end %>
-</ul>
-<% if @wrong_words.empty? %>
-	<b>You are correct!</b>
-	<a href="/lessons/<%=@lesson.id%>/step/3">Step 3</a>
-	<% else %>
-	<b> You made some mistakes, please try again </b>
-	<a href="/lessons/<%=@lesson.id%>/step/1">Step 1</a>
-<% end %>
-<style>
-	ul.wrong_words{ color: rgb(184, 65, 65);}
-	ul.correct_words{ color: green;}
-</style>
-
-<h4>Correct Answer</h4>
-<p> <%= @lesson.answer %> </p>
-
 <div class="paper">
 	<% flash.each do |name, msg| %>
     	<% if msg.is_a?(String) %>
@@ -78,33 +46,37 @@
 		</div>
 
 
-			<!-- 16:9 aspect ratio -->
-			<div class="embed-responsive embed-responsive-16by9">
-			  <iframe
-				src="//player.vimeo.com/video/<%= @lesson.video %>?title=0&amp;byline=0&amp;
-				portrait=0" width="700" height="394" frameborder="0"
-				webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-			</div>
-			<br>
-			<br>
-			<div class="panel panel-default">
-  				<div class="panel-heading">
-  					<h3 class="panel-title">Check your listening.</h3>
-    			</div>
-  				<div class="panel-body">
-    				<form role="form" action="/lessons/<%= @lesson.id %>/step/2">
-  						<div class="form-group">
-    						<input type="text" class="form-control" id="studentAnswer" placeholder="Type the words you hear in the video..." name="words">
-  						</div>
-  						<div class="center"><button type="submit" class="btn btn-primary">Check Answer</button></div>
-					</form>
-					<br>
-					<div class="center">
-						<a onclick="alert('There are <%= @lesson.answer.scan(/\w+/).size %> words.')" class="btn btn-default hint" data-toggle="tooltip" data-placement="bottom" title="There are <%= @lesson.answer.scan(/\w+/).size %> words.">Get a Hint</a>
-    					<script> $('.hint').tooltip() </script>
-    				</div>
-  				</div>
-			</div>
+			<ul class="correct_words">
+	<li><b>Correct Words</b></li>
+	<% if @correct_words.empty? %>
+		<p>You didn't get any of them.</p>
+	<% else %>
+		<% @correct_words.each do |word| %>
+			<li><%= word %></li>
+		<% end %>
+	<% end %>
+</ul>
+
+<ul class="wrong_words">
+	<li><b>Wrong words</b></li>
+	<% @wrong_words.each do |word| %>
+		<li><%= word %></li>
+	<% end %>
+</ul>
+<% if @wrong_words.empty? && ( @correct_words.length == @lesson.answer.length ) %>
+	<b>You are correct!</b>
+	<a href="/lessons/<%=@lesson.id%>/step/3">Step 3</a>
+	<% else %>
+	<b> You made some mistakes, please try again </b>
+	<a href="/lessons/<%=@lesson.id%>/step/1">Step 1</a>
+<% end %>
+<style>
+	ul.wrong_words{ color: rgb(184, 65, 65);}
+	ul.correct_words{ color: green;}
+</style>
+
+<h4>Correct Answer</h4>
+<p> <%= @lesson.answer %> </p>
 			
 
 			<!-- Continue Button -->
