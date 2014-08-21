@@ -11,7 +11,7 @@
 			<div class="page-header">
 				<div class="row">
 					<div class="col-md-11">
-						<h1 style="font-family: 'Roboto Slab', serif;">Step 4 <small>Discussion</small></h1>
+						<h1 style="font-family: 'Roboto Slab', serif;">Step 4 <small>Learn and Discuss</small></h1>
 					</div> <!-- End first column. -->
 
 				<div class="col-md-1 top-space">
@@ -47,11 +47,17 @@
 			</div>
 		</div>
 
+		<ul class="nav nav-pills" role="tablist" id="myTab">
+  			<li class="active"><a href="#explanation" role="tab" data-toggle="pill">Explanation</a></li>
+  			<li><a href="#discussion" role="tab" data-toggle="pill">Discussion</a></li>
+</ul>
 
+		<div class="tab-content">
+			<div class="tab-pane active" id="explanation">
 			<!-- Tweet -->
 			<div class="row">
 				<div class="col-md-6">
-					<div class="lesosn-text">
+					<div class="lesson-text">
 						<h2>Learn the Key Phrases</h2>
 						<%= @lesson.text.html_safe %>
 					</div>
@@ -64,12 +70,24 @@
 				</div>
 
 			</div>
+			</div>
+
+			<div class="tab-pane active" id="discussion">
+				<p>Disqus comments</p>
+			</div>
+
+		</div>
+		<script>
+  			$(function () {
+    			$('#myTab a:first').tab('show')
+  			})
+		</script>
 			
 
 			<!-- Continue Button -->
 			<div class="center">
 				<h3 style="font-family: 'Roboto Slab', serif;">Great Job!</h3>
 				<p style="font-family: 'Roboto Slab', serif;">Click "Complete" to add to your Dictionary</p>
-				<a href="/lessons/<%=@lesson.id%>/step/4" class="btn btn-primary btn-lg">Complete!</a>	
+				<a href="/lessons/<%=@lesson.id%>/step/4" class="btn btn-success btn-lg">Complete!</a>	
 			</div>
 </div>
