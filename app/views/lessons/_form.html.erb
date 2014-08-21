@@ -23,15 +23,46 @@
   <div class="form-group">
     <%= f.text_field :tweet, class: "form-control", placeholder: 'Tweet link' %>
   </div>
-  <div class="form-group">
-    <%= f.text_field :pronunciation, class: "form-control", placeholder: 'Pronunciation guide' %>
+
+  <!-- Text area input. -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Pronunciation Guide</h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+      <%= f.text_area :pronunciation, class: "form-control wysihtml5", placeholder: 'Pronunciation guide' %>
+      <script type="text/javascript">
+        $(document).ready(function(){
+
+          $('.wysihtml5').each(function(i, elem) {
+            $(elem).wysihtml5();
+          });
+
+        })
+      </script>
+      </div>
+    </div>
   </div>
+  <br>
+
   <div class="form-group">
     <%= f.text_field :audio, class: "form-control", placeholder: 'Audio embed code' %>
   </div>
-  <div class="form-group">
-    <%= f.text_area :text, class: "form-control", placeholder: 'Lesson text, use MarkDown to format' %>
-  </div><br>
+
+  <!-- Text area input. -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Lesson Text</h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+      <%= f.text_area :text, class: "form-control wysihtml5", placeholder: 'Lesson text, use MarkDown to format' %>
+      </div>
+    </div>
+</div>
+<br>
+
   <div class="form-group">
     <%= f.label :tags %>, valuable chunks the learn can look up later.</p>
     <%= f.text_field :tags, class: "form-control", placeholder: 'phrasal verb, preposition, etc.' %>

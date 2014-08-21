@@ -63,7 +63,7 @@
 						<div class="panel-body">
 					<%= @lesson.audio.html_safe %>
 					<div class="pronunciation-guide">
-						<%= markdown(@lesson.pronunciation) %>
+						<%= @lesson.pronunciation.html_safe %>
 					</div>
 				</div>
 			</div>

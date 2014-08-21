@@ -14,7 +14,7 @@ gem "paperclip-dropbox", ">= 1.1.7"
 gem "paperclip-ffmpeg"
 gem "figaro"
 gem "devise"
-gem 'redcarpet', '~> 3.0.0'
+gem 'bootstrap-wysihtml5-rails'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'ranked-model'

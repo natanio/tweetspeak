@@ -15,9 +15,9 @@ webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 <p> <strong>Audio:</strong> <%= @lesson.audio.html_safe %> </p>
 
-<p> <strong>Pronunciation Guide:</strong> <%= markdown(@lesson.pronunciation) %> </p>
+<p> <strong>Pronunciation Guide:</strong> <%= @lesson.pronunciation.html_safe %> </p>
 
-<p> <strong>Lesson Text:</strong> <%= markdown(@lesson.text) %> </p>
+<p> <strong>Lesson Text:</strong> <%= @lesson.text.html_safe %> </p>
 
 
 
