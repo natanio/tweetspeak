@@ -26,6 +26,7 @@ body {
 
 .paper > .row {
 	border-bottom: 1px solid #D3D3D3;
+  padding-bottom: 20px;
 }
 
 .big-bottom {
@@ -34,6 +35,10 @@ body {
 
 .center {
   text-align: center;
+}
+
+.float-right {
+  float: right;
 }
 
 /* Important for Sticky Footer */
@@ -123,6 +128,19 @@ width: 100%;
 margin-top: 20px;
 background: #11C911;
 border-color: #089B08;
+}
+
+.tweet-center {
+  margin: 0 auto;
+}
+
+.pronunciation-guide {
+  background: #1EB3E8;
+  color: #FFF;
+  padding: 2em 1em;
+  font-size: 1.5em;
+  border: 5px solid #0097D1;
+  margin-bottom: 25px;
 }
 
 /* Sign in page */
