@@ -13,14 +13,7 @@ $page-header-border-color: #D3D3D3;
 @import 'bootstrap';
 
 body {
-  background: #7fd1ef; /* Old browsers */
-  background: -moz-linear-gradient(-45deg,  #7fd1ef 0%, #1eb3e8 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#7fd1ef), color-stop(100%,#1eb3e8)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(-45deg,  #7fd1ef 0%,#1eb3e8 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(-45deg,  #7fd1ef 0%,#1eb3e8 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(-45deg,  #7fd1ef 0%,#1eb3e8 100%); /* IE10+ */
-  background: linear-gradient(135deg,  #7fd1ef 0%,#1eb3e8 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7fd1ef', endColorstr='#1eb3e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  background: #1EB3E8; /* Old browsers */
   color: #333333;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -60,14 +53,6 @@ body {
 .page-wrap:after {
   content: "";
   display: block;
-}
-
-.footer, .page-wrap:after {
-  /* .push must be the same height as footer */
-	height: none; 
-}
-.footer {
-  background: none;
 }
 
 .footer a {
@@ -114,11 +99,15 @@ font-size: 12px;
 }
 
 .signup {
-font-size: 16px;
-border: 1px solid #0084B6;
-border-radius: 10px;
-background: rgba(255, 255, 255, 0.8);
-padding: 1em;
+  font-size: 16px;
+  border: 1px solid #0084B6;
+  /* border-radius: 10px; */
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1em;
+  margin: 0 auto;
+  max-width: 550px;
+  color: #5E5E5E;
+  text-shadow: none;
 }
 
 .signup h2 {
@@ -129,10 +118,11 @@ text-shadow: 0px 1px 0 #FFF;
 }
 
 .signup .btn {
-width: 100%;
+min-width: 50%;
 margin-top: 20px;
-background: #11C911;
-border-color: #089B08;
+background: #e67e22;
+border-color: #d35400;
+color: white;
 }
 
 .tweet-center {
@@ -172,7 +162,7 @@ margin: 20px auto;
   right: 0;
   border-width: 0 40px 40px 0;
   border-style: solid;
-  border-color: #50C2EB #50C2EB #CAD9DA #CAD9DA;
+  border-color: #1EB3E8 #1EB3E8 #CAD9DA #CAD9DA;
   background: #ecf0f1;
   /* Firefox 3.0 damage limitation */
   display: block; width: 0;
