@@ -46,42 +46,123 @@
 		</div>
 
 
-			<ul class="correct_words">
-	<li><b>Correct Words</b></li>
-	<% if @correct_words.empty? %>
-		<p>You didn't get any of them.</p>
-	<% else %>
-		<% @correct_words.each do |word| %>
-			<li><%= word %></li>
-		<% end %>
-	<% end %>
-</ul>
-
-<ul class="wrong_words">
-	<li><b>Wrong words</b></li>
-	<% @wrong_words.each do |word| %>
-		<li><%= word %></li>
-	<% end %>
-</ul>
-<% if @wrong_words.empty? && ( @correct_words.length == @lesson.answer.length ) %>
-	<b>You are correct!</b>
-	<a href="/lessons/<%=@lesson.id%>/step/3">Step 3</a>
-	<% else %>
-	<b> You made some mistakes, please try again </b>
-	<a href="/lessons/<%=@lesson.id%>/step/1">Step 1</a>
+<% if @wrong_words.empty? && ( @correct_words.length == @lesson.answer.scan(/\w+/).size ) %>
+	<div class="alert alert-info center" role="alert">
+		<p><b>Way to go! You got all the words correct!</b><spn style="margin-left: 25px;"><a href="/lessons/<%=@lesson.id%>/step/3" class="btn btn-success">Continue!</a></span></p>
+	</div>
+	
+<% else %>
+	<div class="alert alert-info center" role="alert">
+		<span class="glyphicon glyphicon-info-sign"></span> You got <b><%= @correct_words.length %></b> out of <b><%= @lesson.answer.scan(/\w+/).size %></b> words correct.
+	</div>
 <% end %>
-<style>
-	ul.wrong_words{ color: rgb(184, 65, 65);}
-	ul.correct_words{ color: green;}
-</style>
 
-<h4>Correct Answer</h4>
-<p> <%= @lesson.answer %> </p>
-			
-
-			<!-- Continue Button -->
-			<div class="center">
-				<h3 style="font-family: 'Roboto Slab', serif;">Start today's lesson?</h3>
-				<%= link_to "Let's go!", "#", class:"btn btn-primary btn-lg" %>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading center"><h3 class="panel-title" style="color: #27ae60;"><span class="glyphicon glyphicon-thumbs-up"></span> Correct Words</h3></div>
+				<% if @correct_words.empty? %>
+					<div class="panel-footer">
+					<div class="center"><p>The words you entered were not said. Check your spelling and <%= link_to "Try Again", :back, class:"btn btn-danger" %></p></div>
+				</div>
+				<% else %>
+				<table class="table">
+			  		<tbody>
+			  			<% @correct_words.each do |word| %>
+			      			<tr class="success">			      				<td>
+			      					<div class="center"><%= word %></div>
+			      				</td>
+			      			</tr>
+			    		<% end %>
+			   		</tbody>
+				</table>
+				<% end %>
+				</div>
 			</div>
+		
+
+		<div class="col-md-6">
+			<div class="panel panel-default">
+			<div class="panel-heading center"><h3 class="panel-title" style="color: #c0392b;"><span class="glyphicon glyphicon-thumbs-down"></span> Wrong Words</h3></div>
+			<% if @wrong_words.empty? %>
+				<div class="panel-footer center">
+			      	<p>None of the words you entered were wrong!</p>
+			    </div>
+			<% else %>
+				<table class="table">
+					<tbody>
+						<% @wrong_words.each do |word| %>
+			    			<tr class="danger">
+			      				<td>
+			      					<div class="center"><%= word %></div>
+			      				</td>
+			      			</tr>
+			    		<% end %>
+			   		</tbody>
+				</table>
+			<% end %>
+			</div>
+		</div>
+	</div> <!-- End Row -->
+		
+<% if @correct_words.length != @lesson.answer.scan(/\w+/).size %>
+	<div class="alert alert-warning center top-space" role="alert">
+		<p>You got some words, but not all of them. What do you want to do?</p>
+		<a href="/lessons/<%=@lesson.id%>/step/1" class="btn btn-default">Try Again</a>
+		<!-- Button trigger modal -->
+		<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+	  	View Answer
+		</button>
+
+					<!-- Modal -->
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  					<div class="modal-dialog">
+	    					<div class="modal-content">
+	      						<div class="modal-header">
+	        						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	        						<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+	      						</div>
+	      					<div class="modal-body">
+	        					...
+	      					</div>
+	      					<div class="modal-footer">
+	        					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        					<button type="button" class="btn btn-primary">Save changes</button>
+	      					</div>
+    						</div>
+  						</div>
+					</div>
+	</div>
+
+<% elsif @wrong_words.length != 0 %>
+
+<div class="alert alert-warning center top-space" role="alert">
+		<p>You made some mistakes. What do you want to do?</p>
+		<a href="/lessons/<%=@lesson.id%>/step/1" class="btn btn-default">Try Again</a>
+		<!-- Button trigger modal -->
+		<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+	  	View Answer
+		</button>
+
+					<!-- Modal -->
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  					<div class="modal-dialog">
+	    					<div class="modal-content">
+	      						<div class="modal-header">
+	        						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	        						<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+	      						</div>
+	      					<div class="modal-body">
+	        					...
+	      					</div>
+	      					<div class="modal-footer">
+	        					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        					<button type="button" class="btn btn-primary">Save changes</button>
+	      					</div>
+    						</div>
+  						</div>
+					</div>
 </div>
+<% else %>
+<div class="center"><h1 style="color: #e74c3c;"><span class="glyphicon glyphicon-heart"></h1></div>
+<% end %>
