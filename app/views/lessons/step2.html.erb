@@ -105,7 +105,7 @@
 		</div>
 	</div> <!-- End Row -->
 		
-<% if @correct_words.length != @lesson.answer.scan(/\w+/).size %>
+<% if (@correct_words.length != 0) && (@correct_words.length != @lesson.answer.scan(/\w+/).size) %>
 	<div class="alert alert-warning center top-space" role="alert">
 		<p>You got some words, but not all of them. What do you want to do?</p>
 		<a href="/lessons/<%=@lesson.id%>/step/1" class="btn btn-default">Try Again</a>
