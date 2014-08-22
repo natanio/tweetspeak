@@ -1,25 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="paper">
+	<p id="notice"><%= notice %></p>
 
-<iframe
-src="//player.vimeo.com/video/<%= @lesson.video %>?title=0&amp;byline=0&amp;
-portrait=0" width="700" height="394" frameborder="0"
-webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+	<iframe
+	src="//player.vimeo.com/video/<%= @lesson.video %>?title=0&amp;byline=0&amp;
+	portrait=0" width="700" height="394" frameborder="0"
+	webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-<p> <strong>Title:</strong> <%= @lesson.title %> </p>
+	<p> <strong>Title:</strong> <%= @lesson.title %> </p>
 
-<p> <strong>Tags:</strong> <%= @lesson.tags %> </p>
+	<p> <strong>Tags:</strong> <%= @lesson.tags %> </p>
 
-<p> <strong>Answer:</strong> <%= @lesson.answer %> </p>
+	<p> <strong>Answer:</strong> <%= @lesson.answer %> </p>
 
-<p> <strong>Tweet:</strong> <%= @lesson.tweet.html_safe %> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> </p>
+	<p> <strong>Tweet:</strong> <%= @lesson.tweet.html_safe %> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> </p>
 
-<p> <strong>Audio:</strong> <%= @lesson.audio.html_safe %> </p>
+	<p> <strong>Audio:</strong> <%= @lesson.audio.html_safe %> </p>
 
-<p> <strong>Pronunciation Guide:</strong> <%= @lesson.pronunciation.html_safe %> </p>
+	<p> <strong>Pronunciation Guide:</strong> <%= @lesson.pronunciation.html_safe %> </p>
 
-<p> <strong>Lesson Text:</strong> <%= @lesson.text.html_safe %> </p>
+	<p> <strong>Lesson Text:</strong> <%= @lesson.text.html_safe %> </p>
 
 
 
-<%= link_to 'Edit', edit_lesson_path(@lesson) %> | <%= link_to 'Back',
-lessons_path %>
+	<%= link_to 'Edit', edit_lesson_path(@lesson) %> | <%= link_to 'Back',
+	lessons_path %>
+</div>
