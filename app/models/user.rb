@@ -5,4 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :name, presence: true
+
+  def next_lesson
+  	last_lesson+1
+  end
+
+  def next_lesson_path
+  	"/lessons/#{next_lesson}/step/1"
+  end
 end

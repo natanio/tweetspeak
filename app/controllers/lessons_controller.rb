@@ -84,11 +84,15 @@ class LessonsController < ApplicationController
         @wrong_words =   @words.downcase.split.uniq - @lesson.answer.downcase.split.uniq
         render "step2.html.erb"
       end
-      
     elsif params[:step_number]=="3"
       render "step3.html.erb"
     elsif params[:step_number]=="4"
       render "step4.html.erb"
+    elsif params[:step_number]=="5"
+      if @lesson.id > current_user.last_lesson+1
+        current_user.update_attribute(:last_lesson, @lesson.id)
+      end
+      redirect_to pages_dashboard_path
     else
       render "step1.html.erb"
     end
