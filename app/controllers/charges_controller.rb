@@ -1,37 +1,40 @@
 class ChargesController < ApplicationController
+  before_filter :authenticate_user!, only: [:new, :create]
+  before_filter :only_inactive_customers, only: [:new, :create]
 
 	def new
 	end
 
 	def create
 	  # Amount in cents
-	  @amount = 500
+
+	  Stripe.api_key = "sk_test_foo"
 
 	  customer = Stripe::Customer.create(
-	    :email => 'example@stripe.com',
+	    :email => current_user.email,
+	    :plan  => params[:charges][:plan_type],
 	    :card  => params[:stripeToken]
 	  )
-
-	  #monthly_plan = Stripe::Plan.create(
-  		#:amount => 500,
-  		#:interval => 'month',
-  		#:name => 'Monthly Subscription',
-  		#:statement_description: => 'TweetSpeak'
-  		#:currency => 'usd',
-  		#:id => 'monthly'
-  		#:trial_period => '7'
-	  #)
-
-	  charge = Stripe::Charge.create(
-    	:customer    => customer.id,
-    	:amount      => @amount,
-    	:description => 'Tweet Speak customer',
-    	:currency    => 'usd'
-  )
+	  sdfsdf
+	  if !customer.default_card.nil?
+		  flash[:notice] = "Charge went well"
+		  current_user.active_subscription = true
+		  current_user.save
+		  redirect_to pages_dashboard_path
+		end
 
 	  rescue Stripe::CardError => e
-	  flash[:error] = e.message
-	  redirect_to charges_path
+		  flash[:error] = e.message
+		  redirect_to charges_path
+
 	end
 
+	def only_inactive_customers
+		if current_user
+			if current_user.active_subscription
+				redirect_to pages_dashboard_path
+			end
+		end
+		return true
+	end
 end

@@ -2,6 +2,7 @@ Tweetspeak::Application.routes.draw do
   devise_for :users
   get "static_pages/home"
   resources :lessons
+  resources :charges
 
   get "/lessons/:id/step/:step_number" => "lessons#step"
   get "pages/about"
