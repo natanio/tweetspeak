@@ -2,43 +2,57 @@
 
 
 <%= form_tag charges_path do |form| %>
-	<%= hidden_field :charges, :plan_type, value: "monthly" %>
+	<%= hidden_field :charges, :plan_type, value: "ts_monthly" %>
   <article>
 	  <h3>Monthly</h3>
+    <label class="amount">
+      <span>Amount: $9.99</span>
+    </label>
+  </article>
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= ENV["STRIPE_PUBLIC_KEY"] %>"
+    data-amount="999"
+    data-name="Tweet Speak English"
+    data-description="Monthly Billing"
+    data-image="/128x128.png">
+  </script>
+<% end %>
+
+
+<%= form_tag charges_path do |form| %>
+  <%= hidden_field :charges, :plan_type, value: "ts_yearly" %>
+  <article>
+    <h3>Yearly</h3>
+    <label class="amount">
+      <span>Amount: $59.99</span>
+    </label>
+  </article>
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= ENV["STRIPE_PUBLIC_KEY"] %>"
+    data-amount="5999"
+    data-name="Tweet Speak English"
+    data-description="Yearly Billing"
+    data-image="/128x128.png">
+  </script>
+<% end %>
+
+
+<%= form_tag charges_path do |form| %>
+  <%= hidden_field :charges, :plan_type, value: "ts_monthly" %>
+  <article>
+    <h3>Lifetime</h3>
     <label class="amount">
       <span>Amount: $5.00</span>
     </label>
   </article>
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_foo"
+    data-key="<%= ENV["STRIPE_PUBLIC_KEY"] %>"
     data-amount="500"
-    data-name="Demo Site"
+    data-name="Tweet Speak English"
     data-description="Monthly Billing"
     data-image="/128x128.png">
   </script>
 <% end %>
-
-<!-- <h3>Yearly</h3>
-<form action="/charges" method="POST">
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_foo"
-    data-amount="999"
-    data-name="Demo Site"
-    data-description="Monthly Billing"
-    data-image="/128x128.png">
-  </script>
-</form>
-
-<h3>Lifetime</h3>
-<form action="/charges" method="POST">
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_foo"
-    data-amount="1000000"
-    data-name="Demo Site"
-    data-description="Lifetime Billing"
-    data-image="/128x128.png">
-  </script>
-</form> -->
