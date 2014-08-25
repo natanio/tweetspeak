@@ -2,6 +2,7 @@ class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :edit, :update, :destroy, :step]
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_filter :check_user, only: [:index, :new, :create, :edit, :update, :destroy]
+  before_filter :check_subscription, only: [:step, :show, :edit, :update, :destroy]
 
   # GET /lessons
   # GET /lessons.json
@@ -114,7 +115,14 @@ class LessonsController < ApplicationController
         redirect_to pages_dashboard_path, alert: "Sorry, that page is not for students."
         end
       else
-      	redirect_to root_path, alert: "Sorry, you need to sign up or sign in to visit that page."
+      	 redirect_to root_path, alert: "Sorry, you need to sign up or sign in to visit that page."
       end
     end
+
+    def check_subscription
+      if user_signed_in? && !current_user.active_subscription == true
+        redirect_to new_charge_path, alert: "Before you can access lessons, you need to choose a plan. Thanks!"
+      end
+    end
+    
 end

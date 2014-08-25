@@ -13,7 +13,13 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    "/dashboard" # <- Path you want to redirect the user to.
+    if current_user.admin?
+      "/dashboard" # <- Path you want to redirect the user to.
+    elsif !current_user.active_subscription == true
+      "/charges/new"
+    else
+      "/dashboard"
+    end
   end
 
 end
