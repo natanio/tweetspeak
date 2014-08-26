@@ -3,9 +3,10 @@
 
   <div class="row pricing">
     <div class="col-md-4">
-      <%= form_tag charges_path, id: 'chargeForm' do %>
+      <%= form_tag charges_path, id: 'monthly' do %>
         <%= hidden_field_tag 'stripeToken' %>
         <%= hidden_field_tag 'stripeEmail' %>
+        <%= hidden_field :charges, :membership, value: "monthly" %>
       	<%= hidden_field :charges, :plan_type, value: "ts_monthly" %>
         <div class="pricing-header">
           <h3 class="pricing-header header-price">Monthly</h3>
@@ -23,7 +24,7 @@
       token: function(token, args) {
             document.getElementById("stripeToken").value = token.id;                              
             document.getElementById("stripeEmail").value = token.email;
-            document.getElementById("chargeForm").submit();
+            document.getElementById("monthly").submit();
           }
         });
 
@@ -42,9 +43,10 @@
     </div>
 
   <div class="col-md-4">
-      <%= form_tag charges_path, id: 'chargeForm' do %>
+      <%= form_tag charges_path, id: 'lifetime' do %>
         <%= hidden_field_tag 'stripeToken' %>
         <%= hidden_field_tag 'stripeEmail' %>
+        <%= hidden_field_tag 'membership', value: "lifetime" %>
       <div class="pricing-plan-popular popular-heading">Most Popular</div>
       <div class="pricing-header">
           <h3 class="pricing-header header-price">Lifetime</h3>
@@ -63,7 +65,7 @@
       token: function(token, args) {
             document.getElementById("stripeToken").value = token.id;                              
             document.getElementById("stripeEmail").value = token.email;
-            document.getElementById("chargeForm").submit();
+            document.getElementById("lifetime").submit();
           }
         });
 
@@ -82,9 +84,10 @@
     </div>
 
     <div class="col-md-4">
-      <%= form_tag charges_path, id: 'chargeForm' do %>
+      <%= form_tag charges_path, id: 'yearly' do %>
         <%= hidden_field_tag 'stripeToken' %>
         <%= hidden_field_tag 'stripeEmail' %>
+        <%= hidden_field_tag 'membership', value: "yearly" %>
         <%= hidden_field :charges, :plan_type, value: "ts_yearly" %>
         <div class="pricing-header">
           <h3 class="pricing-header header-price">Yearly</h3>
@@ -102,7 +105,7 @@
       token: function(token, args) {
             document.getElementById("stripeToken").value = token.id;                              
             document.getElementById("stripeEmail").value = token.email;
-            document.getElementById("chargeForm").submit();
+            document.getElementById("yearly").submit();
           }
         });
 

@@ -10,6 +10,10 @@ Tweetspeak::Application.routes.draw do
   get "dashboard" => "pages#dashboard", as: :pages_dashboard
 
   root 'static_pages#home'
+
+  resources :charges do
+    post :cancel, :on => :collection
+end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
