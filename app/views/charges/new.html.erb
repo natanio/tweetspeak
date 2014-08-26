@@ -45,7 +45,6 @@
       <%= form_tag charges_path, id: 'chargeForm' do %>
         <%= hidden_field_tag 'stripeToken' %>
         <%= hidden_field_tag 'stripeEmail' %>
-        <%= hidden_field :charges, :plan_type, value: "ts_monthly" %>
       <div class="pricing-plan-popular popular-heading">Most Popular</div>
       <div class="pricing-header">
           <h3 class="pricing-header header-price">Lifetime</h3>

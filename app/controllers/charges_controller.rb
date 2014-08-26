@@ -15,6 +15,12 @@ class ChargesController < ApplicationController
 	    :card  => params[:stripeToken],
 	    :customer => params[:customer]
 	  )
+
+	  Stripe::Charge.create(
+    	:amount => 97*100, # incents 
+    	:currency => "usd",
+    	:customer => customer.id
+)
 	  
 	  if !customer.default_card.nil?
 		  flash[:notice] = "Charge went well"
