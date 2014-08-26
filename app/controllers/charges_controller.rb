@@ -12,30 +12,36 @@ class ChargesController < ApplicationController
 		# Get the credit card details submitted by the form
 		token = params[:stripeToken]
 
-		if !current_user.customer_id?
-			customer = Stripe::Customer.create(
-  				:card => params[:stripeToken],
-  				:description => current_user.email
-  			)
-		else
-			customer = current_user.customer_id
-		end
+		customer = Stripe::Customer.create(
+  			:card => params[:stripeToken],
+  			:description => current_user.email
+  		)
 
-  		type = params[:membership]
+  		if params[:plan_type] == "ts_monthly"
 
-  		if type = "monthly"
-			customer.subscriptions.create(:plan => "ts_monthly")
+			Stripe::Customer.create(
+  				:card => token,
+  				:plan => params[:plan_type],
+  				:email => current_user.email
+			)
 
-  		elsif type = "yearly"
-  			customer.subscriptions.create(:plan => "ts_monthly")
+  		elsif params[:plan_type] == "ts_yearly"
 
-  		else
+			Stripe::Customer.create(
+  				:card => token,
+  				:plan => params[:plan_type],
+  				:email => current_user.email
+			)
+  		elsif params[:plan_type] == nil
+
 	  		Stripe::Charge.create(
 			    :amount => 97*100, # incents 
 			    :currency => "usd",
-			    :customer => customer.id
-			)	  
-	  	end
+			    :customer => customer
+			)
+		else
+			# Add a message to choose a plan
+	  	end 
 	  
 	  if !customer.default_card.nil?
 		  flash[:notice] = "Charge went well"
