@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140825030635) do
+ActiveRecord::Schema.define(version: 20140826034715) do
 
   create_table "lessons", force: true do |t|
     t.string   "title"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140825030635) do
     t.integer  "best_streak",            default: 0
     t.boolean  "active_subscription"
     t.integer  "last_lesson",            default: 0
+    t.string   "customer_id",            default: ""
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

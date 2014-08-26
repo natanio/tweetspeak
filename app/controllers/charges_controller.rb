@@ -6,19 +6,20 @@ class ChargesController < ApplicationController
 	end
 
 	def create
-	  # Amount in cents
 
 	  Stripe.api_key = ENV["STRIPE_API_KEY"]
 
 	  customer = Stripe::Customer.create(
-	    :email => current_user.email,
+	    :description => current_user.email,
 	    :plan  => params[:charges][:plan_type],
-	    :card  => params[:stripeToken]
+	    :card  => params[:stripeToken],
+	    :customer => params[:customer]
 	  )
 	  
 	  if !customer.default_card.nil?
 		  flash[:notice] = "Charge went well"
 		  current_user.active_subscription = true
+		  current_user.update_attribute(:customer_id, customer.id)
 		  current_user.save
 		  redirect_to pages_dashboard_path
 		end
