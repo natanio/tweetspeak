@@ -29,8 +29,14 @@
   <% end %>
  
 			<div class="page-header">
-				<h1 style="font-family: 'Roboto Slab', serif;">Dashboard <br><small>Hey,
-					<%= current_user.name %>!Ready to get started?</small></h1>
+				<h1 style="font-family: 'Roboto Slab', serif;">Dashboard <br>
+				<% if current_user.name? %>
+				<small>Hey,
+					<%= current_user.name %>! Ready to get started?</small>
+				<% else %>
+					<small>Hi! What's your name?</small> <%= link_to "Edit your name", edit_user_registration_path, class:"btn btn-danger" %>
+    			<% end %>
+				</h1>
 				<div class="center" style="margin-bottom: 25px;">
 					<%=link_to	"Go to Lesson!", current_user.next_lesson_path, class:"btn btn-primary btn-lg"
 					%>
