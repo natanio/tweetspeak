@@ -3,6 +3,7 @@ class ChargesController < ApplicationController
   before_filter :only_inactive_customers, only: [:new, :create, :cancel]
 
 	def new
+		render :layout => "home"
 	end
 
 	def create
@@ -41,11 +42,12 @@ class ChargesController < ApplicationController
 			    :customer => customer
 			)
 		else
-			# Add a message to choose a plan
+			flash[:alert] = "There was an error. Please check to make sure JavaScript is running in your browser settings."
+			redirect_to new_charge_path
 	  	end 
 	  
 	  if !customer.default_card.nil?
-		  flash[:notice] = "Charge went well"
+		  flash[:notice] = "Thanks and welcome! Your payment was successful."
 		  current_user.active_subscription = true
 		  current_user.update_attribute(:customer_id, customer.id)
 		  current_user.save
