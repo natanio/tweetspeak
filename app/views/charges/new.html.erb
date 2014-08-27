@@ -1,4 +1,12 @@
 <div class="featurette" style="border-bottom:none;">
+  <% flash.each do |name, msg| %>
+        <% if msg.is_a?(String) %>
+          <div class="alert alert-<%= name == :notice ? "success" : "danger" %> alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          </div>
+          <% end %>
+        <% end %>
   <h2 class="featurette-title">Try Tweet Speak English for 7 days free, with no risk</h2>
   <hr class="half-rule">
   <p class="lead big-bottom">Choose the best plan for you. For monthly and yearly subscriptions, you will only be charged after your trial ends.</p>
