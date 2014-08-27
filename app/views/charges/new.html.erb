@@ -1,121 +1,157 @@
-<div class="featurette">
+<div class="featurette" style="border-bottom:none;">
   <h2 class="featurette-title">Try Tweet Speak English for 7 days free, with no risk</h2>
+  <hr class="half-rule">
+  <p class="lead big-bottom">Choose the best plan for you. For monthly and yearly subscriptions, you will only be charged after your trial ends.</p>
+  <div class="container">
+    <div class="row pricing">
+      <div class="col-md-4 left">
+        <%= form_tag charges_path, id: 'monthlyForm' do |form| %>
+          <%= hidden_field_tag 'stripeToken' %>
+          <%= hidden_field_tag 'stripeEmail' %>
+        	<%= hidden_field :charges, :plan_id, value: "ts_monthly" %>
+          <div class="pricing-header">
+            <h3 class="pricing-header header-price">Monthly</h3>
+            <div class="pricing-plan">
+              <abbr>$</abbr>
+              9
+              <span>/month</span>
+            </div>
+            <button id="monthlyButton" class="btn btn-large btn-success">Start 7 Day Trial</button>
+            <script>
+        var handler = StripeCheckout.configure({
+        key: '<%= ENV["STRIPE_PUBLIC_KEY"] %>',
+        image: '/assets/my_logo.png',
+        token: function(response) {
+          var tokenInput = $("<input type=hidden name=stripeToken />").val(response.id);
+          var emailInput = $("<input type=hidden name=stripeEmail />").val(response.email);
+          $("form#monthlyForm").append(tokenInput).append(emailInput).submit();
+            }
+          });
 
-  <div class="row pricing">
-    <div class="col-md-4">
-      <%= form_tag charges_path, id: 'monthlyForm' do |form| %>
-        <%= hidden_field_tag 'stripeToken' %>
-        <%= hidden_field_tag 'stripeEmail' %>
-      	<%= hidden_field :charges, :plan_id, value: "ts_monthly" %>
+        document.getElementById('monthlyButton').addEventListener('click', function(e) {
+          // Open Checkout with further options
+          handler.open({
+            name: 'Tweet Speak English',
+            description: 'Monthly Subscription',
+            amount: 9*100,
+          });
+          e.preventDefault();
+        });
+      </script>
+        <% end %>
+          </div>
+      </div>
+
+    <div class="col-md-4 middle">
+        <%= form_tag charges_path, id: 'lifetimeForm' do |form| %>
+          <%= hidden_field_tag 'stripeToken' %>
+          <%= hidden_field_tag 'stripeEmail' %>
+          <%= hidden_field :charges, :plan_id, value: "lifetime" %>
+        <div class="pricing-plan-popular popular-heading">Most Popular</div>
         <div class="pricing-header">
-          <h3 class="pricing-header header-price">Monthly</h3>
-          <div class="pricing-plan">
-            <abbr>$</abbr>
-            9
-            <span>/month</span>
+            <h3 class="pricing-header header-price">Lifetime</h3>
+            <div class="pricing-plan">
+              <abbr>$</abbr>
+              97
+              <span>one time</span>
+            </div>
+            <button id="lifetimeButton" class="btn btn-large btn-success">Buy Now</button>
+            <script>
+        var lifetimeHandler = StripeCheckout.configure({
+        key: '<%= ENV["STRIPE_PUBLIC_KEY"] %>',
+        image: '/assets/my_logo.png',
+        token: function(response) {
+          var tokenInput = $("<input type=hidden name=stripeToken />").val(response.id);
+          var emailInput = $("<input type=hidden name=stripeEmail />").val(response.email);
+          $("form#lifetimeForm").append(tokenInput).append(emailInput).submit();
+            }
+          });
+
+        document.getElementById('lifetimeButton').addEventListener('click', function(e) {
+          // Open Checkout with further options
+          lifetimeHandler.open({
+            name: 'Tweet Speak English',
+            description: 'Lifetime Subscription',
+            amount: 97*100,
+          });
+          e.preventDefault();
+        });
+      </script>
+        <% end %>
           </div>
-          <button id="monthlyButton" class="btn btn-large btn-success">Start 7 Day Trial</button>
-          <script>
-      var handler = StripeCheckout.configure({
-      key: '<%= ENV["STRIPE_PUBLIC_KEY"] %>',
-      image: '/assets/my_logo.png',
-      token: function(response) {
-        var tokenInput = $("<input type=hidden name=stripeToken />").val(response.id);
-        var emailInput = $("<input type=hidden name=stripeEmail />").val(response.email);
-        $("form#monthlyForm").append(tokenInput).append(emailInput).submit();
-          }
-        });
+      </div>
 
-      document.getElementById('monthlyButton').addEventListener('click', function(e) {
-        // Open Checkout with further options
-        handler.open({
-          name: 'Tweet Speak English',
-          description: 'Monthly Subscription',
-          amount: 9*100,
-        });
-        e.preventDefault();
-      });
-    </script>
-      <% end %>
-        </div>
-    </div>
+      <div class="col-md-4 right">
+        <%= form_tag charges_path, id: 'yearlyForm' do |form| %>
+          <%= hidden_field_tag 'stripeToken' %>
+          <%= hidden_field_tag 'stripeEmail' %>
+          <%= hidden_field :charges, :plan_id, value: "ts_yearly" %>
+          <div class="pricing-header">
+            <h3 class="pricing-header header-price">Yearly</h3>
+            <div class="pricing-plan">
+              <abbr>$</abbr>
+              59
+              <span>/month</span>
+            </div>
+            <button id="yearlyButton" class="btn btn-large btn-success">Start 7 Day Trial</button>
+            <script>
+        var yearlyHandler = StripeCheckout.configure({
+        key: '<%= ENV["STRIPE_PUBLIC_KEY"] %>',
+        image: '/assets/my_logo.png',
+        token: function(response) {
+          var tokenInput = $("<input type=hidden name=stripeToken />").val(response.id);
+          var emailInput = $("<input type=hidden name=stripeEmail />").val(response.email);
+          $("form#yearlyForm").append(tokenInput).append(emailInput).submit();
+            }
+          });
 
-  <div class="col-md-4">
-      <%= form_tag charges_path, id: 'lifetimeForm' do |form| %>
-        <%= hidden_field_tag 'stripeToken' %>
-        <%= hidden_field_tag 'stripeEmail' %>
-        <%= hidden_field :charges, :plan_id, value: "lifetime" %>
-      <div class="pricing-plan-popular popular-heading">Most Popular</div>
-      <div class="pricing-header">
-          <h3 class="pricing-header header-price">Lifetime</h3>
-          <div class="pricing-plan">
-            <abbr>$</abbr>
-            97
-            <span>one time</span>
+        document.getElementById('yearlyButton').addEventListener('click', function(e) {
+          // Open Checkout with further options
+          yearlyHandler.open({
+            name: 'Tweet Speak English',
+            description: 'Yearly Subscription',
+            amount: 59*100,
+          });
+          e.preventDefault();
+        });
+      </script>
+        <% end %>
           </div>
-          <button id="lifetimeButton" class="btn btn-large btn-success">Start 7 Day Trial</button>
-          <script>
-      var lifetimeHandler = StripeCheckout.configure({
-      key: '<%= ENV["STRIPE_PUBLIC_KEY"] %>',
-      image: '/assets/my_logo.png',
-      token: function(response) {
-        var tokenInput = $("<input type=hidden name=stripeToken />").val(response.id);
-        var emailInput = $("<input type=hidden name=stripeEmail />").val(response.email);
-        $("form#lifetimeForm").append(tokenInput).append(emailInput).submit();
-          }
-        });
+      </div>
 
-      document.getElementById('lifetimeButton').addEventListener('click', function(e) {
-        // Open Checkout with further options
-        lifetimeHandler.open({
-          name: 'Tweet Speak English',
-          description: 'Lifetime Subscription',
-          amount: 97*100,
-        });
-        e.preventDefault();
-      });
-    </script>
-      <% end %>
-        </div>
-    </div>
-
-    <div class="col-md-4">
-      <%= form_tag charges_path, id: 'yearlyForm' do |form| %>
-        <%= hidden_field_tag 'stripeToken' %>
-        <%= hidden_field_tag 'stripeEmail' %>
-        <%= hidden_field :charges, :plan_id, value: "ts_yearly" %>
-        <div class="pricing-header">
-          <h3 class="pricing-header header-price">Yearly</h3>
-          <div class="pricing-plan">
-            <abbr>$</abbr>
-            59
-            <span>/month</span>
-          </div>
-          <button id="yearlyButton" class="btn btn-large btn-success">Start 7 Day Trial</button>
-          <script>
-      var yearlyHandler = StripeCheckout.configure({
-      key: '<%= ENV["STRIPE_PUBLIC_KEY"] %>',
-      image: '/assets/my_logo.png',
-      token: function(response) {
-        var tokenInput = $("<input type=hidden name=stripeToken />").val(response.id);
-        var emailInput = $("<input type=hidden name=stripeEmail />").val(response.email);
-        $("form#yearlyForm").append(tokenInput).append(emailInput).submit();
-          }
-        });
-
-      document.getElementById('yearlyButton').addEventListener('click', function(e) {
-        // Open Checkout with further options
-        yearlyHandler.open({
-          name: 'Tweet Speak English',
-          description: 'Yearly Subscription',
-          amount: 59*100,
-        });
-        e.preventDefault();
-      });
-    </script>
-      <% end %>
-        </div>
-    </div>
-
-  </div><!-- end row -->
+    </div><!-- end row -->
+  </div>
 </div><!-- End Featurette -->
+
+<div class="featurette" style="background: #f9fafa; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;">
+  <div class="container">
+    <h2 class="featurette-title">Questions and Answers</h2>
+  </div><!--end container-->
+</div><!-- End featurette Questions -->
+
+<div class="featurette">
+  <div class="container">
+    <h2 class="featurette-title">What Students Are Saying</h2>
+    <div class="testimonial-items" data-state="1">
+        
+    <div class="testimonial-item">
+        
+        <p>I started to follow Tweet Speak English as I was looking for a constant, interesting and well created flow of english bites. Something that I could follow everyday according to my busy schedule. TSE helps me in taking <strong>confidence with the spoken language</strong> shades, new informal expressions that you cannot learn in most of english classes.
+      </p>
+        <div class="testimonial-item__author">
+          <div class="testimonial-item__avatar segment-quote">
+              <picture>
+            <!--[if IE 9]><video style="display: none;"><![endif]-->
+
+              <img alt="Cristiano" src="http://tweetspeakenglish.com/wp-content/uploads/2014/02/217194_1034590748042_2496_n-1.jpg">
+          </picture>
+
+          </div>
+
+          <strong>Cristiano</strong>
+          <p>Student from Italy</p>
+        </div>
+    </div>
+  </div>
+</div>
+</div><!--end featurette testimonial-->
