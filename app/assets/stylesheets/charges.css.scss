@@ -13,21 +13,24 @@
 	transition: border-color 300ms;
 }
 
-.row .pricing .col-md-4>.left {
-	border-left: 1px solid #e5e5e5;
-	border-bottom-left-radius: 3px;
+.col-md-4.left {
+	border-left: 1px solid #DDD;
+	border-top: 1px solid #DDD;
+	border-bottom: 1px solid #DDD;
 	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
 }
 
-.row .pricing .col-md-4>.middle {
-	border: 1px solid #e5e5e5;
-	border-radius: 3px;
+.col-md-4.middle {
+	border: 1px solid #DDD;
 }
 
-.pricing .col-md-4>.right {
-	border-right: 1px solid #e5e5e5;
-	border-bottom-right-radius: 3px;
+.col-md-4.right {
+	border-right: 1px solid #DDD;
+	border-top: 1px solid #DDD;
+	border-bottom: 1px solid #DDD;
 	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 .pricing-header {

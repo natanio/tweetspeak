@@ -1,6 +1,6 @@
 class ChargesController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :cancel]
-  before_filter :only_inactive_customers, only: [:new, :create, :cancel]
+  before_filter :only_inactive_customers, only: [:new, :create ]
 
 	def new
 		render :layout => "home"
