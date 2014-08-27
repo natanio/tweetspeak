@@ -11,29 +11,30 @@ class ChargesController < ApplicationController
 
 		# Get the credit card details submitted by the form
 		token = params[:stripeToken]
+		plan = params[:charges][:plan_id]
 
-		customer = Stripe::Customer.create(
-  			:card => params[:stripeToken],
-  			:description => current_user.email
-  		)
+  		if plan == "ts_monthly"
 
-  		if params[:plan_type] == "ts_monthly"
-
-			Stripe::Customer.create(
+			customer = Stripe::Customer.create(
   				:card => token,
-  				:plan => params[:plan_type],
+  				:plan => plan,
   				:email => current_user.email
 			)
 
-  		elsif params[:plan_type] == "ts_yearly"
+  		elsif plan == "ts_yearly"
 
-			Stripe::Customer.create(
+			customer = Stripe::Customer.create(
   				:card => token,
-  				:plan => params[:plan_type],
+  				:plan => plan,
   				:email => current_user.email
 			)
-  		elsif params[:plan_type] == nil
 
+  		elsif plan == "lifetime"
+
+  			customer = Stripe::Customer.create(
+  				:card => token,
+  				:description => current_user.email
+)
 	  		Stripe::Charge.create(
 			    :amount => 97*100, # incents 
 			    :currency => "usd",
