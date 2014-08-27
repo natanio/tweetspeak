@@ -64,7 +64,7 @@ class ChargesController < ApplicationController
 	end
 
 	def cancel
-		flash[:notice] = "Hate to see you go!"
+		flash[:notice] = "Hate to see you go! Hope to see you again soon!"
 		@customer = Stripe::Customer.retrieve(current_user.customer_id) 
 		@customer.subscriptions.first.delete() 
 		current_user.active_subscription = false

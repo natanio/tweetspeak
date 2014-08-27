@@ -1,5 +1,5 @@
 <div class="paper">
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <h2>Edit Profile</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= devise_error_messages! %>
@@ -28,9 +28,13 @@
     <div class="form-group"><%= f.submit "Update", class: "btn btn-primary" %></div>
   <% end %>
 
-  <h3>Cancel my account</h3>
+  
+  <h3>Change my subscription</h3>
+  <p>If you'd like to change to a different plan, click below to cancel your current plan. You can then select the plan you want from the subscriptions page.</p>
 
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), class: "btn btn-danger", data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <h3>Cancel my subscription</h3>
+  <p>If you're on a Monthly or Yearly plan, you can cancel you're payments any time. Your account will still be active and you can access your lessons if you choose to become a paying subscriber again.</p> 
+
 
   <%= link_to "Back", :back %>
 </div>
