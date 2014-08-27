@@ -9,23 +9,20 @@
   <% end %>
 
 <!-- Calculate Streak -->
-<% now = current_user.current_sign_in_at.beginning_of_hour %>
+  <% now = current_user.current_sign_in_at.beginning_of_hour %>
   <% last = current_user.last_sign_in_at.beginning_of_hour %>
-  <% streak_in_hours = (now - last)/3600 %>
-  <% streak = 0 %>
+  <% time_since_last_login = (now - last)/3600 %>
 
-  <% if streak_in_hours <= 24 %>
-  	<% streak = streak += 1 %>
+  <% if time_since_last_login <= 24 %>
+  	<% current_user.streak += 1 %>
+  	<% current_user.save %>
   <% else %>
-  	<% d = streak_in_hours / 24 %>
-  	<% streak = streak += d %>
+  	<% current_user.streak = 0 %>
   <% end %>
-
-  <% @user = current_user %>
   
-  <% if streak > @user.best_streak %>
-  <% @user.best_streak = streak %>
-  <% @user.save %>
+  <% if current_user.streak > current_user.best_streak %>
+  <% current_user.best_streak = current_user.streak %>
+  <% current_user.save %>
   <% end %>
  
 			<div class="page-header">
@@ -53,11 +50,25 @@
 					</div>
 					<div class="panel-body">
 						<div class="progress">
-		  				<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="<%= (streak * 100) / @user.best_streak %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= (streak * 100) / @user.best_streak %>%">
-		    			<span class="sr-only"><%= (streak * 100) / @user.best_streak %>% Complete (success)</span>
+		  				<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="<% if current_user.streak != 0 %>
+		    				<%= (current_user.streak * 100) / current_user.best_streak %>
+		    				<% else %>
+		    				<%= 0 %>
+		    				<% end %>" aria-valuemin="0" aria-valuemax="100" style="width: <% if current_user.streak != 0 %>
+		    				<%= (current_user.streak * 100) / current_user.best_streak %>
+		    				<% else %>
+		    				<%= 0 %>
+		    				<% end %>%">
+		    			<span class="sr-only">
+		    				<% if current_user.streak != 0 %>
+		    				<%= (current_user.streak * 100) / current_user.best_streak %>
+		    				<% else %>
+		    				<%= 0 %>
+		    				<% end %>
+		    				% Complete (success)</span>
 		  				</div>
 		  				</div>
-		  				<p class="progress-label">Best streak: <strong><%= @user.best_streak %> Day<% unless @user.best_streak == 1
+		  				<p class="progress-label">Best streak: <strong><%= current_user.best_streak %> Day<% unless current_user.best_streak == 1
 		  					 %> s<% end %>!</strong></p>
 	  				</div>
 	  		</div>
