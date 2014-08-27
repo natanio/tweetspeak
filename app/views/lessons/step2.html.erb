@@ -140,12 +140,12 @@
 		<p>You made some mistakes. What do you want to do?</p>
 		<a href="/lessons/<%=@lesson.id%>/step/1" class="btn btn-default">Try Again</a>
 		<!-- Button trigger modal -->
-		<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+		<button class="btn btn-primary" data-toggle="modal" data-target="#answer">
 	  	View Answer
 		</button>
 
 					<!-- Modal -->
-					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal fade" id="answer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  					<div class="modal-dialog">
 	    					<div class="modal-content">
 	      						<div class="modal-header">
@@ -153,7 +153,8 @@
 	        						<h4 class="modal-title" id="myModalLabel">Modal title</h4>
 	      						</div>
 	      					<div class="modal-body">
-	        					...
+	        					The correct answer is:
+	        					<p><%= @lesson.answer %></p>
 	      					</div>
 	      					<div class="modal-footer">
 	        					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
