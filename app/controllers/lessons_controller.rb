@@ -93,12 +93,16 @@ class LessonsController < ApplicationController
       if current_user.last_lesson = 0
         @lesson.id > current_user.last_lesson
         current_user.update_attribute(:last_lesson, @lesson.id)
-        current_user.update_attribute(:points, current_user.points + 125)
+        unless @lesson.id > current_user.last_lesson
+          current_user.update_attribute(:points, current_user.points + 125)
+        end
         current_user.save
       else
         @lesson.id > current_user.last_lesson+1
         current_user.update_attribute(:last_lesson, @lesson.id)
-        current_user.update_attribute(:points, current_user.points + 125)
+        unless @lesson.id > current_user.last_lesson
+          current_user.update_attribute(:points, current_user.points + 125)
+        end
         current_user.save
       end
       redirect_to pages_dashboard_path, notice: "Way to go! Keep it up :)"
@@ -108,13 +112,9 @@ class LessonsController < ApplicationController
   end
   private
     # Use callbacks to share common setup or constraints between actions.
+    
     def set_lesson
-      current_last_lesson = Lesson.last
-      if current_user.last_lesson == current_last_lesson.id
-        redirect_to pages_dashboard_path, notice: "You've completed all available lessons! Please check back later."
-      else
         @lesson = Lesson.find(params[:id])
-      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

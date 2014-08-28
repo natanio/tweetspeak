@@ -13,6 +13,8 @@
   <% last = current_user.last_sign_in_at.beginning_of_hour %>
   <% time_since_last_login = (now - last)/3600 %>
 
+  <%= time_since_last_login %>
+
   <% if time_since_last_login <= 24 %>
   	<% current_user.streak += 1 %>
   	<% current_user.save %>
@@ -31,12 +33,18 @@
 				<small>Hey,
 					<%= current_user.name %>! Ready to get started?</small>
 				<% else %>
-					<small>Hi! What's your name?</small> <%= link_to "Edit your name", edit_user_registration_path, class:"btn btn-danger" %>
+					<small>Hi! What's your name?</small> <%= link_to "Edit your name", edit_user_registration_path, class:"btn btn-default" %>
     			<% end %>
 				</h1>
 				<div class="center" style="margin-bottom: 25px;">
-					<%=link_to	"Go to Lesson!", current_user.next_lesson_path, class:"btn btn-primary btn-lg"
-					%>
+
+      				<% if (current_user.last_lesson == Lesson.last.id) && !current_user.admin? %>
+      				<h4 class="top-space" style="color: #27ae60">You've completed all available lessons! Please check back later for updates.</h4>
+        				<button type="button" class="btn btn-lg btn-primary" disabled="disabled">Go to Lesson!</button>
+      				<% else %>
+      					<%=link_to	"Go to Lesson!", current_user.next_lesson_path, class:"btn btn-primary btn-lg"%>
+      				<% end %>
+
 				</div>
 			</div>
 
@@ -88,7 +96,6 @@
 	</div>
 
 	<div class="center">
-		<h3 style="font-family: 'Roboto Slab', serif;">Start today's lesson?</h3>
-		<%= link_to "Let's go!", "#", class:"btn btn-primary btn-lg" %>
+		<h3 style="font-family: 'Roboto Slab', serif;">Bonuses</h3>
 	</div>
 </div>
