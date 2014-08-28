@@ -1,0 +1,23 @@
+<div class="paper">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="well">
+          <h3><span class="glyphicon glyphicon-info-sign" style="color: #f1c40f"></span> Change your plan</h3>
+          <p>If you'd like to change to a different plan, click the cancel button. You can then select the plan you want from the subscriptions page.</p>
+        </div>
+      </div>
+
+      <div class="col-md-7">
+        <h3>Cancel my subscription</h3>
+        <p>If you're on a Monthly or Yearly plan, you can cancel you're payments any time. Your account will still be active and you can access your lessons if you choose to become a paying subscriber again.</p> 
+
+        <%= link_to "Cancel My Subscription", {:controller => :charges, :action => :cancel}, {:method => :post } %>
+
+        <%= link_to "Cancel My Subscription", :controller => 
+        :charges, :action => :cancel, :method => :post, :class => "btn btn-danger" %>
+
+        <br><br>
+        <%= link_to "Back", :back %>
+      </div>
+    </div>
+</div>

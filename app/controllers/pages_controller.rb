@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
-	before_filter :authenticate_user!, only: [:dashboard]
-	before_filter :check_subscription, only: [:dashboard]
+	before_filter :authenticate_user!, except: [:about, :contact]
+	before_filter :check_subscription, except: [:about, :contact]
 	
   def about
   	render :layout => "home"
@@ -10,6 +10,12 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+  end
+
+  def dictionary
+  end
+
+  def subscription
   end
 
   def check_subscription

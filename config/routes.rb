@@ -7,6 +7,8 @@ Tweetspeak::Application.routes.draw do
   get "/lessons/:id/step/:step_number" => "lessons#step"
   get "pages/about"
   get "pages/contact"
+  get "dictionary" => "pages#dictionary", as: :pages_dictionary
+  get "subscription" => "pages#subscription", as: :pages_subscription
   get "dashboard" => "pages#dashboard", as: :pages_dashboard
 
   root 'static_pages#home'
