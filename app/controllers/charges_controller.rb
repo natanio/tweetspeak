@@ -64,6 +64,8 @@ class ChargesController < ApplicationController
 	end
 
 	def cancel
+		Stripe.api_key = ENV["STRIPE_API_KEY"]
+		
 		flash[:notice] = "Hate to see you go! Hope to see you again soon!"
 		@customer = Stripe::Customer.retrieve(current_user.customer_id) 
 		@customer.subscriptions.first.delete() 
