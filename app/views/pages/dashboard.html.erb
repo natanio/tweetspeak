@@ -75,10 +75,14 @@
 	  	</div>
 		<div class="col-md-6">
 			<div class="center">
+				<% if current_user.points != 0 %>
 				<h4>You currently have:</h4>
 				<div class="points">
-					<p>500 points!</p>
+					<p><%= current_user.points %> points!</p>
 				</div>
+				<% else %>
+				<h4>Complete a lesson to get points!</h4>
+				<% end %>
 			</div>
 		</div>
 	</div>

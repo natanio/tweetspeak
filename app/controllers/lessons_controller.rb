@@ -90,10 +90,18 @@ class LessonsController < ApplicationController
     elsif params[:step_number]=="4"
       render "step4.html.erb"
     elsif params[:step_number]=="5"
-      if @lesson.id > current_user.last_lesson+1
+      if current_user.last_lesson = 0
+        @lesson.id > current_user.last_lesson
         current_user.update_attribute(:last_lesson, @lesson.id)
+        current_user.update_attribute(:points, current_user.points + 125)
+        current_user.save
+      else
+        @lesson.id > current_user.last_lesson+1
+        current_user.update_attribute(:last_lesson, @lesson.id)
+        current_user.update_attribute(:points, current_user.points + 125)
+        current_user.save
       end
-      redirect_to pages_dashboard_path
+      redirect_to pages_dashboard_path, notice: "Way to go! Keep it up :)"
     else
       render "step1.html.erb"
     end
