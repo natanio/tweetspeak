@@ -109,7 +109,12 @@ class LessonsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_lesson
-      @lesson = Lesson.find(params[:id])
+      current_last_lesson = Lesson.last
+      if current_user.last_lesson == current_last_lesson.id
+        redirect_to pages_dashboard_path, notice: "You've completed all available lessons! Please check back later."
+      else
+        @lesson = Lesson.find(params[:id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
