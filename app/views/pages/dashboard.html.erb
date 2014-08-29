@@ -42,7 +42,7 @@
       				<h4 class="top-space" style="color: #27ae60">You've completed all available lessons! Please check back later for updates.</h4>
         				<button type="button" class="btn btn-lg btn-primary" disabled="disabled"><span class="glyphicon glyphicon-chevron-right"></span>Start Next Lesson!</button>
       				<% else %>
-      					<a href="<%= current_user.next_lesson_path %>" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-chevron-right"></span> Start Next Lesson!</a>
+      					<a href="<%= current_user.next_lesson_path %>" class="btn btn-primary btn-lg">Start Next Lesson! <span class="glyphicon glyphicon-arrow-right"></span></a>
       				<% end %>
 
 				</div>
@@ -95,8 +95,7 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="center">
-		<h3 style="font-family: 'Roboto Slab', serif;">Bonuses</h3>
+	<div class="top-space">
+		<%= render 'layouts/bonuses' %>
 	</div>
 </div>
