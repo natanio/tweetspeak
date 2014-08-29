@@ -71,43 +71,52 @@ class LessonsController < ApplicationController
   end
 
   def step
-    if params[:step_number]=="1"
-      render "step1.html.erb"
-    elsif params[:step_number]=="2"
-      #check for words
-      @words = params[:words].gsub(/[\,\.\?\!\:\;]/,"")
-      if @words.empty?
-        redirect_to :back, :flash => { :danger => "Please enter an answer, even if it's only one word." }
-      else
-        @lesson.answer = @lesson.answer.gsub(/[\,\.\?\!\:\;]/,"")
+    if current_user.admin? || ((@lesson.id - 1) <= current_user.last_lesson)
+      if params[:step_number]=="1"
+        render "step1.html.erb"
+      elsif params[:step_number]=="2"
+        #check for words
+        @words = params[:words].gsub(/[\,\.\?\!\:\;]/,"")
+        if @words.empty?
+          redirect_to :back, :flash => { :danger => "Please enter an answer, even if it's only one word." }
+        else
+          @lesson.answer = @lesson.answer.gsub(/[\,\.\?\!\:\;]/,"")
 
-        @correct_words = @lesson.answer.downcase.split.uniq & @words.downcase.split.uniq
-        @wrong_words =   @words.downcase.split.uniq - @lesson.answer.downcase.split.uniq
-        render "step2.html.erb"
-      end
-    elsif params[:step_number]=="3"
-      render "step3.html.erb"
-    elsif params[:step_number]=="4"
-      render "step4.html.erb"
-    elsif params[:step_number]=="5"
-      if current_user.last_lesson = 0
-        @lesson.id > current_user.last_lesson
-        current_user.update_attribute(:last_lesson, @lesson.id)
-        unless @lesson.id > current_user.last_lesson
-          current_user.update_attribute(:points, current_user.points + 125)
+          @correct_words = @lesson.answer.downcase.split.uniq & @words.downcase.split.uniq
+          @wrong_words =   @words.downcase.split.uniq - @lesson.answer.downcase.split.uniq
+          render "step2.html.erb"
         end
-        current_user.save
+      elsif params[:step_number]=="3"
+        render "step3.html.erb"
+      elsif params[:step_number]=="4"
+        render "step4.html.erb"
+      elsif params[:step_number]=="5"
+        if current_user.last_lesson = 0
+          @lesson.id > current_user.last_lesson
+          current_user.update_attribute(:last_lesson, @lesson.id)
+          if @lesson.id <= current_user.last_lesson
+            redirect_to pages_dashboard_path
+          else
+            current_user.update_attribute(:points, current_user.points + 125)
+            redirect_to pages_dashboard_path, notice: "Way to go! Keep it up :)"
+          end
+          current_user.save
+        else
+          @lesson.id > current_user.last_lesson+1
+          current_user.update_attribute(:last_lesson, @lesson.id)
+          if @lesson.id <= current_user.last_lesson
+            redirect_to pages_dashboard_path
+          else
+            current_user.update_attribute(:points, current_user.points + 125)
+            redirect_to pages_dashboard_path, notice: "Way to go! Keep it up :)"
+          end
+          current_user.save
+        end
       else
-        @lesson.id > current_user.last_lesson+1
-        current_user.update_attribute(:last_lesson, @lesson.id)
-        unless @lesson.id > current_user.last_lesson
-          current_user.update_attribute(:points, current_user.points + 125)
-        end
-        current_user.save
+        render "step1.html.erb"
       end
-      redirect_to pages_dashboard_path, notice: "Way to go! Keep it up :)"
     else
-      render "step1.html.erb"
+      redirect_to pages_dashboard_path, alert: "Sorry, you can't access that lesson yet."
     end
   end
   private
