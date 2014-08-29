@@ -79,7 +79,9 @@
 			</div>
 
 			<div class="tab-pane active" id="discussion">
-				<%= render partial: "disqus/thread", locals: {lesson: @lesson} %>
+				<div class="top-space">
+					<%= render partial: "disqus/thread", locals: {lesson: @lesson} %>
+				</div>
 			</div>
 
 		</div>
