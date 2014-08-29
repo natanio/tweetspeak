@@ -11,19 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827220758) do
+ActiveRecord::Schema.define(version: 20140829100822) do
 
   create_table "lessons", force: true do |t|
     t.string   "title"
     t.string   "tags"
-    t.string   "text"
+    t.text     "text"
     t.string   "audio"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "video"
     t.string   "answer"
     t.string   "tweet"
-    t.string   "pronunciation"
+    t.text     "pronunciation"
     t.integer  "lesson_order"
   end
 
