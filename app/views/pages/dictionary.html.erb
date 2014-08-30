@@ -1,9 +1,9 @@
 <div class="paper">
 	<div class="container-fluid">
-		<h1>Dictionary</h1>
+		<h1 class="dictionary">Dictionary</h1>
 		 
 		<% ('A'..'Z').each do |i| %>
-			<h2><%= i.capitalize %></h2>
+			<h2 class="dictionary"><%= i.capitalize %></h2>
         	<% (1..current_user.last_lesson).each do |id| %>
   				<% lesson = Lesson.find(id) %>
 					<% tags = lesson.tags.split(', ') %>
