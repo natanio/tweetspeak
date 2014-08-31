@@ -82,10 +82,10 @@ class LessonsController < ApplicationController
         if @words.empty?
           redirect_to :back, :flash => { :danger => "Please enter an answer, even if it's only one word." }
         else
-          @lesson.answer = @lesson.answer.gsub(/[\,\.\?\!\:\;]/,"")
+          @answer = @lesson.answer.gsub(/[\,\.\?\!\:\;]/,"")
 
-          @correct_words = @lesson.answer.downcase.split.uniq & @words.downcase.split.uniq
-          @wrong_words =   @words.downcase.split.uniq - @lesson.answer.downcase.split.uniq
+          @correct_words = @answer.downcase.split.uniq & @words.downcase.split.uniq
+          @wrong_words =   @words.downcase.split.uniq - @answer.downcase.split.uniq
           render "step2.html.erb"
         end
 
