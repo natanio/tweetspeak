@@ -52,7 +52,7 @@
 	
 <% else %>
 	<div class="alert alert-info center" role="alert">
-		<span class="glyphicon glyphicon-info-sign"></span> You got <b><%= @correct_words.length %></b> out of <b><%= @answer.scan(/\w+/).size %></b> words correct.
+		<span class="glyphicon glyphicon-info-sign"></span> You got <b><%= @correct_words.length %></b> out of <b><%= @@answer.split.uniq.length %></b> words correct.
 	</div>
 <% end %>
 
