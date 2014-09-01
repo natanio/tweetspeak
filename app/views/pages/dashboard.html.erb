@@ -28,9 +28,8 @@
 
 				</div>
 			</div>
-<%= calculate_streak %>
-<%= current_user.streak %>
-<% current_user.best_streak %>
+
+<% calculate_streak %>
 	<div class="dashboard row big-bottom">
 		<div class="col-md-6">
 			<div class="panel panel-default top-space">
@@ -39,14 +38,9 @@
 					</div>
 					<div class="panel-body">
 						<div class="progress">
-		  				<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="<% if current_user.streak != 0 %><%= (current_user.streak * 100) / current_user.best_streak %><% else %>0<% end %>" aria-valuemin="0" aria-valuemax="100" style="width: <% if current_user.streak != 0 %><%= (current_user.streak * 100) / current_user.best_streak %><% else %><% end %>%">
+		  				<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="<%= streak_percent %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= streak_percent %>%">
 		    			<span class="sr-only">
-		    				<% if current_user.streak != 0 %>
-		    				<%= (current_user.streak * 100) / current_user.best_streak %>
-		    				<% else %>
-		    				0
-		    				<% end %>
-		    				% Complete (success)</span>
+		    				<%= streak_percent %>% Complete (success)</span>
 		  				</div>
 		  				</div>
 		  				<p class="progress-label">Best streak: <strong><%= current_user.best_streak %> Day<% unless current_user.best_streak == 1

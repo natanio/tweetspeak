@@ -1,4 +1,5 @@
 module PagesHelper
+
   def calculate_streak
    	now = current_user.current_sign_in_at.beginning_of_hour
    	last = current_user.last_sign_in_at.beginning_of_hour
@@ -19,7 +20,14 @@ module PagesHelper
         	current_user.save
       end
     end
-  
-    
   end
+
+  def streak_percent
+    if current_user.streak != 0
+      (current_user.streak * 100) / current_user.best_streak
+    else 
+      return 0 
+    end
+  end
+
 end
