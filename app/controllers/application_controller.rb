@@ -21,5 +21,4 @@ class ApplicationController < ActionController::Base
       "/dashboard"
     end
   end
-
 end

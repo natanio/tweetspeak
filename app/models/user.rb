@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
   def next_lesson_path
   	"/lessons/#{next_lesson}/step/1"
   end
+  
 end
