@@ -5,11 +5,36 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   def next_lesson
-  	last_lesson+1
+    if trialing && last_lesson <= 14
+  	 last_lesson+1
+    elsif !trialing
+      last_lesson+1
+    else
+      "alert('Sorry, you've finished all the trial lessons. Please wait until after your trial to continue. Thanks!')"
+      last_lesson
+    end
   end
 
   def next_lesson_path
   	"/lessons/#{next_lesson}/step/1"
+  end
+
+  private
+  def trialing
+    Stripe.api_key = ENV["STRIPE_API_KEY"]
+    
+    @customer = Stripe::Customer.retrieve(customer_id)
+    @subscription = @customer.subscriptions.first.try
+
+    if @subscription == nil
+      return false
+    else
+      if @subscription.trial_end == nil
+        return true
+      else
+        return false
+      end
+    end
   end
   
 end
