@@ -8,12 +8,10 @@
       </div>
 
       <div class="col-md-7">
-        <h3>Cancel my subscription</h3>
+        <h3>Cancel my subscription<br><small>For monthly or yearly members <em>only</em></small></h3>
         <p>If you're on a Monthly or Yearly plan, you can cancel you're payments any time. Your account will still be active and you can access your lessons if you choose to become a paying subscriber again.</p> 
 
-        <%= link_to "Cancel My Subscription", {:controller => :charges, :action => :cancel}, {:method => :post } %>
-
-        <%= link_to "Cancel My Subscription", :controller => 
+        <%= link_to "Cancel My Subscription", cancel_charges_path, :controller => 
         :charges, :action => :cancel, :method => :post, :class => "btn btn-danger" %>
 
         <br><br>
