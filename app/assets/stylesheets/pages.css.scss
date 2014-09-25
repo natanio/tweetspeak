@@ -34,3 +34,34 @@ p.progress-label {
 h1.dictionary, h2.dictionary {
 	font-family: 'Roboto Slab', serif;
 }
+
+.panel-default>.panel-heading-blue {
+color: #fff;
+background-color: #20b4e9;
+border-color: #088EBE;
+}
+
+.panel-group .panel-heading-blue {
+border-bottom: 0;
+}
+
+.panel-heading-blue {
+padding: 10px 15px;
+border-bottom: 1px solid transparent;
+border-top-right-radius: 3px;
+border-top-left-radius: 3px;
+}
+
+.img-circle {
+border-radius: 50%;
+border: 10px solid rgb(224, 224, 224);
+}
+
+.skinnier {
+width: 90%;
+margin: 0 auto;
+}
+
+.skinnier p {
+margin-bottom: 20px;
+}
