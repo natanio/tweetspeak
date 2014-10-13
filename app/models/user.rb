@@ -24,16 +24,11 @@ class User < ActiveRecord::Base
     Stripe.api_key = ENV["STRIPE_API_KEY"]
     
     @customer = Stripe::Customer.retrieve(customer_id)
-    @subscription = @customer.subscriptions.first.try
 
-    if @subscription == nil
-      return false
+    if @customer.status = "trialing"
+      return true
     else
-      if @subscription.trial_end == nil
-        return true
-      else
-        return false
-      end
+      return false
     end
   end
   
