@@ -1,0 +1,20 @@
+<div class="table-responsive">
+  <table class="table">
+    <tr>
+    <th class="center">Name</th>
+    <th class="center">Last Lesson</th>
+    <th class="center">Email</th>
+    <th class="center">Subscriber?</th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td class="center"><%= user.name %></td>
+      <td class="center"><%= user.last_lesson %></td>
+      <td class="center"><%= user.email %></td>
+      <td class="center"><%= user.active_subscription %></td>
+    </tr>
+  <% end %>
+
+  </table>
+</div>

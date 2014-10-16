@@ -1,5 +1,6 @@
 Tweetspeak::Application.routes.draw do
   devise_for :users
+  resources :users, only: [:index]
   get "static_pages/home"
   resources :lessons
   resources :charges
