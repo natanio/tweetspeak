@@ -19,6 +19,11 @@ class User < ActiveRecord::Base
   	"/lessons/#{next_lesson}/step/1"
   end
 
+  after_create :send_admin_mail
+  def send_admin_mail
+    UserMailer.welcome_email(self).deliver
+  end
+
   private
   def trialing
     Stripe.api_key = ENV["STRIPE_API_KEY"]
