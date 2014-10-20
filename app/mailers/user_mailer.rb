@@ -18,4 +18,5 @@ class UserMailer < ActionMailer::Base
   	@user = user
   	@url = 'https://tweetspeakenglish.com/users/sign_in'
   	mail(to: @user.email, subject: 'Your Free Trial is Still Waiting')
+  end
 end
