@@ -17,3 +17,4 @@ namespace :reminders do
       end
     end
   end
+end
