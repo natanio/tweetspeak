@@ -12,7 +12,7 @@ namespace :reminders do
     # Second courtesy message a week after still no trial activity
     User.where("created_at < ? and created_at > ?", 7.days.ago.at_midnight, 8.days.ago.at_midnight).each do |user|
       unless user.active_subscription?
-        puts "sending 'trial is wiaiting' reminder to user #{user.id}"
+        puts "sending 'trial is waiting' reminder to user #{user.id}"
         UserMailer.no_trial_feedback(user).deliver!
       end
     end
