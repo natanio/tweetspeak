@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :tracks
+  has_many :lessons, through: :tracks
+
   def next_lesson
     if trialing && last_lesson <= 14
   	 last_lesson+1
