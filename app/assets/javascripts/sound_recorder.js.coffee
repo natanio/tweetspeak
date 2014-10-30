@@ -5,10 +5,11 @@ class @SoundRecorder
     SC.record
       start: ->
         $('.record-button').hide()
-        $('#stopBtn').html '<div class="stop-button"><a href="#" id="stopBtn" class="button"></a></div>'
+        $('#stopBtn').html '<div class="stop-button"><a href="#" id="stopBtn" class="button"><span class="glyphicon glyphicon-stop"></span></a></div>'
       progress: (ms, avgPeak) => @updateTimer(ms)
   stop: ->
     SC.recordStop()
+    SC.recordPlay()
     $('.record-button').show()
     $('.stop-button').hide()
     $('#uploadBtn').html('Upload')

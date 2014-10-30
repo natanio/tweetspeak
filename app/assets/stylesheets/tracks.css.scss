@@ -1,3 +1,21 @@
+#recorder {
+	position: relative;
+	background: #E5E5E5;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #E5E5E5), color-stop(100%, #CACACA));
+	background: -webkit-linear-gradient(top, #E5E5E5 0%, #CACACA 100%);
+	background: linear-gradient(to bottom, #E5E5E5 0%, #CACACA 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E5E5E5', endColorstr='#CACACA',GradientType=0 );
+	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+	border-radius: 3px;
+	overflow: hidden;
+	margin-top: 10px;
+	padding: 20px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	width: 500px;
+	max-width: 99%;
+	min-width: 220px;
+}
+
 .timer {
 	width: 200px;
 	margin: 0 auto;
@@ -14,16 +32,16 @@
 .record-button {
 	text-align: center;
 	width: 200px;
-	background: red;
-	margin: 0 auto;
+	background: #e74c3c;
+	margin: 10px auto;
 	padding: 10px;
 	border-radius: 5px;
-	border: 1px solid rgb(200, 9, 9);
+	border: 1px solid #c0392b;
 	cursor: pointer;
 }
 
 .record-button:hover {
-background: rgb(200, 9, 9);
+background: #c0392b;
 }
 
 .record-button a {
@@ -33,18 +51,24 @@ background: rgb(200, 9, 9);
 .stop-button {
 	text-align: center;
 	width: 200px;
-	background: red;
-	margin: 0 auto;
+	background: #3498db;
+	margin: 10px auto;
 	padding: 10px;
 	border-radius: 5px;
-	border: 1px solid rgb(200, 9, 9);
+	border: 1px solid #2980b9;
 	cursor: pointer;
 }
 
 .stop-button:hover {
-background: rgb(200, 9, 9);
+background: #2980b9;
 }
 
 .stop-button a {
 	color: white;
+}
+
+#otherControls {
+	width: 200px;
+	margin: 0 auto;
+	text-align: center;
 }
