@@ -1,15 +1,16 @@
 class @SoundRecorder
   constructor: (@title) ->
+  $('.stop-button').hide()
   start: ->
     SC.record
       start: ->
-        $('#recordBtn').hide()
-        $('#stopBtn').html 'Stop'
+        $('.record-button').hide()
+        $('#stopBtn').html '<div class="stop-button"><a href="#" id="stopBtn" class="button"></a></div>'
       progress: (ms, avgPeak) => @updateTimer(ms)
   stop: ->
     SC.recordStop()
-    $('#recordBtn').show()
-    $('#stopBtn').html('')
+    $('.record-button').show()
+    $('.stop-button').hide()
     $('#uploadBtn').html('Upload')
   reset: -> updateTimer(0)
   upload: (callback) -> 

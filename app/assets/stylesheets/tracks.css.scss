@@ -1,0 +1,50 @@
+.timer {
+	width: 200px;
+	margin: 0 auto;
+	text-align: center;
+	padding: 15px 0;
+	font-size: 24px;
+	color: rgb(119, 119, 119);
+	background: rgb(179, 179, 179);
+	margin-bottom: 10px;
+	border-radius: 8px;
+	border: 1px solid #909090;
+}
+
+.record-button {
+	text-align: center;
+	width: 200px;
+	background: red;
+	margin: 0 auto;
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid rgb(200, 9, 9);
+	cursor: pointer;
+}
+
+.record-button:hover {
+background: rgb(200, 9, 9);
+}
+
+.record-button a {
+	color: white;
+}
+
+.stop-button {
+	text-align: center;
+	width: 200px;
+	background: red;
+	margin: 0 auto;
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid rgb(200, 9, 9);
+	cursor: pointer;
+}
+
+.stop-button:hover {
+background: rgb(200, 9, 9);
+}
+
+.stop-button a {
+	color: white;
+}
