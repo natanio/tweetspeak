@@ -35,7 +35,7 @@
   });
 
   function saveTrack(track) {
-    $.post( "<%= track_url %>", { track: { uri: track.uri, title: track.title } })
+    $.post( "<%= track_url %>", { track: { track_url: track.uri } })
       .done( function( result ) {
         $("#uploadStatus").html('Record uploaded');
       });

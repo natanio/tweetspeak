@@ -7,7 +7,7 @@ class TracksController < ApplicationController
   # POST /tracks
   # POST /tracks.json
   def create
-    @track = current_user.tracks.create lesson_id: params[:lesson_id]
+    @track = current_user.tracks.build params[:track].reverse_merge(lesson_id: params[:lesson_id])
 
     respond_to do |format|
       if @track.save
