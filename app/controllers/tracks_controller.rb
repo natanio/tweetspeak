@@ -7,9 +7,7 @@ class TracksController < ApplicationController
   # POST /tracks
   # POST /tracks.json
   def create
-    @track = Track.new(track_params)
-    @track.user_id = current_user.id
-    @track.lesson_id = @lesson
+    @track = current_user.tracks.create lesson_id: params[:lesson_id]
 
     respond_to do |format|
       if @track.save
