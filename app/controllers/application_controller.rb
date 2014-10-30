@@ -7,6 +7,19 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def soundcloud_access_token
+      session[:soundcloud] ||= soundcloud.access_token
+    end
+
+    def soundcloud
+      @soundcloud = Soundcloud.new(:client_id => ENV["CLIENT_ID"],
+                                    :client_secret => ENV["CLIENT_SECRET"],
+                                    :username => ENV["SC_USERNAME"],
+                                    :password => ENV["SC_PASSWORD"]) 
+      @soundcloud.exchange_token
+      @soundcloud
+    end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
     devise_parameter_sanitizer.for(:account_update) << :name

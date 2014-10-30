@@ -1,0 +1,43 @@
+<div id="recorder">
+  <a href="#" id="recordBtn" class="button">Record</a>
+  <a href="#" id="stopBtn" class="button"></a>
+
+  <div id="otherControls">
+    <a href="#" id="resetBtn" class="button">Reset</a>
+    <a href="#" id="uploadBtn" class="button"></a>
+    <span id="timer">0:00</span>
+  </div>
+
+  <div id="uploadStatus"></div>
+</div>
+
+<script>
+  var recorder = new SoundRecorder('<%= track_title %>');
+
+  $("#recordBtn").click( function(e){
+    recorder.start();
+    e.preventDefault();
+  });
+
+  $("#stopBtn").click( function(e){
+    recorder.stop();
+    e.preventDefault();
+  });
+
+  $("#resetBtn").click( function(e){
+    recorder.reset();
+    e.preventDefault();
+  });
+
+  $("#uploadBtn").click( function(e){
+    recorder.upload(saveTrack);
+    e.preventDefault();
+  });
+
+  function saveTrack(track) {
+    $.post( "<%= track_url %>", { track: { uri: track.uri, title: track.title } })
+      .done( function( result ) {
+        $("#uploadStatus").html('Record uploaded');
+      });
+  }
+</script>

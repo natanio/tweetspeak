@@ -68,6 +68,11 @@
 					<div class="tweet-center">
 						<%= @lesson.tweet.html_safe %> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 					</div>
+
+					<div class="audio_feedback">
+						<%= render 'soundcloud/recorder', track_title: "User" + current_user.id.to_s + "-" + @lesson.id.to_s, track_url: "/lessons/#{@lesson.id}/tracks.json" %>
+						<%= render 'soundcloud/init', access_token: @soundcloud_access_token %>
+					</div>
 				</div>
 				
 				<div class="col-md-6">

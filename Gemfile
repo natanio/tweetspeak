@@ -1,4 +1,4 @@
-source 'https://code.stripe.com'
+source 'http://code.stripe.com'
 source 'https://rubygems.org'
 
 
@@ -21,6 +21,7 @@ gem 'ranked-model'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'soundcloud'
 
 group :development, :test do
      gem 'sqlite3'
