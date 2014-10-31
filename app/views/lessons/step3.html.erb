@@ -70,9 +70,14 @@
 					</div>
 
 					<div class="audio_feedback">
+
 						<% unless @track != nil %>
+						<h3>Record Yourself</h3>
+						<p>Use the recorder below to record yourself saying this tweet. Click 'Upload' when you're ready to send it. We'll give you feedback within two business days.</p>
 						<%= render 'soundcloud/recorder', track_title: "User" + current_user.id.to_s + "-" + @lesson.id.to_s, track_url: "/lessons/#{@lesson.id}/tracks?authenticity_token=#{form_authenticity_token}" %>
 						<% else %>
+						<h3>Your Recording</h3>
+						
 						<%= render partial: 'soundcloud/embed', locals: {track: @track} %>
 						<% end %>
 						<%= render 'soundcloud/init', access_token: @soundcloud_access_token %>

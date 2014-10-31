@@ -36,8 +36,12 @@
 	text-align: center;
 	padding: 15px 0;
 	font-size: 24px;
-	color: #777777;
-	background: #b3b3b3;
+	color: #8CB5CA;
+	background: #6F6F6F;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #6F6F6F), color-stop(100%, #303030));
+	background: -webkit-linear-gradient(top, #6F6F6F 0%, #303030 100%);
+	background: linear-gradient(to bottom, #6F6F6F 0%, #303030 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6F6F6F', endColorstr='#303030',GradientType=0 );
 	font-family: 'Wallpoet', cursive;
 	border: 1px solid #909090;
 }
