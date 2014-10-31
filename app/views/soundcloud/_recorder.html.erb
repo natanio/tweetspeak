@@ -1,21 +1,26 @@
 <div id="recorder">
-  <div class="timer">
-    <span id="timer">0:00</span>
-  </div>
-  <div class="record-button">
-    <a href="#" id="recordBtn" class="button"><span class="glyphicon glyphicon-record"></span></a>
-  </div>
-  
+  <div class="controls">
+    <div class="record-button">
+      <a href="#" id="recordBtn" class="button"><span class="glyphicon glyphicon-record"></span></a>
+    </div>
     <a href="#" id="stopBtn" class="button"></a>
- 
+  </div>
 
+  <div class="time-display">
+    <div class="timer">
+    <span id="timer">0:00</span>
+    </div>
+  </div>
+</div>
+  
   <div id="otherControls">
     <a href="#" id="resetBtn" class="btn btn-warning">Reset</a>
     <a href="#" id="uploadBtn" class="btn btn-success">Upload</a>
   </div>
 
+  
   <div id="uploadStatus"></div>
-</div>
+
 
 <script>
   var recorder = new SoundRecorder('<%= track_title %>');
@@ -43,7 +48,7 @@
   function saveTrack(track) {
     $.post( "<%= track_url %>", { track: { track_url: track.uri } })
       .done( function( result ) {
-        $("#uploadStatus").html('Record uploaded');
+        $("#uploadStatus").html('Audio uploaded!');
       });
   }
 </script>

@@ -1,4 +1,19 @@
 #recorder {
+	margin: 40px auto 10px;
+	width: 400px;
+	height: 100px;
+	max-width: 99%;
+	min-width: 220px;
+}
+
+.controls {
+	float: left;
+}
+
+.time-display {
+	float: left;
+	clear: right;
+	padding: 9px 0;
 	position: relative;
 	background: #E5E5E5;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #E5E5E5), color-stop(100%, #CACACA));
@@ -6,38 +21,36 @@
 	background: linear-gradient(to bottom, #E5E5E5 0%, #CACACA 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E5E5E5', endColorstr='#CACACA',GradientType=0 );
 	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
-	border-radius: 3px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 	overflow: hidden;
-	margin-top: 10px;
-	padding: 20px;
+	margin-bottom: 10px;
 	border: 1px solid rgba(0, 0, 0, 0.1);
-	width: 500px;
-	max-width: 99%;
-	min-width: 220px;
+	border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
 .timer {
 	width: 200px;
-	margin: 0 auto;
+	height: 70px;
+	margin: 0 20px;
 	text-align: center;
 	padding: 15px 0;
 	font-size: 24px;
-	color: rgb(119, 119, 119);
-	background: rgb(179, 179, 179);
-	margin-bottom: 10px;
-	border-radius: 8px;
+	color: #777777;
+	background: #b3b3b3;
+	/* border-radius: 8px; */
 	border: 1px solid #909090;
 }
 
 .record-button {
 	text-align: center;
-	width: 200px;
+	width: 70px;
+	height: 90px;
 	background: #e74c3c;
-	margin: 10px auto;
-	padding: 10px;
-	border-radius: 5px;
+	padding: 30px 20px;
 	border: 1px solid #c0392b;
 	cursor: pointer;
+	font-size: 24px;
 }
 
 .record-button:hover {
@@ -50,13 +63,13 @@ background: #c0392b;
 
 .stop-button {
 	text-align: center;
-	width: 200px;
+	width: 70px;
+	height: 90px;
 	background: #3498db;
-	margin: 10px auto;
-	padding: 10px;
-	border-radius: 5px;
+	padding: 28px 20px;
 	border: 1px solid #2980b9;
 	cursor: pointer;
+	font-size: 24px;
 }
 
 .stop-button:hover {
@@ -68,7 +81,6 @@ background: #2980b9;
 }
 
 #otherControls {
-	width: 200px;
+	width: 400px;
 	margin: 0 auto;
-	text-align: center;
 }

@@ -1,6 +1,6 @@
 class @SoundRecorder
   constructor: (@title) ->
-  $('.stop-button').hide()
+  $("#otherControls").hide();
   start: ->
     SC.record
       start: ->
