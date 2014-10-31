@@ -38,7 +38,7 @@
 	font-size: 24px;
 	color: #777777;
 	background: #b3b3b3;
-	/* border-radius: 8px; */
+	font-family: 'Wallpoet', cursive;
 	border: 1px solid #909090;
 }
 
@@ -47,10 +47,10 @@
 	width: 70px;
 	height: 90px;
 	background: #e74c3c;
-	padding: 30px 20px;
+	padding: 8px 20px;
 	border: 1px solid #c0392b;
 	cursor: pointer;
-	font-size: 24px;
+	font-size: 48px;
 }
 
 .record-button:hover {
@@ -59,6 +59,7 @@ background: #c0392b;
 
 .record-button a {
 	color: white;
+	text-decoration: none;
 }
 
 .stop-button {

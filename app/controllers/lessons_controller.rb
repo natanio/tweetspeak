@@ -91,6 +91,7 @@ class LessonsController < ApplicationController
 
       elsif params[:step_number]=="3"
         @soundcloud_access_token = soundcloud_access_token
+        @track = Track.find_by(:user_id => current_user, :lesson_id => @lesson)
         render "step3.html.erb"
 
       elsif params[:step_number]=="4"

@@ -1,7 +1,7 @@
 <div id="recorder">
   <div class="controls">
     <div class="record-button">
-      <a href="#" id="recordBtn" class="button"><span class="glyphicon glyphicon-record"></span></a>
+      <a href="#" id="recordBtn" class="button">●</a>
     </div>
     <a href="#" id="stopBtn" class="button"></a>
   </div>
@@ -46,9 +46,10 @@
   });
 
   function saveTrack(track) {
-    $.post( "<%= track_url %>", { track: { track_url: track.uri } })
+    $.post( "<%= track_url %>", { track: { track_url: track.permalink_url } })
       .done( function( result ) {
-        $("#uploadStatus").html('Audio uploaded!');
+        $("#uploadBtn").html('Finished!');
+        $("#uploadStatus").html('We got your recording! Please check back in two business days to see our comments.');
       });
   }
 </script>

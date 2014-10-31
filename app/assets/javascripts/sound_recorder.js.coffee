@@ -15,8 +15,7 @@ class @SoundRecorder
     $('#uploadBtn').html('Upload')
   reset: -> updateTimer(0)
   upload: (callback) -> 
-    $('#uploadBtn').html('')
-    $("#uploadStatus").html('Uploading...')
+    $('#uploadBtn').html('Uploading...')
     SC.recordUpload
       track: { 
         title: @title,
