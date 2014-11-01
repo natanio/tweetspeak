@@ -46,7 +46,7 @@
   });
 
   function saveTrack(track) {
-    $.post( "<%= track_url %>", { track: { track_url: track.permalink_url } })
+    $.post( "<%= track_url %>", { track: { track_url: track.uri } })
       .done( function( result ) {
         $("#uploadBtn").html('Finished!');
         $("#uploadStatus").html('We got your recording! Please check back in two business days to see our comments.');
