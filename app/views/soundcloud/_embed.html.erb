@@ -1,5 +1,7 @@
-<script>
-  SC.oEmbed("<%= track.track_url %>", {auto_play: false}, function(oembed){
-    console.log("oEmbed response: ", oembed);
-  });
+<div id="putTheWidgetHere"></div>
+<script type="text/JavaScript">
+  SC.oEmbed("<%= track.track_url %>", {
+  	color: "01aef0",
+    maxheight: "100px"
+    },  document.getElementById("putTheWidgetHere"));
 </script>
