@@ -1,0 +1,25 @@
+<h3>Comments</h3>
+<div id="url"></div>
+
+<script>
+// SET URL of the track's comments you are looking for
+$(document).ready(
+  function () {
+    // Use soundcloud API to get info of the track requested
+    SC.get('<%= track.track_url %>'
+      , function (track, err) {
+        // obtain track's id
+        var TRACK_ID = track.id;
+        SC.get("/tracks/"+TRACK_ID+"/comments"
+          , function (comments, err) {
+          // Construct html of output
+          var output = "";
+          for (var i = 0; i < comments.length; i++) {
+            output += "user: " + comments[i].user.username + "<br>";
+            output += "comment: " + comments[i].body + "<hr>";
+          }
+          $("#url").html(output);
+        });
+      });
+  });
+</script>
