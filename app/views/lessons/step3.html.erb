@@ -80,6 +80,7 @@
 						<h3>Your Recording</h3>
 						
 						<%= render partial: 'soundcloud/embed', locals: {track: @track} %>
+						<%= render partial: 'soundcloud/comments', locals: {track: @track} %>
 						<% end %>
 						
 					</div>

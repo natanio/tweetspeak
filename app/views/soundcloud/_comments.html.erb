@@ -15,8 +15,7 @@ $(document).ready(
           // Construct html of output
           var output = "";
           for (var i = 0; i < comments.length; i++) {
-            output += "user: " + comments[i].user.username + "<br>";
-            output += "comment: " + comments[i].body + "<hr>";
+            output += comments[i].user.username + ": " + comments[i].body + "<hr>";
           }
           $("#url").html(output);
         });
