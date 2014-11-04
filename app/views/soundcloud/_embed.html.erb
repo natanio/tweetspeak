@@ -1,0 +1,13 @@
+<div id="putTheWidgetHere"></div>
+
+<script type="text/JavaScript">
+  SC.oEmbed("<%= track.track_url %>", {
+    color: "01aef0",
+    maxheight: 166,
+    show_artwork: false,
+    show_user: false,
+    visual: false
+    }, function(oEmbed) { 
+      if (oEmbed) $('#putTheWidgetHere').html(oEmbed.html.replace('visual=true&',''));
+    });
+</script>

@@ -1,0 +1,105 @@
+#recorder {
+	margin: 40px auto 10px;
+	width: 400px;
+	height: 100px;
+	max-width: 99%;
+	min-width: 220px;
+}
+
+.controls {
+	float: left;
+}
+
+.time-display {
+	float: left;
+	clear: right;
+	padding: 9px 0;
+	position: relative;
+	background: #E5E5E5;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #E5E5E5), color-stop(100%, #CACACA));
+	background: -webkit-linear-gradient(top, #E5E5E5 0%, #CACACA 100%);
+	background: linear-gradient(to bottom, #E5E5E5 0%, #CACACA 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E5E5E5', endColorstr='#CACACA',GradientType=0 );
+	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	overflow: hidden;
+	margin-bottom: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.timer {
+	width: 200px;
+	height: 70px;
+	margin: 0 20px;
+	text-align: center;
+	padding: 15px 0;
+	font-size: 24px;
+	color: #8CB5CA;
+	background: #6F6F6F;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #6F6F6F), color-stop(100%, #303030));
+	background: -webkit-linear-gradient(top, #6F6F6F 0%, #303030 100%);
+	background: linear-gradient(to bottom, #6F6F6F 0%, #303030 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6F6F6F', endColorstr='#303030',GradientType=0 );
+	font-family: 'Wallpoet', cursive;
+	border: 1px solid #909090;
+}
+
+.record-button {
+	text-align: center;
+	width: 70px;
+	height: 90px;
+	background: #e74c3c;
+	padding: 8px 20px;
+	border: 1px solid #c0392b;
+	cursor: pointer;
+	font-size: 48px;
+}
+
+.record-button:hover {
+background: #c0392b;
+}
+
+.record-button a {
+	color: white;
+	text-decoration: none;
+}
+
+.stop-button {
+	text-align: center;
+	width: 70px;
+	height: 90px;
+	background: #3498db;
+	padding: 28px 20px;
+	border: 1px solid #2980b9;
+	cursor: pointer;
+	font-size: 24px;
+}
+
+.stop-button:hover {
+background: #2980b9;
+}
+
+.stop-button a {
+	color: white;
+}
+
+#otherControls {
+	width: 400px;
+	margin: 0 auto;
+}
+
+#comments li {
+	background-color: #CFD4D8;
+	padding: 15px;
+	list-style: none;
+	font-size: 16px;
+	border-bottom: 1px solid #F2F2F2;
+}
+
+#comments span {
+	color: #7c7c7c;
+	font-weight: bold;
+	font-size: 14px;
+}
