@@ -1,5 +1,4 @@
-<h3>Comments</h3>
-<div id="url"></div>
+<div id="comments"></div>
 
 <script>
 // SET URL of the track's comments you are looking for
@@ -15,9 +14,9 @@ $(document).ready(
           // Construct html of output
           var output = "";
           for (var i = 0; i < comments.length; i++) {
-            output += comments[i].user.username + ": " + comments[i].body + "<hr>";
+            output += "<li>" + "<span>" + comments[i].user.username + "</span>" + "<br>" + comments[i].body + "</li>";
           }
-          $("#url").html(output);
+          $("#comments").html(output);
         });
       });
   });
