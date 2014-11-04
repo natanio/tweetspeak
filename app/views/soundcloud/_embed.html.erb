@@ -1,21 +1,13 @@
-
-
 <div id="putTheWidgetHere"></div>
 
 <script type="text/JavaScript">
   SC.oEmbed("<%= track.track_url %>", {
-  	theme_color: "ffffff",
+    theme_color: "ffffff",
     maxheight: 166,
     show_artwork: true,
-    show_user: false
-    }, document.getElementById("putTheWidgetHere"));
-</script>
-
-<script>
-$("iframe").each(function() {
-    var src = $(this).attr('src');
-    if(src.indexOf('https://w.soundcloud.com/player/?url=') != -1 && src.indexOf('visual=true') != -1) {
-        $(this).attr('src', src.replace('visual=true', 'visual=false'));
-    }
-});
+    show_user: false,
+    visual: false
+    }, function(oEmbed) { 
+      if (oEmbed) $('#putTheWidgetHere').html(oEmbed.html.replace('visual=true&',''));
+    });
 </script>
