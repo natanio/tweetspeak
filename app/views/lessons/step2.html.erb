@@ -52,7 +52,7 @@
 		</div>
 
 
-<% if @wrong_words.empty? && ( @correct_words.length == @answer.split.uniq.length ) %>
+<% if @wrong_words.empty? && ( @correct_words.length == @answer.downcase.split.uniq.length ) %>
 	<div class="alert alert-info center" role="alert">
 		<p><b>Way to go! You got all the words correct!</b><spn style="margin-left: 25px;"><a href="/lessons/<%=@lesson.id%>/step/3" class="btn btn-success">Continue!</a></span></p>
 	</div>
@@ -111,7 +111,7 @@
 		</div>
 	</div> <!-- End Row -->
 		
-<% if (@correct_words.length != 0) && (@correct_words.length != @answer.split.uniq.length) %>
+<% if (@correct_words.length != 0) && (@correct_words.length != @answer.downcase.split.uniq.length) %>
 	<div class="alert alert-warning center top-space" role="alert">
 		<p>You got some words, but not all of them. What do you want to do?</p>
 		<a href="/lessons/<%=@lesson.id%>/step/1" class="btn btn-default">Try Again</a>
