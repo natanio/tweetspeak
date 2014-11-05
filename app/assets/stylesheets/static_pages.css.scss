@@ -117,6 +117,11 @@ h2.featurette-title {
 	margin: 40px auto;
 }
 
+.testimonial-item.col-md-6 {
+	width: 47%;
+	margin-right: 10px;
+}
+
 .testimonial-items {
 	text-align: center;
 }
@@ -158,6 +163,11 @@ h2.featurette-title {
 	overflow: hidden;
 	border: 2px solid #E5E5E5;
 	border-radius: 40px;
+}
+
+.testimonial-item__avatar img {
+	width: 75px;
+	height: 75px;
 }
 
 .segment-quote {
