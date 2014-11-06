@@ -11,16 +11,27 @@
           <% end %>
         <% end %>
       </div>
+
+  <% if !current_user.trialing %>
   <h2 class="featurette-title">Try Tweet Speak English for 7 days free, with no risk</h2>
   <hr class="half-rule">
   <p class="lead big-bottom">Choose the best plan for you. For monthly and yearly subscriptions, you will only be charged after your trial ends.</p>
+
+  <% else %>
+
+  <h2 class="featurette-title">Start Your Full Membership Today</h2>
+  <hr class="half-rule">
+  <p class="lead big-bottom">Choose the best plan for you. All plans come with a 30 day, money-back guarantee.</p>
+
+  <% end %>
+
   <div class="container">
     <div class="row pricing">
       <div class="col-md-4 left">
         <%= form_tag charges_path, id: 'monthlyForm' do |form| %>
           <%= hidden_field_tag 'stripeToken' %>
           <%= hidden_field_tag 'stripeEmail' %>
-        	<%= hidden_field :charges, :plan_id, value: "ts_monthly" %>
+        	<%= hidden_field :charges, :plan_id, value: "ts_monthly_new" %>
           <div class="pricing-header">
             <h3 class="pricing-header header-price">Monthly</h3>
             <div class="pricing-plan">

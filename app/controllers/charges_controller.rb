@@ -14,7 +14,7 @@ class ChargesController < ApplicationController
 		token = params[:stripeToken]
 		plan = params[:charges][:plan_id]
 
-  		if plan == "ts_monthly"
+  		if plan == "ts_monthly_new"
 
 			customer = Stripe::Customer.create(
   				:card => token,
