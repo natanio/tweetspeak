@@ -28,16 +28,5 @@ class User < ActiveRecord::Base
   end
 
   private
-  def trialing
-    Stripe.api_key = ENV["STRIPE_API_KEY"]
-    
-    @customer = Stripe::Customer.retrieve(customer_id)
-
-    if @customer.status = "trialing"
-      return true
-    else
-      return false
-    end
-  end
   
 end
