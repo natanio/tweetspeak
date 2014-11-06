@@ -49,6 +49,7 @@ class ChargesController < ApplicationController
 	  if !customer.default_card.nil?
 		  flash[:notice] = "Thanks and welcome! Your payment was successful."
 		  current_user.active_subscription = true
+		  current_user.update_attribute(:trialing, false)
 		  current_user.update_attribute(:customer_id, customer.id)
 		  current_user.save
 		  redirect_to pages_dashboard_path
@@ -76,8 +77,10 @@ class ChargesController < ApplicationController
 
 	def only_inactive_customers
 		if current_user
-			if current_user.active_subscription
+			if current_user.active_subscription && !current_user.trialing
 				redirect_to pages_dashboard_path
+			elsif current_user.active_subscription && current_user.trialing
+				return true
 			end
 		end
 		return true

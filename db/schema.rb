@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106015728) do
+ActiveRecord::Schema.define(version: 20141106033534) do
 
   create_table "lessons", force: true do |t|
     t.string   "title"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20141106015728) do
     t.integer  "points",                 default: 0
     t.integer  "last_calculated_streak", default: 0
     t.boolean  "trialing",               default: true
+    t.datetime "trial_began"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

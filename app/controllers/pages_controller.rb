@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 	before_filter :authenticate_user!, except: [:about, :contact]
 	before_filter :check_subscription, except: [:about, :contact]
+  before_filter :check_trialing, only: [:subscription]
   before_filter :best_streak, only: [:dashboard]
 
   helper PagesHelper
@@ -34,6 +35,12 @@ class PagesController < ApplicationController
     unless @streak > 0
       current_user.update_attribute(:best_streak, 1)
       current_user.save
+    end
+  end
+
+  def check_trialing
+    if current_user.trialing = true
+      redirect_to new_charge_path, alert: "Ready to get started? Choose a plan below."
     end
   end
     

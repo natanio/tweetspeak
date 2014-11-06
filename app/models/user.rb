@@ -7,10 +7,16 @@ class User < ActiveRecord::Base
   has_many :tracks
   has_many :lessons, through: :tracks
 
+  before_create :set_trial_to_now
+  def set_trial_to_now
+    self.trial_began = Time.now
+    self.active_subscription = true
+  end
+
   def next_lesson
-    if trialing && last_lesson <= 14
+    if is_trialing && last_lesson <= 14
   	 last_lesson+1
-    elsif !trialing
+    elsif !is_trialing
       last_lesson+1
     else
       "alert('Sorry, you've finished all the trial lessons. Please wait until after your trial to continue. Thanks!')"
@@ -29,4 +35,7 @@ class User < ActiveRecord::Base
 
   private
   
+  def is_trialing
+    self.trialing?
+  end
 end
