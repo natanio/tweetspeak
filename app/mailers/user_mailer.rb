@@ -8,15 +8,33 @@ class UserMailer < ActionMailer::Base
   	mail(to: @user.email, subject: 'Welcome to Tweet Speak English!')
   end
 
-  def remind_of_trial(user)
+  def trial_day_1(user)
   	@user = user
   	@url = 'https://tweetspeakenglish.com/users/sign_in'
-  	mail(to: @user.email, subject: 'Start Your Free 7-Day Trial')
+  	mail(to: @user.email, subject: 'How to Study English Every Day')
   end
 
-  def no_trial_feedback(user)
+  def trial_day_2(user)
+    @user = user
+    @url = 'https://tweetspeakenglish.com/dashboard'
+    mail(to: @user.email, subject: 'Listening is key')
+  end
+
+  def trial_day_3(user)
+    @user = user
+    @url = 'https://tweetspeakenglish.com/users/sign_in'
+    mail(to: @user.email, subject: 'Connect your mouth to your ears')
+  end
+
+  def trial_day_4(user)
+    @user = user
+    @url = 'https://tweetspeakenglish.com/users/sign_in'
+    mail(to: @user.email, subject: 'Understanding comes with time')
+  end
+
+  def trial_day_6(user)
   	@user = user
   	@url = 'https://tweetspeakenglish.com/users/sign_in'
-  	mail(to: @user.email, subject: 'Your Free Trial is Still Waiting')
+  	mail(to: @user.email, subject: 'Today is the last day of your trial')
   end
 end
