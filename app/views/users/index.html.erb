@@ -33,8 +33,7 @@
           <% end %>
         </td>
         <td class="center">
-          <% if !user.trialing && user.active_subscription %>Yes
-          <%= user.active_subscription? %></td>
+          <% if !user.trialing && user.active_subscription %>Yes</td>
           <% elsif user.trialing && user.active_subscription %>
           Trialing
           <% else %>
