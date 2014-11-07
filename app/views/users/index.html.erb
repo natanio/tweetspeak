@@ -1,8 +1,13 @@
 <div class="paper">
-
+  <% @subscribers = [] %>
+  <% User.all.each do |user| %>
+  <% if !user.trialing && user.active_subscription %>
+  <% @subscribers.push(user.id) %>
+  <% end %>
+  <% end %>
   <div class="pull-right">
     <h3>Users: <%= User.all.count %></h3>
-    <h3>Subscribers:</h3>
+    <h3>Subscribers: <%= @subscribers.length %></h3>
   </div>
   <div class="table-responsive">
     <table class="table">
