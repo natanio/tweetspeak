@@ -1,0 +1,31 @@
+<div style="max-width: 600px, font-family: Arial; font-size: 14px;">
+	<p>
+		Hi <% unless @user.name? %><%= @user.email %><%else%><%= @user.name %><%end%>,<br>
+	<p>
+		Today's email will be short.
+	</p>
+	<p>
+		Did you know you have one more free book with your trial? It's called, <a href="<%= @url %>">"How to Improve Your Spoken English."
+	</p>
+	<p>
+		You can find it on your dashboard.
+	</p>
+	<p>
+		This is a book of some interviews I did to find out more about how my students could improve their spoken English.
+	</p>
+	<p>
+		There's a lot of great advice about how to practice your English, and most of this advice comes from people who are not native speakers. So I know you will find it useful.
+	</p>
+	<p>
+		Head over to download your free copy today.
+	</p>
+	<p>
+		Enjoy!
+	</p>
+	<p>
+		Nate Hill | Co-founder
+	</p>
+	<p>
+		<a href="http://tweetspeakenglish.com">Tweet Speak English</a>
+	</p>
+</div>

@@ -39,7 +39,7 @@
               9
               <span>/month</span>
             </div>
-            <button id="monthlyButton" class="btn btn-large btn-success">Start 7 Day Trial</button>
+            <button id="monthlyButton" class="btn btn-large btn-success">Buy Now</button>
             <script>
         var handler = StripeCheckout.configure({
         key: '<%= ENV["STRIPE_PUBLIC_KEY"] %>',
@@ -114,9 +114,9 @@
             <div class="pricing-plan">
               <abbr>$</abbr>
               59
-              <span>/month</span>
+              <span>/year</span>
             </div>
-            <button id="yearlyButton" class="btn btn-large btn-success">Start 7 Day Trial</button>
+            <button id="yearlyButton" class="btn btn-large btn-success">Buy Now</button>
             <script>
         var yearlyHandler = StripeCheckout.configure({
         key: '<%= ENV["STRIPE_PUBLIC_KEY"] %>',

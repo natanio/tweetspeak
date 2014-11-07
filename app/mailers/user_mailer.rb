@@ -29,12 +29,21 @@ class UserMailer < ActionMailer::Base
   def trial_day_4(user)
     @user = user
     @url = 'https://tweetspeakenglish.com/users/sign_in'
-    mail(to: @user.email, subject: 'Understanding comes with time')
+    mail(to: @user.email, subject: "Understanding comes with time, don't give up!")
+  end
+
+  def trial_day_5(user)
+    @user = user
+    @url = 'https://tweetspeakenglish.com/users/sign_in'
+    mail(to: @user.email, subject: "How to improve your spoken English")
   end
 
   def trial_day_6(user)
   	@user = user
   	@url = 'https://tweetspeakenglish.com/users/sign_in'
+    @twitter = 'http://twitter.com/tweetspeakeng'
+    @facebook = 'http://facbook.com/TweetSpeakEnglish'
+    @blog = 'http://blog.tweetspeakenglish.com'
   	mail(to: @user.email, subject: 'Today is the last day of your trial')
   end
 end
