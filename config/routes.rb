@@ -14,6 +14,11 @@ Tweetspeak::Application.routes.draw do
   get "subscription" => "pages#subscription", as: :pages_subscription
   get "dashboard" => "pages#dashboard", as: :pages_dashboard
 
+  # Error pages
+  %w( 404 422 500 ).each do |code|
+    get code, :to => "errors#show", :code => code
+  end
+
   root 'static_pages#home'
 
   resources :charges do
