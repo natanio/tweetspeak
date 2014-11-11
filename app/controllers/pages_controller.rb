@@ -39,7 +39,7 @@ class PagesController < ApplicationController
   end
 
   def check_trialing
-    if current_user.trialing = true
+    if current_user.trialing
       redirect_to new_charge_path, alert: "Ready to get started? Choose a plan below."
     end
   end
