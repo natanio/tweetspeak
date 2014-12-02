@@ -18,13 +18,13 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'ranked-model'
-gem 'better_errors'
-gem 'binding_of_caller'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'soundcloud'
 
 group :development, :test do
      gem 'sqlite3'
+     gem 'better_errors'
+	 gem 'binding_of_caller'
 end
 
 group :production do
