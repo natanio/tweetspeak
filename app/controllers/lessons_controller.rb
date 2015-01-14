@@ -98,13 +98,35 @@ class LessonsController < ApplicationController
         render "step4.html.erb"
 
       elsif params[:step_number]=="5"
-        if current_user.last_lesson < 1         
+        @tags = @lesson.tags.split(", ")
+      
+        if current_user.last_lesson < 1 
+
+          @tags.each do |keyphrase|
+            @keyphrase = Keyphrase.find_or_create_by(title: keyphrase, lesson_id: @lesson.id)
+            @card = Card.create(title: keyphrase, 
+                        keyphrase_id: @keyphrase.id, 
+                        user_id: current_user.id,
+                        lesson_id: @lesson.id)
+            @keyphrase.card_id = @card.id
+          end
+
           current_user.update_attribute(:last_lesson, @lesson.id)
           current_user.update_attribute(:points, current_user.points + 125)
           redirect_to pages_dashboard_path, notice: "Way to go! Keep it up :)"
           current_user.save
 
         elsif @lesson.id == current_user.last_lesson+1
+
+          @tags.each do |keyphrase|
+            @keyphrase = Keyphrase.find_or_create_by(title: keyphrase, lesson_id: @lesson.id)
+            @card = Card.create(title: keyphrase, 
+                          keyphrase_id: @keyphrase.id, 
+                          user_id: current_user.id,
+                          lesson_id: @lesson.id)
+            @keyphrase.card_id = @card.id          
+          end
+
           current_user.update_attribute(:last_lesson, @lesson.id)
           current_user.update_attribute(:points, current_user.points + 125)
           redirect_to pages_dashboard_path, notice: "Way to go! Keep it up :)"
