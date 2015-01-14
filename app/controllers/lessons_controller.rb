@@ -108,7 +108,8 @@ class LessonsController < ApplicationController
                         keyphrase_id: @keyphrase.id, 
                         user_id: current_user.id,
                         lesson_id: @lesson.id)
-            @keyphrase.card_id = @card.id
+            @keyphrase.update_attribute(:card_id, @card.id)
+            @keyphrase.save
           end
 
           current_user.update_attribute(:last_lesson, @lesson.id)
@@ -124,7 +125,8 @@ class LessonsController < ApplicationController
                           keyphrase_id: @keyphrase.id, 
                           user_id: current_user.id,
                           lesson_id: @lesson.id)
-            @keyphrase.card_id = @card.id          
+            @keyphrase.update_attribute(:card_id, @card.id)
+            @keyphrase.save          
           end
 
           current_user.update_attribute(:last_lesson, @lesson.id)

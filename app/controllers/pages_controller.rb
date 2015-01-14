@@ -14,6 +14,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @cards = Card.where(user_id: current_user.id)
   end
 
   def dictionary
