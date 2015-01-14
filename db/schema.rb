@@ -11,7 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141109215403) do
+ActiveRecord::Schema.define(version: 20150113074551) do
+
+  create_table "cards", force: true do |t|
+    t.string   "title"
+    t.integer  "lesson_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "hint_id"
+    t.integer  "definition_id"
+    t.integer  "keyphrase_id"
+  end
+
+  create_table "definitions", force: true do |t|
+    t.string   "title"
+    t.integer  "card_id"
+    t.integer  "keyphrase_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "hints", force: true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.integer  "card_id"
+    t.integer  "keyphrase_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "keyphrases", force: true do |t|
+    t.string   "title"
+    t.integer  "lesson_id"
+    t.integer  "card_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "hint_id"
+  end
 
   create_table "lessons", force: true do |t|
     t.string   "title"
@@ -60,6 +97,7 @@ ActiveRecord::Schema.define(version: 20141109215403) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string   "language"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
