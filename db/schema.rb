@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113074551) do
+ActiveRecord::Schema.define(version: 20150116015924) do
 
   create_table "cards", force: true do |t|
     t.string   "title"
@@ -48,6 +48,10 @@ ActiveRecord::Schema.define(version: 20150113074551) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "hint_id"
+  end
+
+  create_table "languages", force: true do |t|
+    t.string "name"
   end
 
   create_table "lessons", force: true do |t|
@@ -98,6 +102,7 @@ ActiveRecord::Schema.define(version: 20150113074551) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "language"
+    t.integer  "language_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

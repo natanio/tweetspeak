@@ -1,6 +1,6 @@
-<div class="panel">
-	<% @cards.each do |card| %>
-	<%= card.title %><br>
-	<%= card.keyphrase.title %><br>
-	<% end %>
-</div>
+<% @cards.each do |card| %>
+	<div class="panel">
+		<%= card.title %><br>
+		<%= card.keyphrase.title %><br>
+	</div>
+<% end %>
