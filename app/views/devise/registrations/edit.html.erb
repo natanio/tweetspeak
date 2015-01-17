@@ -10,8 +10,10 @@
       <%= f.text_field :name, :autofocus => true, class: "form-control" %>
     </div>
 
-    <%= collection_select(resource, :language_id, Language.all, :id, :name, :prompt => 'Please select language') %>
-
+    <div class="form-group">
+      <%= f.label "Please choose your native language" %>
+      <%= f.select :language_id, Language.pluck(:name, :id), class: "form-control" %>
+    </div>
 
     <div class="form-group"><%= f.label :email %><br />
     <%= f.email_field :email, class: "form-control" %></div>
