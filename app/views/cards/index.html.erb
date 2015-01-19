@@ -1,0 +1,12 @@
+<table>
+	<tr>
+		<th>Lesson #</th>
+		<th>Keyphrases</th>
+	</tr>
+<% @cards.each do |card| %>
+ 	<tr>
+ 		<td><%= card.lesson.id %></td>
+ 		<td><%= card.lesson.tags %></td>
+ 	</tr>
+ 	<% end %>
+</table>
