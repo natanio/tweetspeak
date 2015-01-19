@@ -37,7 +37,7 @@ class ChargesController < ApplicationController
   				:description => current_user.email
 )
 	  		Stripe::Charge.create(
-			    :amount => 199*100, # incents 
+			    :amount => 97*100, # incents 
 			    :currency => "usd",
 			    :customer => customer
 			)
