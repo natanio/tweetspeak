@@ -58,8 +58,10 @@ ActiveRecord::Schema.define(version: 20150120012537) do
   end
 
   create_table "learning_sessions", force: true do |t|
-    t.integer "user_id"
-    t.integer "card_order"
+    t.integer  "user_id"
+    t.integer  "card_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "lessons", force: true do |t|

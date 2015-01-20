@@ -8,6 +8,7 @@ Tweetspeak::Application.routes.draw do
   resources :charges
   resources :languages
   resources :cards
+  resources :learning_sessions
 
   get "/lessons/:id/step/:step_number" => "lessons#step"
   get "pages/about"
