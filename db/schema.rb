@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150117020650) do
+ActiveRecord::Schema.define(version: 20150120012537) do
 
   create_table "cards", force: true do |t|
     t.string   "title"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150117020650) do
     t.integer  "hint_id"
     t.integer  "definition_id"
     t.integer  "keyphrase_id"
+    t.boolean  "learned",       default: false
   end
 
   create_table "definitions", force: true do |t|
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 20150117020650) do
     t.integer  "keyphrase_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "language_id"
   end
 
   create_table "hints", force: true do |t|
@@ -53,6 +55,11 @@ ActiveRecord::Schema.define(version: 20150117020650) do
   create_table "languages", force: true do |t|
     t.string "name"
     t.string "english_name"
+  end
+
+  create_table "learning_sessions", force: true do |t|
+    t.integer "user_id"
+    t.integer "card_order"
   end
 
   create_table "lessons", force: true do |t|
