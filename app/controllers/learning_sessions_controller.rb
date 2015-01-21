@@ -6,9 +6,9 @@ class LearningSessionsController < ApplicationController
 	end
 
 	def show
-		@cards = Card.where(user_id: current_user.id).
-				 where(learned: false)
-		#@definition = 
+		cards = Card.where(user_id: current_user.id).
+				 where(learned: false).order(created_at: :asc)
+        @cards = cards.paginate(page: params[:page], per_page: 1)
 	end
 
 	def new
