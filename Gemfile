@@ -20,6 +20,7 @@ gem 'autoprefixer-rails'
 gem 'ranked-model'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'soundcloud'
+gem 'will_paginate', '~> 3.0.6'
 
 group :development, :test do
      gem 'sqlite3'
