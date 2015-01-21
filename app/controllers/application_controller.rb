@@ -23,7 +23,9 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
     devise_parameter_sanitizer.for(:sign_in) << :email
-    devise_parameter_sanitizer.for(:account_update) << :name
+    devise_parameter_sanitizer.for(:account_update) do |u|
+      u.permit(:name, :email, :language_id, :current_password)
+    end  
   end
 
   def after_sign_in_path_for(resource)

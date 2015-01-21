@@ -1,0 +1,15 @@
+<div class="paper">
+	<% @cards.each do |card| %>
+		<% @definition = Definition.where(keyphrase_id: card.keyphrase.id) %>
+		<%= card.keyphrase.title %><br>
+		<% if @defintion.present? %>
+			<%= form_for(@defintion) do |f| %>
+				<div class="form-group">
+	      			<%= f.label "Please choose your native language" %>
+	      			<%= f.select :title, f.pluck(:title, :id), class: "form-control" %>
+	    		</div>
+	    	<% end %>
+	    <% end %>
+		<%= if @definition.present? then @definition.title end %><br>
+	<% end %>
+</div>

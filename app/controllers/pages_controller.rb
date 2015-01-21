@@ -14,6 +14,10 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @cards = Card.where(user_id: current_user.id)
+    @unlearned_card_number = Card.
+                             where(user_id: current_user.id).
+                             where(learned: false).length
   end
 
   def dictionary

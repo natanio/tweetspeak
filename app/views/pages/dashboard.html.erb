@@ -22,7 +22,11 @@
 
       				<% if (current_user.last_lesson == Lesson.last.id) && !current_user.admin? %>
       				<h4 class="top-space" style="color: #27ae60">You've completed all available lessons! Please check back later for updates.</h4>
-        				<button type="button" class="btn btn-lg btn-primary" disabled="disabled"><span class="glyphicon glyphicon-chevron-right"></span>Start Next Lesson!</button>
+        				<button type="button" class="btn btn-lg btn-primary" disabled="disabled"><span class="glyphicon glyphicon-arrow-right"></span>Start Next Lesson!</button>
+        			<% elsif @unlearned_card_number >= 5 %>
+        				<%= link_to learning_sessions_path(:user_id => current_user.id), :method => :post, class: 'btn btn-warning btn-lg' do %>
+        					Time to review! <span class="glyphicon glyphicon-arrow-right"></span>
+        					<% end %>
       				<% else %>
       					<a href="<%= current_user.next_lesson_path %>" class="btn btn-primary btn-lg">Start Next Lesson! <span class="glyphicon glyphicon-arrow-right"></span></a>
       				<% end %>

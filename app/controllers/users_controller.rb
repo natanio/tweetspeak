@@ -16,5 +16,4 @@ class UsersController < ApplicationController
       	 redirect_to root_path, alert: "Sorry, you need to sign up or sign in to visit that page."
       end
     end
-
 end
