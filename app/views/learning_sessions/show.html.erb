@@ -3,7 +3,8 @@
 		<% @definition = Definition.where(keyphrase_id: card.keyphrase.id) %>
 		<%= card.keyphrase.title %><br>
 		<%= form_for(Definition.new) do |f| %>
-			<%= f.hidden_field :keyphrase_id, :value => card.keyphrase.id%>
+			<%= f.hidden_field :keyphrase_id, :value => card.keyphrase.id %>
+			<%= f.hidden_field :language_id, :value => current_user.language_id %>
 
 			<%= f.select :title, Definition.pluck(:title, :title), class: "form-control", id: "s", prompt: "Select a definition" %><br>
 			
