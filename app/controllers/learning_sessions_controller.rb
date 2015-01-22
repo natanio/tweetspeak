@@ -1,5 +1,6 @@
 class LearningSessionsController < ApplicationController
 	before_filter :authenticate_user!
+	before_filter :set_session
 
 	def index
 		
@@ -29,6 +30,8 @@ class LearningSessionsController < ApplicationController
 	end
 
 	private
-	
+	def set_session
+		@learning_session = Learning_session.find(params[:id])
+	end
 
 end

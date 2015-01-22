@@ -9,6 +9,7 @@ Tweetspeak::Application.routes.draw do
   resources :languages
   resources :cards
   resources :learning_sessions
+  resources :definitions, only: [:new, :create]
 
   get "/lessons/:id/step/:step_number" => "lessons#step"
   get "pages/about"

@@ -2,14 +2,19 @@
 	<% @cards.each do |card| %>
 		<% @definition = Definition.where(keyphrase_id: card.keyphrase.id) %>
 		<%= card.keyphrase.title %><br>
-		<% if @defintion.present? %>
-			<%= form_for(@defintion) do |f| %>
-				<div class="form-group">
-	      			<%= f.label "Please choose your native language" %>
-	      			<%= f.select :title, f.pluck(:title, :id), class: "form-control" %>
-	    		</div>
-	    	<% end %>
-	    <% end %>
+
+		<%= form_for(Definition.new) do |f| %>
+			<%= f.text_field :title %><br>
+			<%= f.select :title, Definition.pluck(:title, :id), class: "form-control" %>
+			<%= f.submit %>
+	<% end %>
+
 		<%= if @definition.present? then @definition.title end %><br>
+	<% end %>
+
+
+
+	<% if @cards.current_page < @cards.total_pages %>
+   	<%= link_to "Next", "?page=#{@cards.current_page+1}" %>
 	<% end %>
 </div>
