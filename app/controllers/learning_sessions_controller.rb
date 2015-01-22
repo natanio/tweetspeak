@@ -1,6 +1,6 @@
 class LearningSessionsController < ApplicationController
 	before_filter :authenticate_user!
-	before_filter :set_session
+	before_filter :set_session, only: [:show, :index]
 
 	def index
 		
@@ -16,22 +16,22 @@ class LearningSessionsController < ApplicationController
 	end
 
 	def create
-		@learningSession = Learning_session.new(:user_id => params[:user_id])
+		@learning_session = Learning_Session.new(:user_id => params[:user_id])
 
 		respond_to do |format|
-		  if @learningSession.save
-		    format.html { redirect_to @learningSession }
+		  if @learning_session.save
+		    format.html { redirect_to @learning_session }
 		    format.json { render action: 'show', status: :created, location: @learningSession }
 		  else
 		    format.html { render action: 'new' }
-		    format.json { render json: @learningSession.errors, status: :unprocessable_entity }
+		    format.json { render json: @learningsession.errors, status: :unprocessable_entity }
 		  end
 		end
 	end
 
 	private
 	def set_session
-		@learning_session = Learning_session.find(params[:id])
+		@learning_session = Learning_Session.find(params[:id])
 	end
 
 end

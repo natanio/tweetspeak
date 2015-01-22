@@ -2,14 +2,17 @@
 	<% @cards.each do |card| %>
 		<% @definition = Definition.where(keyphrase_id: card.keyphrase.id) %>
 		<%= card.keyphrase.title %><br>
-
 		<%= form_for(Definition.new) do |f| %>
-			<%= f.text_field :title %><br>
-			<%= f.select :title, Definition.pluck(:title, :id), class: "form-control" %>
-			<%= f.submit %>
-	<% end %>
+			<%= f.hidden_field :keyphrase_id, :value => card.keyphrase.id%>
 
-		<%= if @definition.present? then @definition.title end %><br>
+			<%= f.select :title, Definition.pluck(:title, :title), class: "form-control", id: "s", prompt: "Select a definition" %><br>
+			
+			<%= f.text_field :title, class: "form-control", id: "t", placeholder: "Add a new definition, or choose one above." %><br>
+			
+
+			<%= f.submit class: "btn btn-default" %>
+		<% end %>
+
 	<% end %>
 
 
@@ -17,4 +20,19 @@
 	<% if @cards.current_page < @cards.total_pages %>
    	<%= link_to "Next", "?page=#{@cards.current_page+1}" %>
 	<% end %>
+
+	<div id="results"></div>
 </div>
+
+<script>
+$( "select" )
+  .click(function () {
+    var str = "";
+    $( "select option:selected" ).each(function() {
+      str += $( this ).text();
+    });
+    var elem = document.getElementById("t");
+	elem.value = str;
+  })
+  .change();
+</script>

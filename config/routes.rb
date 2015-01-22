@@ -9,7 +9,7 @@ Tweetspeak::Application.routes.draw do
   resources :languages
   resources :cards
   resources :learning_sessions
-  resources :definitions, only: [:new, :create]
+  resources :definitions
 
   get "/lessons/:id/step/:step_number" => "lessons#step"
   get "pages/about"
@@ -27,7 +27,7 @@ Tweetspeak::Application.routes.draw do
 
   resources :charges do
     post :cancel, :on => :collection
-end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
