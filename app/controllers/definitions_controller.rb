@@ -1,24 +1,38 @@
 class DefinitionsController < ApplicationController
+	before_filter :authenticate_user!
+
 	def show
 	end
 
 	def new
-		@defintion = Definition.new
+		@definition = Definition.new
 	end
 
 	def create
-		@defintion = Definition.new(definition_params)
+		@definition = Definition.new(definition_params)
 
 		respond_to do |format|
-	      if @defintion.save
+	      if @definition.save
 	        format.html { redirect_to :back, notice: "Your defintion was successfully created." }
 	        format.json { render action: 'show', status: :created, location: @language }
 	      else
 	        format.html { render action: 'new' }
-	        format.json { render json: @defintion.errors, status: :unprocessable_entity }
+	        format.json { render json: @definition.errors, status: :unprocessable_entity }
 	      end
 	    end
 	end
+
+	def update
+    respond_to do |format|
+      if @definition.update(definition_params)
+        format.html { redirect_to :back, notice: 'Definition was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @definition.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
 	private
 	def definition_params

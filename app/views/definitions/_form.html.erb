@@ -1,0 +1,24 @@
+<%= form_for(Definition.new) do |f| %>
+	<%= f.hidden_field :keyphrase_id, :value => keyphrase_id %>
+	<%= f.hidden_field :language_id, :value => current_user.language_id %>
+	<%= f.hidden_field :card_id, :value =>card.id %>
+
+	<%= f.select :title, Definition.where(language_id: current_user.language_id).where(card_id: card.id).pluck(:title, :title), class: "form-control", id: "s", prompt: "Select a definition" %><br>
+			
+	<%= f.text_field :title, class: "form-control", id: "t", placeholder: "Add a new definition, or choose one above." %><br>
+			
+	<%= f.submit class: "btn btn-default" %>
+<% end %>
+
+<script>
+$( "select" )
+  .click(function () {
+    var str = "";
+    $( "select option:selected" ).each(function() {
+      str += $( this ).text();
+    });
+    var elem = document.getElementById("t");
+	elem.value = str;
+  })
+  .change();
+</script>

@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150120012537) do
+ActiveRecord::Schema.define(version: 20150123003735) do
+
+  create_table "card_definitions", id: false, force: true do |t|
+    t.integer "card_id"
+    t.integer "definition_id"
+  end
+
+  add_index "card_definitions", ["card_id"], name: "index_card_definitions_on_card_id"
+  add_index "card_definitions", ["definition_id"], name: "index_card_definitions_on_definition_id"
 
   create_table "cards", force: true do |t|
     t.string   "title"
@@ -20,18 +28,17 @@ ActiveRecord::Schema.define(version: 20150120012537) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "hint_id"
-    t.integer  "definition_id"
     t.integer  "keyphrase_id"
-    t.boolean  "learned",       default: false
+    t.boolean  "learned",      default: false
   end
 
   create_table "definitions", force: true do |t|
     t.string   "title"
-    t.integer  "card_id"
     t.integer  "keyphrase_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "language_id"
+    t.integer  "card_id"
   end
 
   create_table "hints", force: true do |t|
@@ -111,6 +118,7 @@ ActiveRecord::Schema.define(version: 20150120012537) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string   "language"
     t.integer  "language_id"
   end
 
