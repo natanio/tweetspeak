@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   has_many :tracks
   has_many :lessons, through: :tracks
 
+  has_many :hints
+  has_many :cards
+
   before_create :set_trial_to_now
   def set_trial_to_now
     self.trial_began = Time.now
