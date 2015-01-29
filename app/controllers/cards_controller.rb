@@ -1,17 +1,13 @@
 class CardsController < ApplicationController
 	before_filter :authenticate_user!
-	#before_filter :set_cards
 
 	def index
-		@cards = Card.where(user_id: current_user.id)
+		@cards = find_learning_session.cards.unlearned
 	end
 
-	def show
+private
+	
+	def find_learning_session
+		current_user.learning_sessions.find(params[:learning_session_id])
 	end
-
-	private
-	def set_cards
-		@cards = Card.where(user_id: current_user.id)
-	end
-
 end

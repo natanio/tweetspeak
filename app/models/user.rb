@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :lessons, through: :tracks
 
   has_many :hints
-  has_many :cards
+  has_many :learning_sessions
 
   belongs_to :language
 
