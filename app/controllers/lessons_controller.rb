@@ -105,7 +105,7 @@ class LessonsController < ApplicationController
           @tags.each do |keyphrase|
             @keyphrase = Keyphrase.find_or_create_by(title: keyphrase, lesson_id: @lesson.id)
             @card = Card.create(title: keyphrase, 
-                        keyphrase_id: @keyphrase.id, 
+                        keyphrase_id: keyphrase.id, 
                         user_id: current_user.id,
                         lesson_id: @lesson.id)
             @keyphrase.update_attribute(:card_id, @card.id)
@@ -122,7 +122,7 @@ class LessonsController < ApplicationController
           @tags.each do |keyphrase|
             @keyphrase = Keyphrase.find_or_create_by(title: keyphrase, lesson_id: @lesson.id)
             @card = Card.create(title: keyphrase, 
-                          keyphrase_id: @keyphrase.id, 
+                          keyphrase_id: keyphrase.id, 
                           user_id: current_user.id,
                           lesson_id: @lesson.id)
             @keyphrase.update_attribute(:card_id, @card.id)

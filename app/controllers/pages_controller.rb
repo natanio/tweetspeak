@@ -14,10 +14,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @cards = Card.where(user_id: current_user.id)
-    @unlearned_card_number = Card.
-                             where(user_id: current_user.id).
-                             where(learned: false).length
+    time_to_learn
   end
 
   def dictionary
@@ -26,7 +23,7 @@ class PagesController < ApplicationController
   def subscription
   end
 
-  private
+private
 
   def check_subscription
       if user_signed_in? && !current_user.active_subscription == true
@@ -47,5 +44,16 @@ class PagesController < ApplicationController
       redirect_to new_charge_path, alert: "Ready to get started? Choose a plan below."
     end
   end
+
+  def time_to_learn
+    @cards = Card.where(user_id: current_user.id, learned_at: nil)
+
+    if @cards.length >= 5
+      return true
+    else
+      return false
+    end
+  end
+  helper_method :time_to_learn
     
 end

@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   has_many :hints
   has_many :learning_sessions
+  has_many :cards
+  has_many :keyphrases, through: :cards
 
   belongs_to :language
 
