@@ -71,7 +71,8 @@ class LessonsController < ApplicationController
   end
 
   def step
-    if current_user.admin? || ((@lesson.id - 1) <= current_user.last_lesson)
+
+    if should_see_lesson?
 
       if params[:step_number]=="1"
         render "step1.html.erb"
@@ -98,7 +99,7 @@ class LessonsController < ApplicationController
         render "step4.html.erb"
 
       elsif params[:step_number]=="5"
-        if current_user.last_lesson < 1         
+        if current_user.last_lesson < 1
           current_user.update_attribute(:last_lesson, @lesson.id)
           current_user.update_attribute(:points, current_user.points + 125)
           redirect_to pages_dashboard_path, notice: "Way to go! Keep it up :)"
@@ -122,7 +123,7 @@ class LessonsController < ApplicationController
   end
   private
     # Use callbacks to share common setup or constraints between actions.
-    
+
     def set_lesson
         @lesson = Lesson.find(params[:id])
     end
@@ -134,7 +135,7 @@ class LessonsController < ApplicationController
 
     def check_user
       if user_signed_in?
-      	unless current_user.admin? 
+      	unless current_user.admin?
         redirect_to pages_dashboard_path, alert: "Sorry, that page is not for students."
         end
       else
@@ -147,5 +148,16 @@ class LessonsController < ApplicationController
         redirect_to new_charge_path, alert: "Before you can access lessons, you need to choose a plan. Thanks!"
       end
     end
-    
+
+    def should_see_lesson?
+      current_user.admin? || (((@lesson.id - 1) <= current_user.last_lesson) && is_not_trialing? )
+    end
+
+    def is_not_trialing?
+      if @lesson.id > 14 && current_user.trialing?
+        return false
+      else
+        return true
+      end
+    end
 end
