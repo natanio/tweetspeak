@@ -18,10 +18,10 @@
     <%= f.text_field :video, class: "form-control", placeholder: 'Video # from URL' %>
   </div>
   <div class="form-group">
-    <%= f.text_field :answer, class: "form-control", placeholder: 'Answer (the tweet text)' %>
+    <%= f.text_field :answer, class: "form-control", placeholder: 'Answer (what is said in the video)' %>
   </div>
   <div class="form-group">
-    <%= f.text_field :tweet, class: "form-control", placeholder: 'Tweet link' %>
+    <%= f.text_field :tweet, class: "form-control", placeholder: 'Tweet embed code' %>
   </div>
 
   <!-- Text area input. -->
@@ -65,7 +65,7 @@
 
   <div class="form-group">
     <%= f.label :tags %>, valuable chunks the learn can look up later.</p>
-    <%= f.text_field :tags, class: "form-control", placeholder: 'phrasal verb, preposition, etc.' %>
+    <%= f.text_field :tags, class: "form-control", placeholder: 'any target phrases from the lesson' %>
   </div>
   <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>
