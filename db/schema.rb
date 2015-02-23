@@ -11,7 +11,71 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141109215403) do
+ActiveRecord::Schema.define(version: 20150223214447) do
+
+  create_table "card_definitions", id: false, force: true do |t|
+    t.integer "card_id"
+    t.integer "definition_id"
+  end
+
+  add_index "card_definitions", ["card_id"], name: "index_card_definitions_on_card_id"
+  add_index "card_definitions", ["definition_id"], name: "index_card_definitions_on_definition_id"
+
+  create_table "cards", force: true do |t|
+    t.string   "title"
+    t.integer  "lesson_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "hint_id"
+    t.integer  "keyphrase_id"
+    t.datetime "learned_at"
+  end
+
+  create_table "courses", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "definitions", force: true do |t|
+    t.string   "title"
+    t.integer  "keyphrase_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "language_id"
+  end
+
+  create_table "hints", force: true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.integer  "card_id"
+    t.integer  "keyphrase_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "keyphrases", force: true do |t|
+    t.string   "title"
+    t.integer  "lesson_id"
+    t.integer  "card_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "hint_id"
+  end
+
+  create_table "languages", force: true do |t|
+    t.string "name"
+    t.string "english_name"
+  end
+
+  create_table "learning_sessions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "card_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "lessons", force: true do |t|
     t.string   "title"
@@ -25,6 +89,7 @@ ActiveRecord::Schema.define(version: 20141109215403) do
     t.text     "tweet"
     t.text     "pronunciation"
     t.integer  "lesson_order"
+    t.integer  "course_id"
   end
 
   create_table "tracks", force: true do |t|
@@ -60,6 +125,7 @@ ActiveRecord::Schema.define(version: 20141109215403) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.integer  "language_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
