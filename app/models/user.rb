@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :user_courses
   has_many :tracks
   has_many :lessons, through: :tracks
 
@@ -34,7 +35,7 @@ class User < ActiveRecord::Base
   end
 
   private
-  
+
   def is_trialing
     self.trialing?
   end

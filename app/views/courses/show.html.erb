@@ -1,4 +1,105 @@
-<p id="notice"><%= notice %></p>
+<div class="featurette">
+  <h1><%= @course.title %> </h1>
+  <hr class="half-rule"></hr>
+  <p class="lead"><%= @course.description %></p>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+        <%= form_tag charges_path, id: 'coursePurchase' do |form| %>
+          <%= hidden_field_tag 'stripeToken' %>
+          <%= hidden_field_tag 'stripeEmail' %>
+          <%= hidden_field :charges, :plan_id, value: "course_purchase" %>
+          <div class="pricing-header">
+            <h3 class="pricing-header header-price">Monthly</h3>
+          </div>
+          <div class="pricing-plan">
+            <abbr>$</abbr>
+            9
+            <span>/ one time</span>
+          </div>
+
+          <button id="purchaseButton" class="btn btn-large btn-success">Buy Now</button>
+              <script>
+                var handler = StripeCheckout.configure({
+                  key: '<%= ENV["STRIPE_PUBLIC_KEY"] %>',
+                  image: 'https://dl.dropboxusercontent.com/s/vl246d6q0r0qiek/tweet-speak-checkout-icon.jpg?dl=0',
+                  token: function(response) {
+                  var tokenInput = $("<input type=hidden name=stripeToken />").val(response.id);
+                  var emailInput = $("<input type=hidden name=stripeEmail />").val(response.email);
+                  $("form#coursePurchase").append(tokenInput).append(emailInput).submit();
+                      }
+                    });
+
+                document.getElementById('purchaseButton').addEventListener('click', function(e) {
+                    // Open Checkout with further options
+                  handler.open({
+                    name: 'Tweet Speak English',
+                    description: '<%= @course.title %>',
+                    amount: 9*100,
+                  });
+                  e.preventDefault();
+                });
+              </script>
+            <% end %>
+
+  <div class="row margin-fix top-space">
+    <div class="center-block">
+      <img src="https://dl.dropboxusercontent.com/s/lfcnb5636j92x40/secure-patments.png?dl=0" class="img-responsive" alt="secure payments">
+      <p>Secure payments processed by <a href="http://www.stripe.com">Stripe</a>.</p>
+    </div>
+  </div>
+
+  <hr class="half-rule">
+
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="center-block">
+        <img src="https://dl.dropboxusercontent.com/s/4pakl20i7u85cxo/30-day-money-back-badge.jpg?dl=0" class="img-responsive" alt="30 day money back guarantee">
+      </div>
+    </div>
+
+    <div class="col-sm-9">
+      <h2 class="featurette-title">30 Day Money Back Guarantee</h1>
+      <p class="lead">Try this course today, worry-free. There's absolutely no risk with our <strong>30 Day Money Back Guarantee</strong>. If you're not happy with the course, we'll give you 100% of your money back.</p>
+    </div>
+
+  <% unless !current_user.admin? %>
+    <%= link_to 'Edit', edit_course_path(@course) %> |
+    <%= link_to 'Back', courses_path %>
+  <% end %>
+</div>
+
+  <div class="featurette" style="display: none; background: #f9fafa; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;">
+    <div class="container">
+      <h2 class="featurette-title">Questions and Answers</h2>
+    </div><!--end container-->
+  </div><!-- End featurette Questions -->
+
+  <div class="featurette">
+        <%= render 'static_pages/testimonials' %>
+  </div><!--// featurette testimonial-->
+
+  <div class="featurette" style="background: #f9fafa; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;">
+    <div class="container">
+      <h2 class="featurette-title">We're here for you.</h2>
+      <p class="lead">The teachers at Tweet Speak English</p>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="center-block">
+              <img width="250px" src="https://dl.dropboxusercontent.com/s/1xnd5qai0o3yevf/Nate%20Hill.jpg?dl=0" class="img-responsive img-circle" alt="nate hill creator of tweet speak english">
+              <p class="lead top-space">Nate Hill</p>
+              <p>Nate loves seeing the look in a student's eyes when she really understands something, and gains the confidence to believe, "Wow, I really can do this."</p>
+              <p>Teaching English since 2003, Nate has worked with a variety of students of all ages. He's been in Japan since 2006.</p>
+              <p>He's also the founder of <a href="http://fluentli.com">Fluentli</a>, a Q&A site for language learners.</p>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="center-block">
+              <img width="250px" src="https://dl.dropboxusercontent.com/s/x8evyvm1c652t8h/Jason-profile-pic-300x300.jpg?dl=0" class="img-responsive img-circle" alt="jason smith creator of tweet speak english">
+              <p class="lead top-space">Jason Smith</p>
+              <p>Jason started teaching English in 2005. He is passionate about helping foreign language learners build connections and share culture.</p>
+              <p>Jason has lived in many places around the world, from Vienna, Austria, to Seattle in the United States, and currently resides in Kochi, Japan.</p>
+          </div>
+        </div>
+      </div> <!-- // row -->
+    </div><!--// container-->
+  </div><!-- // featurette -->

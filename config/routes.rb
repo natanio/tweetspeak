@@ -1,5 +1,7 @@
 Tweetspeak::Application.routes.draw do
-  resources :courses
+  resources :courses do
+    resources :user_courses, only: [:create, :destroy]
+  end
 
   devise_for :users
   resources :users, only: [:index]
@@ -9,7 +11,7 @@ Tweetspeak::Application.routes.draw do
   end
   resources :charges
 
-  get "/lessons/:id/step/:step_number" => "lessons#step"
+  get "courses/:id/lessons/:id/step/:step_number" => "lessons#step"
   get "pages/about"
   get "pages/contact"
   get "dictionary" => "pages#dictionary", as: :pages_dictionary
@@ -53,11 +55,11 @@ end
   #     end
   #   end
 
-  resources :videos do
-    member do
-      get :show_video
-    end
-  end
+  # resources :videos do
+  #   member do
+  #     get :show_video
+  #   end
+  # end
 
     # Example resource route with sub-resources:
   #   resources :products do

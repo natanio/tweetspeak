@@ -1,15 +1,19 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_users!, except: [:index, :show]
+  before_filter :check_user, except: [:index, :show]
 
   # GET /courses
   # GET /courses.json
   def index
     @courses = Course.all
+    render :layout => "home"
   end
 
   # GET /courses/1
   # GET /courses/1.json
   def show
+    render :layout => "home"
   end
 
   # GET /courses/new
@@ -70,5 +74,15 @@ class CoursesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
       params.require(:course).permit(:title, :description)
+    end
+
+    def check_user
+      if user_signed_in?
+        unless current_user.admin?
+        redirect_to pages_dashboard_path, alert: "Sorry, that page is not for students."
+        end
+      else
+         redirect_to root_path, alert: "Sorry, you need to sign up or sign in to visit that page."
+      end
     end
 end

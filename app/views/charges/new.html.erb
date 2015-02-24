@@ -1,16 +1,16 @@
 <% title "Choose a plan" %>
 <div class="featurette" style="border-bottom:none;">
-  
+
   <div class="container">
     <% flash.each do |name, msg| %>
-        <% if msg.is_a?(String) %>
-          <div class="alert alert-<%= name == :notice ? "success" : "danger" %> alert-dismissable">
+      <% if msg.is_a?(String) %>
+        <div class="alert alert-<%= name == :notice ? "success" : "danger" %> alert-dismissable">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
           <%= content_tag :div, msg, :id => "flash_#{name}" %>
-          </div>
-          <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
   <% if !current_user.trialing %>
   <h2 class="featurette-title">Try Tweet Speak English for 7 days free, with no risk</h2>
