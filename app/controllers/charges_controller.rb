@@ -8,8 +8,6 @@ class ChargesController < ApplicationController
 
 	def create
 
-    @course = Course.find(params[:id])
-
 	  Stripe.api_key = ENV["STRIPE_API_KEY"]
 
 		# Get the credit card details submitted by the form
@@ -44,20 +42,9 @@ class ChargesController < ApplicationController
 			    :customer => customer
 			  )
 
-      elsif plan == "course_purchase"
-
-        customer = Stripe::Customer.create(
-          :card => token,
-          :description => current_user.email
-        )
-        Stripe::Charge.create(
-          :amount => 9*100,
-          :currency => "usd",
-          :customer => customer
-        )
-		else
-			flash[:alert] = "There was an error. Please check to make sure JavaScript is running in your browser settings."
-			redirect_to new_charge_path
+		  else
+  			flash[:alert] = "There was an error. Please check to make sure JavaScript is running in your browser settings."
+  			redirect_to new_charge_path
 	  	end
 
 	  if !customer.default_card.nil?

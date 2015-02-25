@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_users!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
   before_filter :check_user, except: [:index, :show]
 
   # GET /courses
@@ -73,7 +73,7 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:title, :description)
+      params.require(:course).permit(:title, :description, :course_image)
     end
 
     def check_user

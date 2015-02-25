@@ -1,18 +1,27 @@
 <div class="featurette">
   <h1><%= @course.title %> </h1>
+  <% unless !current_user.admin? %>
+    <%= link_to 'Edit', edit_course_path(@course) %> |
+    <%= link_to 'Back', courses_path %>
+  <% end %>
   <hr class="half-rule"></hr>
   <p class="lead"><%= @course.description %></p>
 
+      <div class="row pricing">
+        <div class="col-md-6">
+          <%= image_tag @course.course_image.url(:medium) %>
+        </div>
+        <div class="col-md-6">
         <%= form_tag course_user_courses_path(@course), id: 'coursePurchase' do |form| %>
           <%= hidden_field_tag 'stripeToken' %>
           <%= hidden_field_tag 'stripeEmail' %>
           <%= hidden_field :charges, :plan_id, value: "course_purchase" %>
-          <div class="pricing-header">
+          <!-- <div class="pricing-header">
             <h3 class="pricing-header header-price">Monthly</h3>
-          </div>
+          </div> -->
           <div class="pricing-plan">
             <abbr>$</abbr>
-            9
+            15
             <span>/ one time</span>
           </div>
 
@@ -33,19 +42,20 @@
                   handler.open({
                     name: 'Tweet Speak English',
                     description: '<%= @course.title %>',
-                    amount: 9*100,
+                    amount: 15*100,
                   });
                   e.preventDefault();
                 });
               </script>
             <% end %>
-
-  <div class="row margin-fix top-space">
+            <div class="row margin-fix top-space">
     <div class="center-block">
       <img src="https://dl.dropboxusercontent.com/s/lfcnb5636j92x40/secure-patments.png?dl=0" class="img-responsive" alt="secure payments">
       <p>Secure payments processed by <a href="http://www.stripe.com">Stripe</a>.</p>
     </div>
   </div>
+          </div>
+        </div>
 
   <hr class="half-rule">
 
@@ -61,10 +71,6 @@
       <p class="lead">Try this course today, worry-free. There's absolutely no risk with our <strong>30 Day Money Back Guarantee</strong>. If you're not happy with the course, we'll give you 100% of your money back.</p>
     </div>
 
-  <% unless !current_user.admin? %>
-    <%= link_to 'Edit', edit_course_path(@course) %> |
-    <%= link_to 'Back', courses_path %>
-  <% end %>
 </div>
 
   <div class="featurette" style="display: none; background: #f9fafa; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;">

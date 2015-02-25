@@ -3,8 +3,6 @@ class UserCoursesController < ApplicationController
   # POST /user_courses
   def create
     find_course
-    # @user_course = UserCourse.create(user_id: current_user.id, course_id: @course.id)
-
 
     Stripe.api_key = ENV["STRIPE_API_KEY"]
 
@@ -19,7 +17,7 @@ class UserCoursesController < ApplicationController
           :description => current_user.email
         )
         Stripe::Charge.create(
-          :amount => 9*100,
+          :amount => 15*100,
           :currency => "usd",
           :customer => customer
         )
@@ -39,14 +37,6 @@ class UserCoursesController < ApplicationController
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to charges_path
-
-    respond_to do |format|
-      if @user_course.save
-        format.html { redirect_to pages_dashboard_path, notice: 'You have subscribed to this course.' }
-      else
-        format.html { render action: 'new' }
-      end
-    end
   end
 
   # DELETE /user_courses/1
