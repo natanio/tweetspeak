@@ -3,7 +3,7 @@
   <hr class="half-rule"></hr>
   <p class="lead"><%= @course.description %></p>
 
-        <%= form_tag charges_path, id: 'coursePurchase' do |form| %>
+        <%= form_tag course_user_courses_path(@course), id: 'coursePurchase' do |form| %>
           <%= hidden_field_tag 'stripeToken' %>
           <%= hidden_field_tag 'stripeEmail' %>
           <%= hidden_field :charges, :plan_id, value: "course_purchase" %>

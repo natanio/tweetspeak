@@ -65,7 +65,6 @@ class ChargesController < ApplicationController
 		  current_user.active_subscription = true
 		  current_user.update_attribute(:trialing, false)
 		  current_user.update_attribute(:customer_id, customer.id)
-      UserCourse.create(user_id: current_user.id, course_id: @course.id)
 		  current_user.save
 		  redirect_to pages_dashboard_path
 		end
