@@ -27,8 +27,13 @@ class User < ActiveRecord::Base
   end
 
   def next_lesson_path
+    # set_course
   	"/lessons/#{next_lesson}/step/1"
   end
+
+  # def set_course
+  #   @course = Course.find(params[:id])
+  # end
 
   after_create :send_admin_mail
   def send_admin_mail

@@ -1,0 +1,17 @@
+<h3>My Courses</h3>
+
+<div class="row top-space">
+  <% courses.each do |course| %>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <%= image_tag course.course_image.url(:thumb) %>
+      <div class="caption">
+        <h3><small>Course Title</small><br><%= course.title %></h3>
+        <p><%= course.description %></p>
+      </div>
+        <a href="/courses/<%=course.id%><%= current_user.next_lesson_path %>" class="btn btn-primary btn-lg">Start Next Lesson! <span class="glyphicon glyphicon-arrow-right"></span></a>
+    </div>
+  </div>
+  <% end %>
+
+</div>

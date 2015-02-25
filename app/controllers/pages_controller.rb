@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   before_filter :best_streak, only: [:dashboard]
 
   helper PagesHelper
-	
+
   def about
   	render :layout => "home"
   end
@@ -14,6 +14,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @user_courses = current_user.courses
   end
 
   def dictionary
@@ -43,5 +44,5 @@ class PagesController < ApplicationController
       redirect_to new_charge_path, alert: "Ready to get started? Choose a plan below."
     end
   end
-    
+
 end
