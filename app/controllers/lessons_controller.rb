@@ -2,7 +2,7 @@ class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :edit, :update, :destroy, :step]
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_filter :check_user, only: [:index, :new, :create, :edit, :update, :destroy]
-  before_filter :check_subscription, only: [:step, :show, :edit, :update, :destroy]
+  before_filter :check_user_course, only: [:step, :show]
 
   # GET /lessons
   # GET /lessons.json
@@ -156,9 +156,13 @@ class LessonsController < ApplicationController
       end
     end
 
-    def check_subscription
-      if user_signed_in? && !current_user.active_subscription == true
-        redirect_to new_charge_path, alert: "Before you can access lessons, you need to choose a plan. Thanks!"
+    def check_user_course
+      if user_signed_in?
+        user_courses = UserCourse.where("user_id = ? AND course_id = ?", current_user.id, params[:course_id])
+        unless user_courses.present?
+          course = Course.find(params[:course_id])
+          redirect_to course_path(course), alert: "Oops! Looks like you haven't bought this course yet. Check it out!"
+        end
       end
     end
 
