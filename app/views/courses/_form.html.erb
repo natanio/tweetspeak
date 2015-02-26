@@ -14,7 +14,11 @@
    <div class="form-group">
     <%= image_tag @course.course_image.url(:medium) %>
     <%= f.label :course_image %>
-    <%= f.file_field :course_image, placeholder: "Add a course name", class: "form-control" %>
+    <%= f.file_field :course_image %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_field :starting_lesson, placeholder: "What's the first lesson's id?", class: "form-control" %>
   </div>
 
   <div class="form-group">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150225211442) do
+ActiveRecord::Schema.define(version: 20150226204515) do
 
   create_table "card_definitions", id: false, force: true do |t|
     t.integer "card_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20150225211442) do
     t.string   "course_image_content_type"
     t.integer  "course_image_file_size"
     t.datetime "course_image_updated_at"
+    t.integer  "starting_lesson"
   end
 
   create_table "definitions", force: true do |t|
@@ -107,6 +108,7 @@ ActiveRecord::Schema.define(version: 20150225211442) do
     t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "last_lesson"
   end
 
   create_table "users", force: true do |t|

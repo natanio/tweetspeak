@@ -15,20 +15,13 @@ class User < ActiveRecord::Base
     self.active_subscription = true
   end
 
-  def next_lesson
-    if is_trialing && last_lesson <= 14
-  	 last_lesson+1
-    elsif !is_trialing
-      last_lesson+1
-    else
-      "alert('Sorry, you've finished all the trial lessons. Please wait until after your trial to continue. Thanks!')"
-      last_lesson
-    end
+  def next_lesson(course)
+    user_course = UserCourse.where("user_id = ? AND course_id = ?", self.id, course.id)
+    user_course.last.last_lesson
   end
 
-  def next_lesson_path
-    # set_course
-  	"/lessons/#{next_lesson}/step/1"
+  def next_lesson_path(course)
+  	"/courses/#{course.id}/lessons/#{next_lesson(course)}/step/1"
   end
 
   # def set_course
@@ -46,3 +39,15 @@ class User < ActiveRecord::Base
     self.trialing?
   end
 end
+
+# This is the old nex_lesson method used with the trial and subscription set up
+  # def next_lesson
+  #   if is_trialing && last_lesson <= 14
+  #    last_lesson+1
+  #   elsif !is_trialing
+  #     last_lesson+1
+  #   else
+  #     "alert('Sorry, you've finished all the trial lessons. Please wait until after your trial to continue. Thanks!')"
+  #     last_lesson
+  #   end
+  # end

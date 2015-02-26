@@ -9,7 +9,7 @@
         <h3><small>Course Title</small><br><%= course.title %></h3>
         <p><%= course.description %></p>
       </div>
-        <a href="/courses/<%=course.id%><%= current_user.next_lesson_path %>" class="btn btn-primary btn-lg">Start Next Lesson! <span class="glyphicon glyphicon-arrow-right"></span></a>
+        <a href="<%= current_user.next_lesson_path(course) %>" class="btn btn-primary btn-lg">Start Next Lesson! <span class="glyphicon glyphicon-arrow-right"></span></a>
     </div>
   </div>
   <% end %>
