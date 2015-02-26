@@ -11,7 +11,7 @@ Tweetspeak::Application.routes.draw do
   end
   resources :charges
 
-  get "courses/:id/lessons/:id/step/:step_number" => "lessons#step"
+  get "courses/:course_id/lessons/:id/step/:step_number" => "lessons#step"
   get "pages/about"
   get "pages/contact"
   get "dictionary" => "pages#dictionary", as: :pages_dictionary

@@ -94,12 +94,12 @@
     			$('#myTab a:first').tab('show')
   			})
 		</script>
-			
+
 
 			<!-- Continue Button -->
 			<div class="center">
 				<h3 style="font-family: 'Roboto Slab', serif;">Great Job!</h3>
 				<p style="font-family: 'Roboto Slab', serif;">Click "Complete" to add to your Dictionary</p>
-				<a href="/lessons/<%=@lesson.id%>/step/5" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-ok-sign"></span> Complete!</a>	
+				<a href="/courses/<%= params[:course_id] %>/lessons/<%=@lesson.id%>/step/5" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-ok-sign"></span> Complete!</a>
 			</div>
 </div>

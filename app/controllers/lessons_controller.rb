@@ -99,18 +99,27 @@ class LessonsController < ApplicationController
         render "step4.html.erb"
 
       elsif params[:step_number]=="5"
-        if current_user.last_lesson < 1
-          current_user.update_attribute(:last_lesson, @lesson.id)
+        set_user_course
+        if @user_course.last_lesson == @user_course.course.starting_lesson
+          @user_course.update_attribute(:last_lesson, @lesson.id+1)
           current_user.update_attribute(:points, current_user.points + 125)
           redirect_to pages_dashboard_path, notice: "Way to go! Keep it up :)"
           current_user.save
+          @user_course.save
 
-        elsif @lesson.id == current_user.last_lesson+1
-          current_user.update_attribute(:last_lesson, @lesson.id)
+        elsif @lesson.id == @user_course.last_lesson
           current_user.update_attribute(:points, current_user.points + 125)
-          redirect_to pages_dashboard_path, notice: "Way to go! Keep it up :)"
           current_user.save
-
+          @user_course.update_attribute(:last_lesson, @lesson.id+1)
+          @user_course.save
+          # If they've finished the course, give them a nice message
+          if (@user_course.last_lesson - 1) == @user_course.course.ending_lesson
+            @user_course.last_lesson = @user_course.course.ending_lesson
+            @user_course.save
+            redirect_to pages_dashboard_path, notice: "Great job! You've finished this course!"
+          else
+            redirect_to pages_dashboard_path, notice: "Way to go! Keep it up :)"
+          end
         else
           redirect_to pages_dashboard_path
         end
@@ -126,6 +135,10 @@ class LessonsController < ApplicationController
 
     def set_lesson
         @lesson = Lesson.find(params[:id])
+    end
+
+    def set_user_course
+      @user_course = UserCourse.where("user_id = ? AND course_id = ?", current_user.id, params[:course_id]).last
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
