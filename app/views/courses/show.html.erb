@@ -9,7 +9,8 @@
   <div class="row">
     <div class="container pricing-bg">
       <div class="col-md-8">
-        <%= image_tag @course.course_image.url(:medium) %>
+        <%#= image_tag @course.course_image.url(:medium) %>
+        <%= render 'course_slideshow' %>
       </div>
 
       <div class="col-md-3">
