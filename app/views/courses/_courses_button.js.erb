@@ -1,0 +1,19 @@
+var handler = StripeCheckout.configure({
+  key: '<%= ENV["STRIPE_PUBLIC_KEY"] %>',
+  image: 'https://dl.dropboxusercontent.com/s/vl246d6q0r0qiek/tweet-speak-checkout-icon.jpg?dl=0',
+  token: function(response) {
+    var tokenInput = $("<input type=hidden name=stripeToken />").val(response.id);
+    var emailInput = $("<input type=hidden name=stripeEmail />").val(response.email);
+    $("form#coursePurchase").append(tokenInput).append(emailInput).submit();
+  }
+});
+
+document.getElementById('purchaseButton').addEventListener('click', function(e) {
+// Open Checkout with further options
+  handler.open({
+    name: 'Tweet Speak English',
+    description: '<%= @course.title %>',
+    amount: <%= (@course.price * 0.6).floor * 100 %>,
+  });
+  e.preventDefault();
+});

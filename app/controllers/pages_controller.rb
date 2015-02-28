@@ -14,7 +14,8 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @user_courses = current_user.courses
+    @user_courses = current_user.user_courses.where(course_finished: nil)
+    @finished_courses = current_user.user_courses.where("course_finished IS NOT NULL")
   end
 
   def dictionary

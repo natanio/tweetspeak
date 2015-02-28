@@ -33,6 +33,12 @@
 	border-bottom-right-radius: 3px;
 }
 
+.pricing-bg {
+  background: #FCFCFC;
+  padding: 2em 0;
+  border: 1px solid #efefef;
+}
+
 .pricing-header {
 	padding: 0.8125em 1.5625em;
 	background: #f9fafa;
@@ -61,7 +67,7 @@
 	font-family: 'Roboto Slab', serif;
 	font-weight: 400;
 	-webkit-font-smoothing: antialiased;
-	font-size: 16px;
+	font-size: 20px;
 }
 
 .pricing-plan>abbr {

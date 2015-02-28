@@ -1,84 +1,85 @@
 <div class="featurette">
   <%= render 'layouts/messages' %>
-  <h1><%= @course.title %> </h1>
-  <% unless !current_user.admin? %>
-    <%= link_to 'Edit', edit_course_path(@course) %> |
-    <%= link_to 'Back', courses_path %>
-  <% end %>
+  <h1><%= @course.title %> <br>
+    <small><%= @course.tagline %></small></h1>
+
   <hr class="half-rule"></hr>
   <p class="lead"><%= @course.description %></p>
 
-      <div class="row pricing">
-        <div class="col-md-6">
-          <%= image_tag @course.course_image.url(:medium) %>
-        </div>
-        <div class="col-md-6">
+  <div class="row">
+    <div class="container pricing-bg">
+      <div class="col-md-8">
+        <%= image_tag @course.course_image.url(:medium) %>
+      </div>
+
+      <div class="col-md-3">
         <%= form_tag course_user_courses_path(@course), id: 'coursePurchase' do |form| %>
           <%= hidden_field_tag 'stripeToken' %>
           <%= hidden_field_tag 'stripeEmail' %>
           <%= hidden_field :charges, :plan_id, value: "course_purchase" %>
-          <!-- <div class="pricing-header">
-            <h3 class="pricing-header header-price">Monthly</h3>
-          </div> -->
+
           <div class="pricing-plan">
-            <abbr>$</abbr>
-            15
-            <span>/ one time</span>
-          </div>
+            <% unless @course.price != 0 %>
+              <%= link_to 'Get Free Access Now', new_user_registration_path, class: "btn btn-lg btn-success" %>
+            <% else %>
+              <abbr style="color: #e74c3c;">$</abbr><s style="color: #e74c3c;"><%= @course.price.to_s %></s>
+              <abbr>$</abbr><%= (@course.price * 0.6).floor.to_s %>
+              <span>/ one time</span>
 
-          <button id="purchaseButton" class="btn btn-large btn-success">Buy Now</button>
+
+                <span class="pricetag">60% OFF!</span>
+
+              <% unless is_course_purchase? %>
+                <button id="purchaseButton" class="btn btn-lg btn-success">Buy Now</button>
+              <% else %>
+                <button class="btn btn-lg btn-success disabled">You've Purchased This</button>
+              <% end %>
+
               <script>
-                var handler = StripeCheckout.configure({
-                  key: '<%= ENV["STRIPE_PUBLIC_KEY"] %>',
-                  image: 'https://dl.dropboxusercontent.com/s/vl246d6q0r0qiek/tweet-speak-checkout-icon.jpg?dl=0',
-                  token: function(response) {
-                  var tokenInput = $("<input type=hidden name=stripeToken />").val(response.id);
-                  var emailInput = $("<input type=hidden name=stripeEmail />").val(response.email);
-                  $("form#coursePurchase").append(tokenInput).append(emailInput).submit();
-                      }
-                    });
-
-                document.getElementById('purchaseButton').addEventListener('click', function(e) {
-                    // Open Checkout with further options
-                  handler.open({
-                    name: 'Tweet Speak English',
-                    description: '<%= @course.title %>',
-                    amount: 15*100,
-                  });
-                  e.preventDefault();
-                });
+                <%= render 'courses_button.js.erb' %>
               </script>
             <% end %>
-            <div class="row margin-fix top-space">
-    <div class="center-block">
-      <img src="https://dl.dropboxusercontent.com/s/lfcnb5636j92x40/secure-patments.png?dl=0" class="img-responsive" alt="secure payments">
-      <p>Secure payments processed by <a href="http://www.stripe.com">Stripe</a>.</p>
-    </div>
-  </div>
-          </div>
-        </div>
 
-  <hr class="half-rule">
+
+            <div class="margin-fix top-space">
+              <div class="center-block">
+                <img src="https://dl.dropboxusercontent.com/s/lfcnb5636j92x40/secure-patments.png?dl=0" class="img-responsive" alt="secure payments">
+                <p style="font-size: 12px;">Secure payments processed by <a href="http://www.stripe.com">Stripe</a>.</p>
+              </div>
+            </div>
+
+          </div>  <!-- // pricing plan -->
+        <% end %> <!-- // form -->
+      </div> <!-- // col -->
+    </div> <!-- // container -->
+  </div> <!-- // row -->
+</div> <!-- // featurette -->
+
+<div class="featurette">
 
   <div class="row">
-    <div class="col-sm-3">
-      <div class="center-block">
-        <img src="https://dl.dropboxusercontent.com/s/4pakl20i7u85cxo/30-day-money-back-badge.jpg?dl=0" class="img-responsive" alt="30 day money back guarantee">
+    <div class="container">
+
+      <div class="col-sm-3">
+        <div class="center-block">
+          <img src="https://dl.dropboxusercontent.com/s/4pakl20i7u85cxo/30-day-money-back-badge.jpg?dl=0" class="img-responsive" alt="30 day money back guarantee">
+        </div>
       </div>
-    </div>
 
-    <div class="col-sm-9">
-      <h2 class="featurette-title">30 Day Money Back Guarantee</h1>
-      <p class="lead">Try this course today, worry-free. There's absolutely no risk with our <strong>30 Day Money Back Guarantee</strong>. If you're not happy with the course, we'll give you 100% of your money back.</p>
-    </div>
+      <div class="col-sm-9">
+        <h2 class="featurette-title">30 Day Money Back Guarantee</h2>
+        <p class="lead">Try this course today, worry-free. There's absolutely no risk with our <strong>30 Day Money Back Guarantee</strong>. If you're not happy with the course, we'll give you 100% of your money back.</p>
+      </div>
 
-</div>
+    </div> <!-- // container -->
+  </div><!--  // row -->
+</div> <!-- // featurette -->
 
-  <div class="featurette" style="display: none; background: #f9fafa; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;">
+  <!-- <div class="featurette" style="display: none; background: #f9fafa; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;">
     <div class="container">
       <h2 class="featurette-title">Questions and Answers</h2>
-    </div><!--end container-->
-  </div><!-- End featurette Questions -->
+    </div><
+  </div> End featurette Questions -->
 
   <div class="featurette">
         <%= render 'static_pages/testimonials' %>

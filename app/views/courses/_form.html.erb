@@ -27,7 +27,15 @@
   </div>
 
   <div class="form-group">
+    <%= f.text_field :tagline, placeholder: "Add a snazzy tagline", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= f.text_area :description, placeholder: "Add a course description", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_field :price, placeholder: "Price, minus '$'. example: 15 or 15.99", class: "form-control" %>
   </div>
 
   <div class="actions">

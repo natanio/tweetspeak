@@ -1,3 +1,44 @@
 // Place all the styles related to the Courses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.pricetag {
+    white-space: nowrap;
+    position: relative;
+    display: block;
+    height: 44px;
+    width: 150px;
+    border-radius: 0px 5px 5px 0px;
+    padding: 8px 25px 0px 15px;
+    background: none repeat scroll 0% 0% #e67e22;
+    border: 1px solid #CF721F;
+    color: #fff;
+    line-height: 23px;
+    margin: 0px auto;
+}
+.pricetag:after{
+    position:absolute;
+    right:0;
+    margin:1px 7px;
+    font-weight:bold;
+    font-size:19px;
+    content:"";
+}
+.pricetag:before {
+    position: absolute;
+    background: none repeat scroll 0% 0% #e67e22;
+    content: "●";
+    color: #FFF;
+    text-shadow: 0px 0px 1px #CF721F;
+    font-size: 20px;
+    line-height: 25px;
+    text-indent: 0px;
+    top: 5px;
+    left: -17px;
+    width: 32px;
+    height: 32px;
+    transform: rotate(45deg);
+    border-left: 1px solid #CF721F;
+    border-bottom: 1px solid #CF721F;
+}

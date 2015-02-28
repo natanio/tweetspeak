@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150228045913) do
+ActiveRecord::Schema.define(version: 20150228061250) do
 
   create_table "card_definitions", id: false, force: true do |t|
     t.integer "card_id"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20150228045913) do
     t.datetime "course_image_updated_at"
     t.integer  "starting_lesson"
     t.integer  "ending_lesson"
+    t.integer  "price"
+    t.string   "tagline"
   end
 
   create_table "definitions", force: true do |t|
