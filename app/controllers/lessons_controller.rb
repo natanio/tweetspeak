@@ -114,9 +114,12 @@ class LessonsController < ApplicationController
           @user_course.save
           # If they've finished the course, give them a nice message
           if (@user_course.last_lesson - 1) == @user_course.course.ending_lesson
-            @user_course.last_lesson = @user_course.course.ending_lesson
-            @user_course.save
-            redirect_to pages_dashboard_path, notice: "Great job! You've finished this course!"
+            unless @user_course.course_finished?
+              @user_course.last_lesson = @user_course.course.ending_lesson
+              @user_course.update_attribute(:course_finished, Time.now)
+              @user_course.save
+              redirect_to pages_dashboard_path, notice: "Great job! You've finished this course!"
+            end
           else
             redirect_to pages_dashboard_path, notice: "Way to go! Keep it up :)"
           end
