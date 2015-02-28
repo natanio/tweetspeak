@@ -1,8 +1,8 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :edit, :update, :destroy, :step]
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_filter :check_user, only: [:index, :new, :create, :edit, :update, :destroy]
-  before_filter :check_user_course, only: [:step, :show]
+  before_filter :check_user, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_filter :check_user_course, only: [:step]
 
   # GET /lessons
   # GET /lessons.json
