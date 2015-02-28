@@ -23,13 +23,14 @@
 
 </div>
 
-<hr class="full-rule"></hr>
 
-<h3>Your Finsished Courses</h3>
-<div class="row top-space">
-  <% if finished_courses.empty? %>
-    <h4>You've finished all of your courses! Use the button above to find a new course, or review your finished courses below.</h4>
-  <% else %>
+  <% if finished_courses.present? %>
+  <hr class="full-rule"></hr>
+
+  <h3>Your Finsished Courses</h3>
+  <div class="row top-space">
+
+
     <% finished_courses.each do |user_course| %>
     <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
@@ -42,6 +43,5 @@
       </div>
     </div>
     <% end %>
+    </div>
   <% end %>
-
-</div>

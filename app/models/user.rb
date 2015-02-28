@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   has_many :lessons, through: :tracks
 
   before_create :set_trial_to_now
+
+  after_create :create_free_course
+
   def set_trial_to_now
     self.trial_began = Time.now
     self.active_subscription = true
@@ -37,6 +40,11 @@ class User < ActiveRecord::Base
 
   def is_trialing
     self.trialing?
+  end
+
+  def create_free_course
+    trial_course = Course.find(1)
+    self.user_courses.build(user_id: self.id, course_id: trial_course.id, last_lesson: trial_course.starting_lesson)
   end
 end
 
