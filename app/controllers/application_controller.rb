@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
       @soundcloud = Soundcloud.new(:client_id => ENV["CLIENT_ID"],
                                     :client_secret => ENV["CLIENT_SECRET"],
                                     :username => ENV["SC_USERNAME"],
-                                    :password => ENV["SC_PASSWORD"]) 
+                                    :password => ENV["SC_PASSWORD"])
       @soundcloud.exchange_token
       @soundcloud
     end
@@ -27,12 +27,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if current_user.admin?
-      "/dashboard" # <- Path you want to redirect the user to.
-    elsif !current_user.active_subscription == true
-      "/charges/new"
-    else
-      "/dashboard"
-    end
+    "/dashboard"
   end
 end

@@ -72,7 +72,7 @@ class LessonsController < ApplicationController
 
   def step
 
-    if should_see_lesson?
+    # if should_see_lesson?
 
       if params[:step_number]=="1"
         render "step1.html.erb"
@@ -129,9 +129,9 @@ class LessonsController < ApplicationController
       else
         render "step1.html.erb"
       end
-    else
-      redirect_to pages_dashboard_path, alert: "Sorry, you can't access that lesson yet."
-    end
+    # else
+      # redirect_to pages_dashboard_path, alert: "Sorry, you can't access that lesson yet."
+    # end
   end
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -169,9 +169,9 @@ class LessonsController < ApplicationController
       end
     end
 
-    def should_see_lesson?
-      current_user.admin? || (((@lesson.id - 1) <= current_user.last_lesson) && is_not_trialing? )
-    end
+    # def should_see_lesson?
+    #   current_user.admin? || (((@lesson.id - 1) <= current_user.last_lesson) && is_not_trialing? )
+    # end
 
     def is_not_trialing?
       if @lesson.id > 14 && current_user.trialing?

@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 	before_filter :authenticate_user!, except: [:about, :contact]
-	before_filter :check_subscription, except: [:about, :contact]
+	# before_filter :check_subscription, except: [:about, :contact]
   before_filter :check_trialing, only: [:subscription]
   before_filter :best_streak, only: [:dashboard]
 
@@ -26,11 +26,11 @@ class PagesController < ApplicationController
 
   private
 
-  def check_subscription
-      if user_signed_in? && !current_user.active_subscription == true
-        redirect_to new_charge_path, alert: "Before you can access your dashboard, you need to choose a plan. Thanks!"
-      end
-  end
+  # def check_subscription
+  #     if user_signed_in? && !current_user.active_subscription == true
+  #       redirect_to new_charge_path, alert: "Before you can access your dashboard, you need to choose a plan. Thanks!"
+  #     end
+  # end
 
   def best_streak
     @streak = current_user.best_streak

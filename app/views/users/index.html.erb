@@ -1,7 +1,7 @@
 <div class="paper">
   <% @subscribers = [] %>
   <% User.all.each do |user| %>
-  <% if !user.trialing && user.active_subscription %>
+  <% if !user.trialing %>
   <% @subscribers.push(user.id) %>
   <% end %>
   <% end %>
@@ -33,8 +33,8 @@
           <% end %>
         </td>
         <td class="center">
-          <% if !user.trialing && user.active_subscription %>Yes</td>
-          <% elsif user.trialing && user.active_subscription %>
+          <% if !user.trialing %>Yes</td>
+          <% elsif user.trialing %>
           Trialing
           <% else %>
           No

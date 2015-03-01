@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   def set_trial_to_now
     self.trial_began = Time.now
-    self.active_subscription = true
+    # self.active_subscription = true
   end
 
   def next_lesson(course)

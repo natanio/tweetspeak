@@ -14,6 +14,7 @@
       </div>
 
       <div class="col-md-3">
+        <% if user_signed_in? %>
         <%= form_tag course_user_courses_path(@course), id: 'coursePurchase' do |form| %>
           <%= hidden_field_tag 'stripeToken' %>
           <%= hidden_field_tag 'stripeEmail' %>
@@ -35,7 +36,7 @@
 
                   <span class="pricetag">60% OFF!</span>
 
-              <% if user_signed_in? %>
+
 
                 <% unless is_course_purchase? %>
                   <button id="purchaseButton" class="btn btn-lg btn-success">Buy Now</button>
@@ -46,10 +47,7 @@
                 <script>
                   <%= render 'courses_button.js.erb' %>
                 </script>
-              <% else %>
-                <h4>Create a Free Account to Purchase</h4>
-                <%= render 'layouts/signup' %>
-              <% end %>
+
             <% end %>
 
             <% unless @course.price == 0 %>
@@ -63,6 +61,17 @@
 
           </div>  <!-- // pricing plan -->
         <% end %> <!-- // form -->
+        <% else %> <!-- if user not signed in -->
+        <div class="pricing-plan">
+          <abbr style="color: #e74c3c;">$</abbr><s style="color: #e74c3c;"><%= @course.price.to_s %></s>
+          <abbr>$</abbr><%= (@course.price * 0.6).floor.to_s %>
+          <span>/ one time</span>
+          <span class="pricetag">60% OFF!</span>
+
+          <h4>Create a Free Account to Purchase</h4>
+            <%= render 'layouts/signup' %>
+        </div>
+        <% end %>
       </div> <!-- // col -->
     </div> <!-- // container -->
   </div> <!-- // row -->
