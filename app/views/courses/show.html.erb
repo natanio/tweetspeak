@@ -21,33 +21,45 @@
 
           <div class="pricing-plan">
             <% unless @course.price != 0 %>
-              <%= link_to 'Get Free Access Now', new_user_registration_path, class: "btn btn-lg btn-success" %>
+              <div class="trial-box">
+                <h3>This is a Free Course <br>
+                  <small>Create a Free Account to Access</small></h3>
+                <%= link_to 'Get Free Access Now', new_user_registration_path, class: "btn btn-lg btn-success" %>
+              </div>
             <% else %>
-              <abbr style="color: #e74c3c;">$</abbr><s style="color: #e74c3c;"><%= @course.price.to_s %></s>
-              <abbr>$</abbr><%= (@course.price * 0.6).floor.to_s %>
-              <span>/ one time</span>
+
+                <abbr style="color: #e74c3c;">$</abbr><s style="color: #e74c3c;"><%= @course.price.to_s %></s>
+                <abbr>$</abbr><%= (@course.price * 0.6).floor.to_s %>
+                <span>/ one time</span>
 
 
-                <span class="pricetag">60% OFF!</span>
+                  <span class="pricetag">60% OFF!</span>
 
-              <% unless is_course_purchase? %>
-                <button id="purchaseButton" class="btn btn-lg btn-success">Buy Now</button>
+              <% if user_signed_in? %>
+
+                <% unless is_course_purchase? %>
+                  <button id="purchaseButton" class="btn btn-lg btn-success">Buy Now</button>
+                <% else %>
+                  <button class="btn btn-lg btn-success disabled">You've Purchased This</button>
+                <% end %>
+
+                <script>
+                  <%= render 'courses_button.js.erb' %>
+                </script>
               <% else %>
-                <button class="btn btn-lg btn-success disabled">You've Purchased This</button>
+                <h4>Create a Free Account to Purchase</h4>
+                <%= link_to 'Create a Free Account', new_user_registration_path, class: 'btn btn-lg btn-success' %>
               <% end %>
-
-              <script>
-                <%= render 'courses_button.js.erb' %>
-              </script>
             <% end %>
 
-
-            <div class="margin-fix top-space">
-              <div class="center-block">
-                <img src="https://dl.dropboxusercontent.com/s/lfcnb5636j92x40/secure-patments.png?dl=0" class="img-responsive" alt="secure payments">
-                <p style="font-size: 12px;">Secure payments processed by <a href="http://www.stripe.com">Stripe</a>.</p>
+            <% unless @course.price == 0 %>
+              <div class="margin-fix top-space">
+                <div class="center-block">
+                  <img src="https://dl.dropboxusercontent.com/s/lfcnb5636j92x40/secure-patments.png?dl=0" class="img-responsive" alt="secure payments">
+                  <p style="font-size: 12px;">Secure payments processed by <a href="http://www.stripe.com">Stripe</a>.</p>
+                </div>
               </div>
-            </div>
+            <% end %>
 
           </div>  <!-- // pricing plan -->
         <% end %> <!-- // form -->
@@ -56,25 +68,7 @@
   </div> <!-- // row -->
 </div> <!-- // featurette -->
 
-<div class="featurette">
-
-  <div class="row">
-    <div class="container">
-
-      <div class="col-sm-3">
-        <div class="center-block">
-          <img src="https://dl.dropboxusercontent.com/s/4pakl20i7u85cxo/30-day-money-back-badge.jpg?dl=0" class="img-responsive" alt="30 day money back guarantee">
-        </div>
-      </div>
-
-      <div class="col-sm-9">
-        <h2 class="featurette-title">30 Day Money Back Guarantee</h2>
-        <p class="lead">Try this course today, worry-free. There's absolutely no risk with our <strong>30 Day Money Back Guarantee</strong>. If you're not happy with the course, we'll give you 100% of your money back.</p>
-      </div>
-
-    </div> <!-- // container -->
-  </div><!--  // row -->
-</div> <!-- // featurette -->
+<%= render 'pages/guarantee' %>
 
   <!-- <div class="featurette" style="display: none; background: #f9fafa; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;">
     <div class="container">
@@ -82,33 +76,8 @@
     </div><
   </div> End featurette Questions -->
 
-  <div class="featurette">
-        <%= render 'static_pages/testimonials' %>
-  </div><!--// featurette testimonial-->
+<div class="featurette">
+  <%= render 'static_pages/testimonials' %>
+</div><!--// featurette testimonial-->
 
-  <div class="featurette" style="background: #f9fafa; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;">
-    <div class="container">
-      <h2 class="featurette-title">We're here for you.</h2>
-      <p class="lead">The teachers at Tweet Speak English</p>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="center-block">
-              <img width="250px" src="https://dl.dropboxusercontent.com/s/1xnd5qai0o3yevf/Nate%20Hill.jpg?dl=0" class="img-responsive img-circle" alt="nate hill creator of tweet speak english">
-              <p class="lead top-space">Nate Hill</p>
-              <p>Nate loves seeing the look in a student's eyes when she really understands something, and gains the confidence to believe, "Wow, I really can do this."</p>
-              <p>Teaching English since 2003, Nate has worked with a variety of students of all ages. He's been in Japan since 2006.</p>
-              <p>He's also the founder of <a href="http://fluentli.com">Fluentli</a>, a Q&A site for language learners.</p>
-          </div>
-        </div>
-
-        <div class="col-sm-6">
-          <div class="center-block">
-              <img width="250px" src="https://dl.dropboxusercontent.com/s/x8evyvm1c652t8h/Jason-profile-pic-300x300.jpg?dl=0" class="img-responsive img-circle" alt="jason smith creator of tweet speak english">
-              <p class="lead top-space">Jason Smith</p>
-              <p>Jason started teaching English in 2005. He is passionate about helping foreign language learners build connections and share culture.</p>
-              <p>Jason has lived in many places around the world, from Vienna, Austria, to Seattle in the United States, and currently resides in Kochi, Japan.</p>
-          </div>
-        </div>
-      </div> <!-- // row -->
-    </div><!--// container-->
-  </div><!-- // featurette -->
+<%= render 'pages/nate_and_jason' %>
