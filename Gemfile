@@ -20,6 +20,8 @@ gem 'autoprefixer-rails'
 gem 'ranked-model'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'soundcloud'
+gem 'jquery-turbolinks'
+gem 'masonry-rails'
 
 group :development, :test do
      gem 'sqlite3'

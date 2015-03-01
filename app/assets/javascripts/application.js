@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require bootstrap-wysihtml5
+//= require jquery.turbolinks
+//= require masonry/jquery.masonry
 //= require analytics
 //= require turbolinks
 //= require_tree .

@@ -1,28 +1,26 @@
 <div class="featurette">
 
-  <h1>Listing courses</h1>
+  <h1>Our Available Courses</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @courses.each do |course| %>
-        <tr>
-          <td><%= link_to 'Show', course %></td>
-          <td><%= link_to 'Edit', edit_course_path(course) %></td>
-          <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
-
-  <%= link_to 'New Course', new_course_path %>
+  <div id="pins" class="transitions-enabled">
+  <% @courses.each do |course| %>
+    <div class="pins-box panel panel-default">
+      <div class="panel-heading">
+        <h3><%= course.title %><br>
+          <small><%= course.tagline %></small></h3>
+      </div>
+      <%=link_to( image_tag(course.course_image.url(:medium)), course_path(course), :class=>"course-image") %>
+      <div class="panel-body">
+        <%= course.description %>
+        <br>
+        <br>
+        <%= link_to 'Learn More', course_path(course), class: 'btn btn-lg btn-success' %>
+        <% if current_user.try(:admin) %>
+          <%= link_to 'Edit', edit_course_path(course) %>
+          <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  </div>
 </div>

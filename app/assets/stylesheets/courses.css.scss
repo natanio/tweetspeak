@@ -2,6 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#pins {
+  margin: 0 auto;
+}
+
+.pins-box {
+  margin: 5px;
+  width: 350px;
+}
+
+.pins-box img {
+  width: 100%;
+}
 
 .pricetag {
     white-space: nowrap;

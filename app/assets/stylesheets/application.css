@@ -10,5 +10,6 @@
  *
  *= require bootstrap-wysihtml5
  *= require_self
+ *= require 'masonry/transitions'
  *= require_tree .
  */
