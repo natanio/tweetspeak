@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :tracks
   has_many :lessons, through: :tracks
 
-  before_create :set_trial_to_now
+  # before_create :set_trial_to_now
 
   after_create :create_free_course
 
@@ -38,9 +38,9 @@ class User < ActiveRecord::Base
 
   private
 
-  def is_trialing
-    self.trialing?
-  end
+  # def is_trialing
+  #   self.trialing?
+  # end
 
   def create_free_course
     trial_course = Course.find(1)

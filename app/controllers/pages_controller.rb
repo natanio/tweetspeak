@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 	before_filter :authenticate_user!, except: [:about, :contact]
 	# before_filter :check_subscription, except: [:about, :contact]
-  before_filter :check_trialing, only: [:subscription]
+  # before_filter :check_trialing, only: [:subscription]
   before_filter :best_streak, only: [:dashboard]
 
   helper PagesHelper
@@ -40,10 +40,10 @@ class PagesController < ApplicationController
     end
   end
 
-  def check_trialing
-    if current_user.trialing
-      redirect_to new_charge_path, alert: "Ready to get started? Choose a plan below."
-    end
-  end
+  # def check_trialing
+  #   if current_user.trialing
+  #     redirect_to new_charge_path, alert: "Ready to get started? Choose a plan below."
+  #   end
+  # end
 
 end

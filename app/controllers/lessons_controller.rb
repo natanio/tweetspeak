@@ -173,11 +173,11 @@ class LessonsController < ApplicationController
     #   current_user.admin? || (((@lesson.id - 1) <= current_user.last_lesson) && is_not_trialing? )
     # end
 
-    def is_not_trialing?
-      if @lesson.id > 14 && current_user.trialing?
-        return false
-      else
-        return true
-      end
-    end
+    # def is_not_trialing?
+    #   if @lesson.id > 14 && current_user.trialing?
+    #     return false
+    #   else
+    #     return true
+    #   end
+    # end
 end
