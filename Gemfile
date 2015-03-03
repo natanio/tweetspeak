@@ -22,6 +22,7 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'soundcloud'
 gem 'jquery-turbolinks'
 gem 'masonry-rails'
+gem "font-awesome-rails"
 
 group :development, :test do
      gem 'sqlite3'

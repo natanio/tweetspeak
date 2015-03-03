@@ -2,25 +2,6 @@
 <div class="paper">
 	<div class="container-fluid">
 		<h1 class="dictionary">Dictionary</h1>
-		 
-		<% ('A'..'Z').each do |i| %>
-			<h2 class="dictionary"><%= i.capitalize %></h2>
-        	<% (1..current_user.last_lesson).each do |id| %>
-  				<% lesson = Lesson.find(id) %>
-					<% tags = lesson.tags.split(', ') %>
-		 
-					<% tags.each_with_index do |tag, index| %>
-						<% letter = tag[0].capitalize %>
-					<ul>
-						<% if letter == i %>
-						<li><a href="/lessons/<%= id %>/step/4"><%= tag %></a></li>
-						<% else %>
-						<!-- else is only necessary if you actually need to put something here.-->
-						<% end %>
-					</ul>
-		 
-					<% end %>
-			<% end %>
-		<% end %>
+    <%= find_user_lessons %>
 	</div>
 </div>

@@ -25,9 +25,33 @@ module PagesHelper
   def streak_percent
     if current_user.streak != 0
       (current_user.streak * 100) / current_user.best_streak
-    else 
-      return 0 
+    else
+      return 0
     end
+  end
+
+  private
+
+  def find_user_lessons
+    ('A'..'Z').each do |i|
+      puts '<h2 class="dictionary">#{i.capitalize}</h2>'
+        current_user.user_courses.each do |course|
+          (1..course.last_lesson).each do |id|
+            lesson = Lesson.find(id)
+            tags = lesson.tags.split(', ')
+
+            tags.each_with_index do |tag, index|
+              letter = tag[0].capitalize
+              puts '<ul>
+                <% if letter == i %>
+                <li><a href="/lessons/<%= id %>/step/4"><%= tag %></a></li>
+                <% end %>
+              </ul>'
+
+            end
+          end
+        end
+      end
   end
 
 end

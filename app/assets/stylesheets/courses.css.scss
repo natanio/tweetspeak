@@ -86,7 +86,7 @@
   text-shadow:
     0 -1px 0 rgba(0, 0, 0, 0.2),
     0 1px 0 rgba(255, 255, 255, 0.2);
-  font-size: 70px;
+  font-size: 30px;
 }
 
 .social .link span {
@@ -101,8 +101,7 @@
 .social .link:hover {
   padding: 10px;
   color: white;
-  margin-left: -5px;
-  transform: translateX(10px) rotate(360deg);
+  transform: rotate(360deg);
 }
 
 .social .link.google-plus {
