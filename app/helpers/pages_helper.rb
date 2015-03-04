@@ -32,26 +32,47 @@ module PagesHelper
 
   private
 
-  def find_user_lessons
-    ('A'..'Z').each do |i|
-      puts '<h2 class="dictionary">#{i.capitalize}</h2>'
-        current_user.user_courses.each do |course|
-          (1..course.last_lesson).each do |id|
-            lesson = Lesson.find(id)
-            tags = lesson.tags.split(', ')
+  def all_lesson_ids
+    last_lesson_ids = current_user.user_courses.map(&:last_lesson) # gives us array with last lesson numbe
+    starting_lesson_ids = current_user.courses.map(&:starting_lesson) # gives us array of starting lesson for course
 
-            tags.each_with_index do |tag, index|
-              letter = tag[0].capitalize
-              puts '<ul>
-                <% if letter == i %>
-                <li><a href="/lessons/<%= id %>/step/4"><%= tag %></a></li>
-                <% end %>
-              </ul>'
+    # now we want to get put the lesson ids the student has access to, as well as has finished
+    # [0] will be starting lesson for the first course [1] will be the user's last lesson.
+    # [2] will be the starting lesson for next course, [3] last lesson, etc.
+    # start_last_array = starting_lesson_ids.zip(last_lesson_ids).flatten.compact
 
-            end
-          end
-        end
+    @all_finished_lessons = []
+
+    starting_lesson_ids.each do |starting_id|
+      i = 0
+      (starting_id..last_lesson_ids[i]).each do |lesson_id|
+        @all_finished_lessons << lesson_id
       end
+      i +=1
+    end
+    @all_finished_lessons
   end
+
+  # def user_dictionary
+  #   ('A'..'Z').each do |i|
+  #     puts '<h2 class="dictionary">#{i.capitalize}</h2>'
+  #     current_user.user_courses.each do |course|
+  #       (1..course.last_lesson).each do |id|
+  #         lesson = Lesson.find(id)
+  #         tags = lesson.tags.split(', ')
+
+  #         tags.each_with_index do |tag, index|
+  #           letter = tag[0].capitalize
+  #           puts '<ul>
+  #                   <% if letter == i %>
+  #                     <li><a href="/lessons/<%= id %>/step/4"><%= tag %></a></li>
+  #                   <% end %>
+  #                 </ul>'
+
+  #         end
+  #       end
+  #     end
+  #   end
+  # end
 
 end
