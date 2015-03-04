@@ -23,6 +23,7 @@ gem 'soundcloud'
 gem 'jquery-turbolinks'
 gem 'masonry-rails'
 gem "font-awesome-rails"
+gem 'shareable'
 
 group :development, :test do
      gem 'sqlite3'

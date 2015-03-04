@@ -118,3 +118,12 @@
   background-color: #3B5998;
   color: white;
 }
+
+nav.share {display:inline-block; margin-top: 20px} /* shareable's nav tag */
+nav.share div {float:left;}
+#___plusone_0 {font-size: default !important;}
+.fb_iframe_widget span { vertical-align: top; }
+.fb_edge_widget_with_comment { vertical-align: top;}
+.fb-like{display:inline-block; top: -4px; margin-right: 35px}
+* html .fb-like{display:inline}/* ie6 inline block fix*/
+*+html .fb-like{display:inline}/* ie7 inline block fix*/

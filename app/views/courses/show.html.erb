@@ -1,3 +1,4 @@
+<% title "English Learning Courses" %>
 <div class="featurette">
   <%= render 'layouts/messages' %>
   <h1><%= @course.title %> <br>
@@ -9,9 +10,9 @@
   <div class="row">
     <div class="container pricing-bg">
       <div class="col-md-8">
-        <%#= image_tag @course.course_image.url(:medium) %>
         <%= render 'course_slideshow' %>
-        <%= render partial: 'layouts/social_share', locals: { course: @course } %>
+        <%#= render partial: 'layouts/social_share', locals: { course: @course } %>
+        <%= render_shareable :turbolinks => true, :buttons => ['twitter', 'facebook', 'google_plus'] %>
       </div>
 
       <div class="col-md-3">
