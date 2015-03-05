@@ -11,9 +11,9 @@
 			<div class="page-header">
 				<div class="center-block">
 					<ul class="nav nav-pills">
-	  					<li><a href="/lessons/<%= @lesson.id %>/step/1">Step 1 <span class="glyphicon glyphicon-chevron-right"></span></a></li>
-	  					<li class="active"><a href="/lessons/<%= @lesson.id %>/step/3">Step 2 <span class="glyphicon glyphicon-chevron-right"></span></a></li>
-	  					<li><a href="/lessons/<%= @lesson.id %>/step/4">Step 3 <span class="glyphicon glyphicon-chevron-right"></span></a></li>
+	  					<li><a href="/courses/<%= params[:course_id] %>/lessons/<%= @lesson.id %>/step/1">Step 1 <span class="glyphicon glyphicon-chevron-right"></span></a></li>
+	  					<li class="active"><a href="/courses/<%= params[:course_id] %>/lessons/<%= @lesson.id %>/step/3">Step 2 <span class="glyphicon glyphicon-chevron-right"></span></a></li>
+	  					<li><a href="/courses/<%= params[:course_id] %>/lessons/<%= @lesson.id %>/step/4">Step 3 <span class="glyphicon glyphicon-chevron-right"></span></a></li>
 					</ul>
 				</div>
 				<div class="row">
@@ -71,21 +71,21 @@
 
 					<div class="audio_feedback">
 						<%= render 'soundcloud/init', access_token: @soundcloud_access_token %>
-						
+
 						<% unless @track != nil %>
 						<h3>Record Yourself</h3>
 						<p>Use the recorder below to record yourself saying this tweet. Click 'Upload' when you're ready to send it. We'll give you feedback within two business days.</p>
 						<%= render 'soundcloud/recorder', track_title: "User" + current_user.id.to_s + "-" + @lesson.id.to_s, track_url: "/lessons/#{@lesson.id}/tracks?authenticity_token=#{form_authenticity_token}" %>
 						<% else %>
 						<h3>Your Recording</h3>
-						
+
 						<%= render partial: 'soundcloud/embed', locals: {track: @track} %>
 						<%= render partial: 'soundcloud/comments', locals: {track: @track} %>
 						<% end %>
-						
+
 					</div>
 				</div>
-				
+
 				<div class="col-md-6">
 					<h3>Natural Reading & Phonetic Guide</h3>
 					<div class="panel panel-default">
@@ -98,11 +98,11 @@
 			</div>
 				</div>
 			</div>
-			
+
 
 			<!-- Continue Button -->
 			<div class="center">
 				<h3 style="font-family: 'Roboto Slab', serif;">Finished practicing?</h3>
-				<a href="/lessons/<%=@lesson.id%>/step/4" class="btn btn-primary btn-lg">Continue!</a>	
+				<a href="/lessons/<%=@lesson.id%>/step/4" class="btn btn-primary btn-lg">Continue!</a>
 			</div>
 </div>
