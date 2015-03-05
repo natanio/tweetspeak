@@ -7,8 +7,13 @@
       <%= image_tag @course.course_image.url(:medium) %>
     </div>
     <div class="item" style="height: 360px;">
-      <iframe src="//player.vimeo.com/video/110602645?title=0&byline=0&portrait=0&badge=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-      <p><a href="https://vimeo.com/110602645">High Maintenance - Trailer</a> from <a href="https://vimeo.com/highmaintenance">Janky Clown Productions</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+      <!-- 16:9 aspect ratio -->
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe
+        src="//player.vimeo.com/video/<%= @course.video_link %>?title=0&amp;byline=0&amp;
+        portrait=0" width="700" height="394" frameborder="0"
+        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
     </div>
   </div>
 

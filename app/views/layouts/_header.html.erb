@@ -18,12 +18,12 @@
         <% if user_signed_in? %>
         <li><a href="/dashboard"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
         <li><%= link_to courses_path do %>
-          <span class="glyphicon glyphicon-plus"></span> Courses
+          <i class="fa fa-graduation-cap fa-lg"></i> Courses
         <% end %></li>
         <li><a href="<%= pages_dictionary_path %>"><span class="glyphicon glyphicon-book"></span> Dictionary</a></li>
         <% else %>
           <li><%= link_to courses_path do %>
-            <span class="glyphicon glyphicon-plus"></span> Courses
+            <i class="fa fa-graduation-cap fa-lg"></i> Courses
           <% end %></li>
             <li><a class="btn btn-link" href="/pages/about">About</a></li>
             <li><a class="btn btn-link" href="http://blog.tweetspeakenglish.com/contact-us/">Contact</a></li>

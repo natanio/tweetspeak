@@ -3,7 +3,7 @@
   <%= render 'layouts/messages' %>
   <h1><%= @course.title %> <br>
     <small><%= @course.tagline %></small></h1>
-
+    <%= render_shareable :turbolinks => true, :buttons => ['twitter', 'facebook', 'google_plus'] %>
   <hr class="half-rule"></hr>
   <p class="lead"><%= @course.description %></p>
 
@@ -35,10 +35,7 @@
                 <abbr>$</abbr><%= (@course.price * 0.6).floor.to_s %>
                 <span>/ one time</span>
 
-
                   <span class="pricetag">60% OFF!</span>
-
-
 
                 <% unless is_course_purchase? %>
                   <button id="purchaseButton" class="btn btn-lg btn-success">Buy Now</button>
@@ -64,15 +61,23 @@
           </div>  <!-- // pricing plan -->
         <% end %> <!-- // form -->
         <% else %> <!-- if user not signed in -->
-        <div class="pricing-plan">
-          <abbr style="color: #e74c3c;">$</abbr><s style="color: #e74c3c;"><%= @course.price.to_s %></s>
-          <abbr>$</abbr><%= (@course.price * 0.6).floor.to_s %>
-          <span>/ one time</span>
-          <span class="pricetag">60% OFF!</span>
+          <% unless @course.price != 0 %>
+            <div class="trial-box">
+              <h3>This is a Free Course <br>
+                <small>Create a Free Account to Access</small></h3>
+              <%= link_to 'Get Free Access Now', new_user_registration_path, class: "btn btn-lg btn-success" %>
+            </div>
+          <% else %>
+            <div class="pricing-plan">
+              <abbr style="color: #e74c3c;">$</abbr><s style="color: #e74c3c;"><%= @course.price.to_s %></s>
+              <abbr>$</abbr><%= (@course.price * 0.6).floor.to_s %>
+              <span>/ one time</span>
+              <span class="pricetag">60% OFF!</span>
 
-          <h4>Create a Free Account to Purchase</h4>
-            <%= render 'layouts/signup' %>
-        </div>
+              <h4>Create a Free Account to Purchase</h4>
+                <%= render 'layouts/signup' %>
+            </div>
+          <% end %>
         <% end %>
       </div> <!-- // col -->
     </div> <!-- // container -->

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150228061250) do
+ActiveRecord::Schema.define(version: 20150305212257) do
 
   create_table "card_definitions", id: false, force: true do |t|
     t.integer "card_id"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20150228061250) do
     t.integer  "ending_lesson"
     t.integer  "price"
     t.string   "tagline"
+    t.string   "video_link"
   end
 
   create_table "definitions", force: true do |t|

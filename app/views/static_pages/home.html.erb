@@ -16,8 +16,8 @@
 
       <div class="top-space">
       <p class="lead" style="font-family: 'Roboto Slab', serif; color: #005279;
-      text-shadow: none;">Start Your Free 7 Day Trial. Join Today.</p>
-      
+      text-shadow: none;">Try Our Free 7 Lesson Trial. Join Today.</p>
+
       <%= render 'layouts/horizontal_signup' %>
 
       <p class="privacy">We will never spam you. Unsubscribe any time.</p>
@@ -28,15 +28,15 @@
 <div class="featurette">
   <div class="container-fluid">
     <h2 class="featurette-title">English you need to succeed.</h2>
-    <p class="lead">Learn to communicate confidently and enjoyably in English. We research natural English used on Twitter to make lessons that train your ears, tongue, and brain to <b>understand and use native-like English</b> – day after day.</p>
+    <p class="lead">Learn to communicate confidently and enjoyably in English. We research natural English used on Twitter to make <%= link_to 'courses', courses_path %> that train your ears, tongue, and brain to <b>understand and use native-like English</b> – day after day.</p>
 
     <hr class="half-rule">
 
     <div class="row">
       <div class="col-sm-4">
         <img src="https://dl.dropboxusercontent.com/s/miyy6fbagoya7h4/tweet-speak-daily.png" alt="Sass and Less support" class="img-responsive">
-        <h3>365 Lessons</h3>
-        <p>We believe making progress in English is not about access to more information, but steady, daily practice. <br /><b>Our goal is to help you do that.</b></p>
+        <h3>Self Paced Courses</h3>
+        <p>We believe making progress in English is not about access to more information, but steady, daily practice. <br /><b>You can choose how much you want to do a day.</b></p>
       </div>
       <div class="col-sm-4">
         <img src="https://dl.dropboxusercontent.com/s/gecdabzf0c88ja7/tweet-speak-dictionary.png" alt="Responsive across devices" class="img-responsive">
@@ -49,17 +49,18 @@
         <p>Record yourself speaking with each lesson. We'll give you personal feedback on how to improve. <br /><strong>Discover where your pronunciation could be better.</strong></p>
       </div>
     </div>
+
     <hr class="half-rule">
 
     <%= render 'testimonials' %>
 
-</div>
+  </div>
 </div>
 
 <div class="featurette">
   <div class="container">
     <h2 class="featurette-title">Get started in less than 60 seconds</h2>
-    <p class="lead">As a student, you'll enjoy all of this.</p>
+    <p class="lead">As a student, you'll enjoy these feature in every <%= link_to 'course', courses_path %>.</p>
 
     <hr class="half-rule">
 
@@ -123,7 +124,7 @@
     </div>
 
     <hr class="half-rule">
-    
+
     <h2 class="featurette-title">Bonus: 2 Free Ebooks</h2>
     <p class="lead">When you sign up today, get access to these two great ebooks:</p>
 
