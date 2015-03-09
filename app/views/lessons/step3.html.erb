@@ -75,7 +75,7 @@
 						<% unless @track != nil %>
 						<h3>Record Yourself</h3>
 						<p>Use the recorder below to record yourself saying this tweet. Click 'Upload' when you're ready to send it. We'll give you feedback within two business days.</p>
-						<%= render 'soundcloud/recorder', track_title: "User" + current_user.id.to_s + "-" + @lesson.id.to_s, track_url: "/courses/<%= @lesson.course.id %>/lessons/#{@lesson.id}/tracks?authenticity_token=#{form_authenticity_token}" %>
+						<%= render 'soundcloud/recorder', track_title: "User" + current_user.id.to_s + "-" + @lesson.id.to_s, track_url: "/lessons/#{@lesson.id}/tracks?authenticity_token=#{form_authenticity_token}" %>
 						<% else %>
 						<h3>Your Recording</h3>
 
