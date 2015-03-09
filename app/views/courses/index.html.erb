@@ -2,6 +2,10 @@
 
   <h1>Our Available Courses</h1>
 
+  <div class="big-bottom">
+    <%= render_shareable :turbolinks => true, :buttons => ['twitter', 'facebook', 'google_plus'] %>
+  </div>
+
   <div id="pins" class="transitions-enabled">
   <% @courses.each do |course| %>
     <div class="pins-box panel panel-default">
