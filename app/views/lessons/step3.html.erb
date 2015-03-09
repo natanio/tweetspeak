@@ -75,7 +75,7 @@
 						<% unless @track != nil %>
 						<h3>Record Yourself</h3>
 						<p>Use the recorder below to record yourself saying this tweet. Click 'Upload' when you're ready to send it. We'll give you feedback within two business days.</p>
-						<%= render 'soundcloud/recorder', track_title: "User" + current_user.id.to_s + "-" + @lesson.id.to_s, track_url: "/lessons/#{@lesson.id}/tracks?authenticity_token=#{form_authenticity_token}" %>
+						<%= render 'soundcloud/recorder', track_title: "User" + current_user.id.to_s + "-" + @lesson.id.to_s, track_url: "/courses/<%= @lesson.course.id %>/lessons/#{@lesson.id}/tracks?authenticity_token=#{form_authenticity_token}" %>
 						<% else %>
 						<h3>Your Recording</h3>
 
@@ -103,6 +103,6 @@
 			<!-- Continue Button -->
 			<div class="center">
 				<h3 style="font-family: 'Roboto Slab', serif;">Finished practicing?</h3>
-				<a href="/lessons/<%=@lesson.id%>/step/4" class="btn btn-primary btn-lg">Continue!</a>
+				<a href="/courses/<%= @lesson.course.id %>/lessons/<%=@lesson.id%>/step/4" class="btn btn-primary btn-lg">Continue!</a>
 			</div>
 </div>

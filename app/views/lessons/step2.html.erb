@@ -54,9 +54,9 @@
 
 <% if @wrong_words.empty? && ( @correct_words.length == @answer.downcase.split.uniq.length ) %>
 	<div class="alert alert-info center" role="alert">
-		<p><b>Way to go! You got all the words correct!</b><spn style="margin-left: 25px;"><a href="/lessons/<%=@lesson.id%>/step/3" class="btn btn-success">Continue!</a></span></p>
+		<p><b>Way to go! You got all the words correct!</b><spn style="margin-left: 25px;"><a href="/courses/<%= @lesson.course.id %>/lessons/<%=@lesson.id%>/step/3" class="btn btn-success">Continue!</a></span></p>
 	</div>
-	
+
 <% else %>
 	<div class="alert alert-info center" role="alert">
 		<span class="glyphicon glyphicon-info-sign"></span> You got <b><%= @correct_words.length %></b> out of <b><%= @answer.split.uniq.length %></b> words correct.
@@ -85,7 +85,7 @@
 				<% end %>
 				</div>
 			</div>
-		
+
 
 		<div class="col-md-6">
 			<div class="panel panel-default">
@@ -110,7 +110,7 @@
 			</div>
 		</div>
 	</div> <!-- End Row -->
-		
+
 <% if (@correct_words.length != 0) && (@correct_words.length != @answer.downcase.split.uniq.length) %>
 	<div class="alert alert-warning center top-space" role="alert">
 		<p>You got some words, but not all of them. What do you want to do?</p>
