@@ -13,6 +13,14 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+    if params[:sixtyoff].present?
+      render :sale_page
+    else
+      render :layout => "home"
+    end
+  end
+
+  def sale_page
     render :layout => "home"
   end
 

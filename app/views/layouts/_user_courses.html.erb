@@ -12,7 +12,7 @@
       <div class="thumbnail">
         <%= image_tag user_course.course.course_image.url(:medium) %>
         <div class="caption">
-          <h3><small><%= user_course.course.tagline %></small><br><%= user_course.course.title %></h3>
+          <h3><small><%= user_course.last_lesson.to_s %> of <%= user_course.course.ending_lesson.to_s %></small><br><%= user_course.course.title %></h3>
           <p><%= user_course.course.description %></p>
         </div>
           <a href="<%= current_user.next_lesson_path(user_course.course) %>" class="btn btn-primary btn-lg">Start Next Lesson! <span class="glyphicon glyphicon-arrow-right"></span></a>
@@ -36,7 +36,7 @@
       <div class="thumbnail">
         <%= image_tag user_course.course.course_image.url(:medium) %>
         <div class="caption">
-          <h3><small>Course Title</small><br><%= user_course.course.title %></h3>
+          <h3><small><%= user_course.last_lesson.to_s %> of <%= user_course.course.ending_lesson.to_s %></small><br><%= user_course.course.title %></h3>
           <p><%= user_course.course.description %></p>
         </div>
           <a href="<%= current_user.next_lesson_path(user_course.course) %>" class="btn btn-default btn-lg">View Last Lesson <span class="glyphicon glyphicon-arrow-right"></span></a>

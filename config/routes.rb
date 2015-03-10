@@ -1,5 +1,6 @@
 Tweetspeak::Application.routes.draw do
   resources :courses do
+    # get 'sale_page'
     resources :user_courses, only: [:create, :destroy]
   end
 

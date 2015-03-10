@@ -1,0 +1,99 @@
+<% title "English Learning Courses" %>
+<div class="featurette">
+  <%= render 'layouts/messages' %>
+  <h1><%= @course.title %> <br>
+    <small><%= @course.tagline %></small></h1>
+    <%= render_shareable :turbolinks => true, :buttons => ['twitter', 'facebook', 'google_plus'] %>
+  <hr class="half-rule"></hr>
+  <p class="lead"><%= @course.description %></p>
+
+  <div class="row">
+    <div class="container pricing-bg">
+      <div class="col-md-8">
+        <%= render 'course_slideshow' %>
+        <%#= render partial: 'layouts/social_share', locals: { course: @course } %>
+        <%= render_shareable :turbolinks => true, :buttons => ['twitter', 'facebook', 'google_plus'] %>
+      </div>
+
+      <div class="col-md-3">
+        <% if user_signed_in? %>
+        <%= form_tag course_user_courses_path(@course), id: 'coursePurchase' do |form| %>
+          <%= hidden_field_tag 'stripeToken' %>
+          <%= hidden_field_tag 'stripeEmail' %>
+          <%= hidden_field :charges, :plan_id, value: "course_purchase" %>
+
+          <div class="pricing-plan">
+            <% unless @course.price != 0 %>
+              <div class="trial-box">
+                <h3>This is a Free Course <br>
+                  <small>Create a Free Account to Access</small></h3>
+                <%= link_to 'Get Free Access Now', new_user_registration_path, class: "btn btn-lg btn-success" %>
+              </div>
+            <% else %>
+
+                <abbr style="color: #e74c3c;">$</abbr><s style="color: #e74c3c;"><%= @course.price.to_s %></s>
+                <abbr>$</abbr><%= (@course.price * 0.6).floor.to_s %>
+                <span>/ one time</span>
+
+                  <span class="pricetag">60% OFF!</span>
+
+                <% unless is_course_purchase? %>
+                  <button id="purchaseButton" class="btn btn-lg btn-success">Buy Now</button>
+                <% else %>
+                  <button class="btn btn-lg btn-success disabled">You've Purchased This</button>
+                <% end %>
+
+                <script>
+                  <%= render 'courses_button.js.erb' %>
+                </script>
+
+            <% end %>
+
+            <% unless @course.price == 0 %>
+              <div class="margin-fix top-space">
+                <div class="center-block">
+                  <img src="https://dl.dropboxusercontent.com/s/lfcnb5636j92x40/secure-patments.png?dl=0" class="img-responsive" alt="secure payments">
+                  <p style="font-size: 12px;">Secure payments processed by <a href="http://www.stripe.com">Stripe</a>.</p>
+                </div>
+              </div>
+            <% end %>
+
+          </div>  <!-- // pricing plan -->
+        <% end %> <!-- // form -->
+        <% else %> <!-- if user not signed in -->
+          <% unless @course.price != 0 %>
+            <div class="trial-box">
+              <h3>This is a Free Course <br>
+                <small>Create a Free Account to Access</small></h3>
+              <%= link_to 'Get Free Access Now', new_user_registration_path, class: "btn btn-lg btn-success" %>
+            </div>
+          <% else %>
+            <div class="pricing-plan">
+              <abbr style="color: #e74c3c;">$</abbr><s style="color: #e74c3c;"><%= @course.price.to_s %></s>
+              <abbr>$</abbr><%= (@course.price * 0.6).floor.to_s %>
+              <span>/ one time</span>
+              <span class="pricetag">60% OFF!</span>
+
+              <h4>Create a Free Account to Purchase</h4>
+                <%= render 'layouts/signup' %>
+            </div>
+          <% end %>
+        <% end %>
+      </div> <!-- // col -->
+    </div> <!-- // container -->
+  </div> <!-- // row -->
+</div> <!-- // featurette -->
+
+<%= render 'pages/guarantee' %>
+
+  <!-- <div class="featurette" style="display: none; background: #f9fafa; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;">
+    <div class="container">
+      <h2 class="featurette-title">Questions and Answers</h2>
+    </div><
+  </div> End featurette Questions -->
+
+<div class="featurette">
+  <%= render 'static_pages/testimonials' %>
+</div><!--// featurette testimonial-->
+
+<%= render 'pages/nate_and_jason' %>
