@@ -123,6 +123,9 @@ GEM
     paperclip-ffmpeg (1.2.0)
       paperclip (>= 2.5.2)
       rails
+    passenger (5.0.2)
+      rack
+      rake (>= 0.8.1)
     pg (0.17.1)
     pg (0.17.1-x86-mingw32)
     polyglot (0.3.5)
@@ -221,6 +224,7 @@ DEPENDENCIES
   paperclip (~> 3.0)
   paperclip-dropbox (>= 1.1.7)
   paperclip-ffmpeg
+  passenger
   pg
   rails (= 4.0.2)
   rails_12factor

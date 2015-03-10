@@ -24,6 +24,7 @@ gem 'jquery-turbolinks'
 gem 'masonry-rails'
 gem "font-awesome-rails"
 gem 'shareable'
+gem 'passenger'
 
 group :development, :test do
      gem 'sqlite3'
